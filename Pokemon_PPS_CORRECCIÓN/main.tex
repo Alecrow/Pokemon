@@ -148,17 +148,19 @@ Para más detalles sobre las naturalezas y cómo afectan las estadísticas, pued
 Entrenar EVs implica tomar decisiones estratégicas sobre:
 
 \begin{itemize}
-    \item Qué especies derrotar.
-    \item En qué zonas pelear.
-    \item Cuánto tiempo permanecer en cada zona.
-    \item Cuándo desplazarse a otra zona.
+    \item Qué especies derrotar para maximizar EVs por encuentro.
+    \item En qué zonas combatir según tasas de aparición.
+    \item Cuántos encuentros realizar en cada zona.
+    \item Cuándo desplazarse a otra zona considerando el costo de viaje.
 \end{itemize}
 
-El juego no ofrece una herramienta para ver los EVs obtenidos ni proporciona un directorio de las especies y sus tasas de aparición. Esto lleva a una planificación manual, con alta carga cognitiva y uso ineficiente del tiempo.
+El juego no ofrece una herramienta para visualizar los EVs acumulados ni un sistema para calcular rutas eficientes de entrenamiento. Esto lleva a una planificación manual con alta carga cognitiva y desperdicio de recursos (encuentros innecesarios, viajes subóptimos).
 
 \subsection{Propuesta}
 
-Se propone modelar el entrenamiento de EVs como un \textit{grafo} de zonas de entrenamiento (nodos) y desplazamientos (aristas). Sobre esta estructura, se aplican algoritmos de búsqueda y planificación para minimizar el tiempo necesario para maximizar una estadística específica. El sistema busca \emph{rutas eficientes} bajo las reglas de la \textit{Generación III} y los parámetros definidos por el usuario, reduciendo errores y decisiones repetitivas, y mejorando la experiencia del jugador.
+Se propone modelar el entrenamiento de EVs como un \textit{problema de optimización sobre grafos}. Las zonas de entrenamiento son nodos, caracterizados por la tasa promedio de EVs por encuentro en cada estadística. Los desplazamientos entre zonas son aristas con peso (distancia en casillas).
+
+El objetivo es \textbf{minimizar el número total de encuentros necesarios} para alcanzar 252 EVs en la estadística objetivo, considerando una penalización ajustable por la distancia recorrida entre zonas. Esto reduce tanto el número de combates como los desplazamientos innecesarios, optimizando la experiencia del jugador.
 
 
 \section{Usuario}
@@ -232,12 +234,32 @@ Los principales factores que dificultan el entrenamiento eficiente de EVs son:
 
 \subsection{Dimensiones del problema}
 
-El problema puede analizarse desde cuatro dimensiones que explican su impacto en la eficiencia del entrenamiento:
+El problema de optimizar el entrenamiento de EVs puede analizarse desde tres dimensiones fundamentales:
 
 \begin{itemize}[leftmargin=*,label=\textbullet]
-    \item \textbf{Dimensión espacial:} Representa el desplazamiento del jugador en el mapa. Cada zona tiene diferentes especies y tasas de aparición, lo que afecta la conveniencia de entrenar en un lugar u otro.
-    \item \textbf{Dimensión temporal:} Relacionada con el tiempo que toma alcanzar los objetivos de EVs. Factores como la frecuencia de encuentros, la duración de los combates y los viajes entre zonas inciden en el tiempo total del entrenamiento.
-    \item \textbf{Dimensión cognitiva:} El jugador debe gestionar múltiples variables simultáneamente —como las probabilidades de aparición, los EVs otorgados y los multiplicadores de objetos— lo que aumenta la carga mental y el riesgo de error.
+    \item \textbf{Dimensión espacial:} Representa el desplazamiento del jugador en el mapa. Cada zona tiene diferentes especies y tasas de aparición, lo que afecta la eficiencia del entrenamiento. El costo de desplazamiento se mide en casillas recorridas, donde 6 casillas equivalen aproximadamente a 1.25 segundos de caminata.
+    
+    \item \textbf{Dimensión de combate:} Relacionada con el número de encuentros necesarios para alcanzar el objetivo de EVs. La eficiencia de cada zona se caracteriza por la tasa promedio de EVs ganados por encuentro, que depende de las probabilidades de aparición de cada especie y los EVs que otorgan al ser derrotadas.
+    
+    \item \textbf{Dimensión cognitiva:} El jugador debe gestionar múltiples variables simultáneamente: probabilidades de aparición, EVs otorgados por especie, multiplicadores de objetos (Macho Brace, Pokérus), límites de EVs (252 por estadística, 510 totales) y restricciones de acceso a zonas. Esta complejidad aumenta la carga mental y el riesgo de error en la planificación manual.
+\end{itemize}
+
+\subsection{Formulación del problema de optimización}
+
+El desafío central consiste en encontrar una \textbf{ruta óptima} que minimice el costo total del entrenamiento, balanceando dos objetivos potencialmente conflictivos:
+
+\begin{enumerate}
+    \item \textbf{Minimizar el número de encuentros:} Combatir en zonas donde los Pokémon otorgan más EVs por encuentro en la estadística objetivo.
+    \item \textbf{Minimizar la distancia recorrida:} Reducir el desplazamiento entre zonas, priorizando aquellas cercanas a la posición inicial del jugador.
+\end{enumerate}
+
+La solución óptima depende de las preferencias del jugador. Por ejemplo:
+\begin{itemize}
+    \item Un jugador que prioriza eficiencia de combate preferirá viajar largas distancias hacia zonas con alta tasa de EVs por encuentro.
+    \item Un jugador que busca conveniencia preferirá entrenar en zonas cercanas, incluso si requieren más encuentros.
+\end{itemize}
+
+Para capturar esta flexibilidad, se propone una \textbf{función de costo híbrida} con un parámetro ajustable $\lambda$ que permite al usuario definir el balance deseado entre ambos objetivos.
 \end{itemize}
 
 \subsection{Incidencia en la experiencia de juego}
@@ -255,19 +277,157 @@ La ausencia de herramientas adecuadas para gestionar el entrenamiento de EVs afe
 \section{Objetivos}
 
 \subsection{Objetivo general}
-Desarrollar una aplicación que modele el entrenamiento competitivo de un Pokémon como un grafo ponderado y calcule rutas eficientes en tiempo para maximizar una estadística objetivo, considerando las restricciones de los EVs y otros factores relevantes.
+Desarrollar una aplicación que modele el entrenamiento competitivo de un Pokémon como un grafo ponderado y calcule rutas óptimas que minimicen el costo total (encuentros y desplazamiento) para alcanzar una estadística objetivo, considerando las restricciones de los EVs y otros factores relevantes.
 
 \subsection{Objetivos específicos}
 \begin{itemize}
-    \item \textbf{Modelado del mundo:} Representar zonas de entrenamiento y acciones relevantes como nodos, y tiempos de desplazamiento como aristas con peso.
-    \item \textbf{Estimación de rendimiento:} Construir para cada nodo una tasa EV/min por estadística (Velocidad, Ataque, etc.), considerando probabilidad de encuentro, EV otorgados y duración promedio de combate.
-    \item \textbf{Algoritmos de ruta:} Implementar un algoritmo multi-criterio que minimice el tiempo total de entrenamiento, considerando simultáneamente el tiempo de combate y los desplazamientos entre zonas.
-    \item \textbf{Planificador de entrenamiento:} Generar un itinerario paso a paso (secuencia de nodos/acciones) que logre, por ejemplo, 252 EV en la estadística objetivo en el menor tiempo posible.
-    \item \textbf{Evaluación cuantitativa:} Medir calidad de las rutas con métricas como tiempo total (min), combates estimados, porcentaje de tiempo en viajes, y tiempo de cómputo del algoritmo.
-    \item \textbf{Análisis de sensibilidad:} Estudiar cómo variaciones en tasas de encuentro/tiempos de combate afectan la ruta óptima y el tiempo total.
-    \item \textbf{Documentación y reproducibilidad:} Entregar manual técnico y dataset de ejemplo (tasas y grafo), con guías para actualizar datos y extender a otras estadísticas.
-    \item \textbf{Interfaz de usuario:} Diseñar una UI simple (mapa/listado) que permita ingresar el objetivo de EV y visualizar la ruta y su costo estimado.
+    \item \textbf{Modelado del mundo:} Representar zonas de entrenamiento como nodos con tasa promedio de EVs por encuentro, y desplazamientos como aristas con peso (distancia en casillas).
+    \item \textbf{Cálculo de eficiencia:} Determinar tasas esperadas de ganancia de EVs en cada zona según probabilidades de aparición y EVs otorgados por especie.
+    \item \textbf{Búsqueda de rutas óptimas:} Implementar algoritmos de grafos (Dijkstra, A*) para encontrar la ruta que minimice una función de costo híbrida: número de encuentros más una penalización ajustable por distancia recorrida.
+    \item \textbf{Gestión de restricciones:} Respetar límites de EVs (510 totales, 252 óptimos por estadística), progreso del jugador y acceso a zonas.
+    \item \textbf{Entrada de usuario:} Permitir seleccionar estadística objetivo, EVs deseados, objetos/estado (Macho Brace, Pokérus), posición inicial y factor de penalización por desplazamiento.
+    \item \textbf{Interfaz de usuario:} Diseñar una UI simple (mapa/listado) que permita ingresar parámetros y visualizar la ruta óptima con su costo estimado (encuentros y distancia).
+    \item \textbf{Evaluación cuantitativa:} Medir calidad de las rutas con métricas como costo total, número de encuentros, distancia recorrida y tiempo de cómputo del algoritmo.
+    \item \textbf{Análisis de sensibilidad:} Estudiar cómo variaciones en el factor de penalización $\lambda$ afectan la ruta óptima y el balance entre eficiencia de combate y desplazamiento.
 \end{itemize}
+
+
+% Modelo matemático
+\section{Modelo matemático}
+
+\subsection{Definición del grafo}
+
+El problema se modela como un \textbf{grafo dirigido ponderado} $G = (V, E)$, donde:
+
+\begin{itemize}
+    \item $V$ es el conjunto de \textbf{nodos}, donde cada nodo $i \in V$ representa una zona de entrenamiento en el mapa de Kanto.
+    \item $E \subseteq V \times V$ es el conjunto de \textbf{aristas}, donde cada arista $(i, j) \in E$ representa la posibilidad de desplazarse desde la zona $i$ hasta la zona $j$.
+    \item $d_{ij}$ es el \textbf{peso de la arista} $(i, j)$, que representa la distancia en casillas entre la salida de la zona $i$ y la entrada de la zona $j$.
+\end{itemize}
+
+\subsection{Parámetros del modelo}
+
+Para cada zona $i \in V$ y cada estadística $s \in \{\text{HP, Attack, Defense, SP\_Attack, SP\_Defense, Speed}\}$, se define:
+
+\begin{itemize}
+    \item $\text{EV}_{i,s}$: Tasa promedio de EVs ganados por encuentro en la zona $i$ para la estadística $s$, calculada como:
+    
+    $$\text{EV}_{i,s} = \sum_{k \in P_i} p_{i,k} \cdot e_{k,s}$$
+    
+    donde:
+    \begin{itemize}
+        \item $P_i$ es el conjunto de especies de Pokémon que aparecen en la zona $i$.
+        \item $p_{i,k}$ es la probabilidad de encontrar el Pokémon $k$ en la zona $i$.
+        \item $e_{k,s}$ es la cantidad de EVs que otorga el Pokémon $k$ en la estadística $s$ al ser derrotado.
+    \end{itemize}
+    
+    \item $m$: Factor multiplicador de EVs por objetos/estado (e.g., $m = 2$ con Macho Brace, $m = 4$ con Macho Brace + Pokérus).
+    \item $\text{EV}_{\text{objetivo}}$: Cantidad de EVs que se desea alcanzar (típicamente 252).
+    \item $\lambda \geq 0$: Factor de penalización por desplazamiento, que pondera la importancia relativa entre minimizar encuentros y minimizar distancia recorrida.
+\end{itemize}
+
+\subsection{Variables de decisión}
+
+\begin{itemize}
+    \item $x_i \in \mathbb{Z}^+$: Número de encuentros realizados en la zona $i$.
+    \item $y_{ij} \in \{0, 1\}$: Variable binaria que indica si se realiza el desplazamiento desde la zona $i$ hasta la zona $j$ ($y_{ij} = 1$) o no ($y_{ij} = 0$).
+\end{itemize}
+
+\subsection{Función objetivo}
+
+El objetivo es minimizar el \textbf{costo total} del entrenamiento, definido como la suma del número de encuentros necesarios y una penalización proporcional a la distancia total recorrida:
+
+$$\min \quad Z = \sum_{i \in V} x_i + \lambda \sum_{(i,j) \in E} d_{ij} \cdot y_{ij}$$
+
+\subsection{Restricciones}
+
+\begin{enumerate}
+    \item \textbf{Cumplimiento del objetivo de EVs:} La suma de EVs ganados debe alcanzar o superar el objetivo:
+    
+    $$\sum_{i \in V} x_i \cdot m \cdot \text{EV}_{i,s} \geq \text{EV}_{\text{objetivo}}$$
+    
+    \item \textbf{Límite de EVs por estadística:} Los EVs acumulados no pueden exceder 252 (óptimo) o 255 (máximo del juego):
+    
+    $$\sum_{i \in V} x_i \cdot m \cdot \text{EV}_{i,s} \leq 252$$
+    
+    \item \textbf{Límite total de EVs:} La suma de EVs en todas las estadísticas no puede superar 510:
+    
+    $$\sum_{s'} \sum_{i \in V} x_i \cdot m \cdot \text{EV}_{i,s'} \leq 510$$
+    
+    \item \textbf{Conectividad del grafo:} Solo se pueden visitar zonas accesibles desde la posición inicial $v_0$, respetando las aristas del grafo.
+    
+    \item \textbf{Restricciones de acceso:} Algunas zonas requieren HMs, medallas o progreso en la historia. Sea $R_i$ el conjunto de requisitos de la zona $i$:
+    
+    $$x_i > 0 \implies \text{requisitos } R_i \text{ satisfechos}$$
+    
+    \item \textbf{No negatividad:} El número de encuentros debe ser no negativo:
+    
+    $$x_i \geq 0, \quad \forall i \in V$$
+\end{enumerate}
+
+\subsection{Interpretación del factor $\lambda$}
+
+El parámetro $\lambda$ controla el balance entre eficiencia de combate y costo de desplazamiento:
+
+\begin{itemize}
+    \item $\lambda = 0$: Solo se minimiza el número de encuentros. El algoritmo elegirá las zonas con mayor $\text{EV}_{i,s}$, sin importar la distancia.
+    \item $\lambda$ pequeño ($0.01 - 0.1$): Se prefieren zonas eficientes, pero se considera el desplazamiento como factor secundario.
+    \item $\lambda$ moderado ($0.1 - 0.5$): Balance equilibrado entre encuentros y distancia. Recomendado para la mayoría de casos.
+    \item $\lambda$ grande ($> 0.5$): Se priorizan zonas cercanas, incluso si son menos eficientes en EVs por encuentro.
+\end{itemize}
+
+\subsection{Algoritmo de solución}
+
+Para resolver este problema, se propone utilizar:
+
+\begin{itemize}
+    \item \textbf{Dijkstra modificado:} Para encontrar la ruta de costo mínimo desde la posición inicial, donde el costo de cada nodo incluye tanto los encuentros necesarios como el desplazamiento acumulado.
+    \item \textbf{A* (A-estrella):} Con una heurística que estime el costo restante para alcanzar el objetivo de EVs, considerando la zona más eficiente disponible.
+    \item \textbf{Programación dinámica:} Para casos donde se desea optimizar la distribución de encuentros entre múltiples zonas visitadas en secuencia.
+\end{itemize}
+
+\subsection{Ejemplo numérico}
+
+Supongamos que el jugador desea entrenar 252 EVs en \textbf{Velocidad} sin multiplicadores ($m = 1$). Consideremos tres zonas disponibles:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Zona} & \textbf{EVs Speed/encuentro} & \textbf{Distancia desde inicio (casillas)} \\
+\hline
+Ruta 1 & 1.0 & 10 \\
+Ruta 16 & 1.5 & 150 \\
+Cueva Celeste & 2.0 & 300 \\
+\hline
+\end{tabular}
+\caption{Datos de ejemplo para entrenamiento de Velocidad}
+\end{table}
+
+\textbf{Cálculo de costos según diferentes valores de $\lambda$:}
+
+\paragraph{Con $\lambda = 0$ (solo minimizar encuentros):}
+\begin{itemize}
+    \item Ruta 1: $\frac{252}{1.0} = 252$ encuentros, Costo = $252 + 0 \times 10 = 252$
+    \item Ruta 16: $\frac{252}{1.5} = 168$ encuentros, Costo = $168 + 0 \times 150 = 168$
+    \item Cueva Celeste: $\frac{252}{2.0} = 126$ encuentros, Costo = $126 + 0 \times 300 = 126$ \textbf{← ÓPTIMA}
+\end{itemize}
+
+\paragraph{Con $\lambda = 0.1$ (balance moderado):}
+\begin{itemize}
+    \item Ruta 1: Costo = $252 + 0.1 \times 10 = 253.0$
+    \item Ruta 16: Costo = $168 + 0.1 \times 150 = 183.0$
+    \item Cueva Celeste: Costo = $126 + 0.1 \times 300 = 156.0$ \textbf{← ÓPTIMA}
+\end{itemize}
+
+\paragraph{Con $\lambda = 0.5$ (penalización alta):}
+\begin{itemize}
+    \item Ruta 1: Costo = $252 + 0.5 \times 10 = 257.0$ \textbf{← ÓPTIMA}
+    \item Ruta 16: Costo = $168 + 0.5 \times 150 = 243.0$
+    \item Cueva Celeste: Costo = $126 + 0.5 \times 300 = 276.0$
+\end{itemize}
+
+\textbf{Conclusión:} El factor $\lambda$ determina si el jugador debe viajar a zonas lejanas pero eficientes (Cueva Celeste con $\lambda$ bajo) o quedarse en zonas cercanas aunque requieran más encuentros (Ruta 1 con $\lambda$ alto).
 
 
 % Modelo y alternativas de solución
