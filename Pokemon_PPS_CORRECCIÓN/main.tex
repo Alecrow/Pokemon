@@ -284,7 +284,16 @@ Desarrollar una aplicación que modele el entrenamiento competitivo de un Pokém
     \item \textbf{Cálculo de eficiencia:} Determinar tasas esperadas de ganancia de EVs en cada zona según probabilidades de aparición y EVs otorgados por especie.
     \item \textbf{Búsqueda de rutas óptimas:} Implementar algoritmos de grafos (Dijkstra, A*) para encontrar la ruta que minimice una función de costo híbrida: número de encuentros más una penalización ajustable por distancia recorrida.
     \item \textbf{Gestión de restricciones:} Respetar límites de EVs (510 totales, 252 óptimos por estadística), progreso del jugador y acceso a zonas.
-    \item \textbf{Entrada de usuario:} Permitir seleccionar estadística objetivo, EVs deseados, objetos/estado (Macho Brace, Pokérus), posición inicial y factor de penalización por desplazamiento.
+    \item \textbf{Entrada de usuario:} Permitir al usuario especificar:
+    \begin{itemize}
+        \item Zona inicial (posición actual en el mapa)
+        \item Zonas accesibles según su progreso (lista de zonas desbloqueadas)
+        \item Nivel del Pokémon a entrenar (para filtrar zonas apropiadas)
+        \item Estadística objetivo (HP, Attack, Defense, SpAttack, SpDefense, Speed)
+        \item EVs deseados (típicamente 252)
+        \item Objetos/estado disponibles (Macho Brace, Pokérus)
+        \item Factor de penalización $\lambda$ por desplazamiento
+    \end{itemize}
     \item \textbf{Interfaz de usuario:} Diseñar una UI simple (mapa/listado) que permita ingresar parámetros y visualizar la ruta óptima con su costo estimado (encuentros y distancia).
     \item \textbf{Evaluación cuantitativa:} Medir calidad de las rutas con métricas como costo total, número de encuentros, distancia recorrida y tiempo de cómputo del algoritmo.
     \item \textbf{Análisis de sensibilidad:} Estudiar cómo variaciones en el factor de penalización $\lambda$ afectan la ruta óptima y el balance entre eficiencia de combate y desplazamiento.
@@ -322,6 +331,14 @@ se define:
         \item $e_{k,s}$ es la cantidad de EVs que otorga el Pokémon $k$ en la estadística $s$ al ser derrotado.
     \end{itemize}
     
+    \item $L_i$: Nivel promedio de los Pokémon que aparecen en la zona $i$, calculado como:
+    
+    $$L_i = \frac{1}{|P_i|} \sum_{k \in P_i} \frac{L_{i,k}^{\min} + L_{i,k}^{\max}}{2}$$
+    
+    donde $L_{i,k}^{\min}$ y $L_{i,k}^{\max}$ son los niveles mínimo y máximo del Pokémon $k$ en la zona $i$.
+    
+    \item $L_{\text{player}}$: Nivel actual del Pokémon que el jugador desea entrenar.
+    
     \item $m$: Factor multiplicador de EVs por objetos/estado (e.g., $m = 2$ con Macho Brace, $m = 4$ con Macho Brace + Pokérus).
     \item $\text{EV}_{\text{objetivo}}$: Cantidad de EVs que se desea alcanzar (típicamente 252).
     \item $\lambda \geq 0$: Factor de penalización por desplazamiento, que pondera la importancia relativa entre minimizar encuentros y minimizar distancia recorrida.
@@ -357,11 +374,28 @@ $$\min \quad Z = \sum_{i \in V} x_i + \lambda \sum_{(i,j) \in E} d_{ij} \cdot y_
     
     \item \textbf{Conectividad del grafo:} Solo se pueden visitar zonas accesibles desde la posición inicial $v_0$, respetando las aristas del grafo.
     
-    \item \textbf{Restricciones de acceso definidas por el usuario:} Para efectos de este trabajo, se asume que el mapa completo de Kanto está desbloqueado. El usuario puede definir manualmente qué zonas desea considerar en su planificación, excluyendo aquellas que no ha desbloqueado en su partida (por falta de HMs, medallas o progreso en la historia). Esta simplificación permite que el sistema sea agnóstico al estado de progreso del jugador, delegando la responsabilidad de filtrar zonas accesibles a la entrada del usuario.
+    \item \textbf{Restricciones de acceso definidas por el usuario:} Para efectos de este trabajo, se asume que el mapa completo de Kanto está desbloqueado. El usuario debe proporcionar explícitamente:
     
-    Formalmente, el usuario define un subconjunto $V_{\text{user}} \subseteq V$ de zonas disponibles, y el algoritmo opera únicamente sobre el subgrafo inducido $G_{\text{user}} = (V_{\text{user}}, E_{\text{user}})$ donde:
+    \begin{itemize}
+        \item Su \textbf{zona actual} $v_0 \in V$ (posición de inicio)
+        \item El conjunto de \textbf{zonas accesibles} $V_{\text{user}} \subseteq V$ según su progreso (HMs, medallas, historia)
+        \item El \textbf{nivel del Pokémon} $L_{\text{player}}$ que desea entrenar
+    \end{itemize}
+    
+    Esta simplificación permite que el sistema sea agnóstico al estado de progreso del jugador, delegando la responsabilidad de filtrar zonas accesibles a la entrada del usuario. El algoritmo opera únicamente sobre el subgrafo inducido $G_{\text{user}} = (V_{\text{user}}, E_{\text{user}})$ donde:
     
     $$E_{\text{user}} = \{(i,j) \in E : i,j \in V_{\text{user}}\}$$
+    
+    \item \textbf{Restricción por nivel de Pokémon:} Para evitar combates desequilibrados, solo se consideran zonas donde el nivel promedio de los Pokémon salvajes esté dentro de un rango aceptable respecto al nivel del Pokémon a entrenar. Formalmente:
+    
+    $$x_i > 0 \implies |L_i - L_{\text{player}}| \leq \Delta L$$
+    
+    donde $\Delta L$ es el margen de nivel permitido (recomendado: $\Delta L = 10$). Esto asegura que el Pokémon a entrenar pueda derrotar eficientemente a los Pokémon salvajes sin riesgo de derrota.
+    
+    En la práctica, se filtran zonas donde:
+    $$L_{\text{player}} - 5 \leq L_i \leq L_{\text{player}} + 10$$
+    
+    Ejemplo: Un Pokémon de nivel 15 solo entrenará en zonas con nivel promedio entre 10 y 25.
     
     \item \textbf{No negatividad:} El número de encuentros debe ser no negativo:
     
@@ -388,50 +422,6 @@ Para resolver este problema, se propone utilizar:
     \item \textbf{A* (A-estrella):} Con una heurística que estime el costo restante para alcanzar el objetivo de EVs, considerando la zona más eficiente disponible.
     \item \textbf{Programación dinámica:} Para casos donde se desea optimizar la distribución de encuentros entre múltiples zonas visitadas en secuencia.
 \end{itemize}
-
-\subsection{Ejemplo numérico}
-
-Supongamos que el jugador desea entrenar 252 EVs en \textbf{Velocidad} sin multiplicadores ($m = 1$). Consideremos tres zonas disponibles:
-
-\begin{table}[H]
-\centering
-\begin{tabular}{|l|c|c|}
-\hline
-\textbf{Zona} & \textbf{EVs Speed/encuentro} & \textbf{Distancia desde inicio (casillas)} \\
-\hline
-Ruta 1 & 1.0 & 10 \\
-Ruta 16 & 1.5 & 150 \\
-Cueva Celeste & 2.0 & 300 \\
-\hline
-\end{tabular}
-\caption{Datos de ejemplo para entrenamiento de Velocidad}
-\end{table}
-
-\textbf{Cálculo de costos según diferentes valores de $\lambda$:}
-
-\paragraph{Con $\lambda = 0$ (solo minimizar encuentros):}
-\begin{itemize}
-    \item Ruta 1: $\frac{252}{1.0} = 252$ encuentros, Costo = $252 + 0 \times 10 = 252$
-    \item Ruta 16: $\frac{252}{1.5} = 168$ encuentros, Costo = $168 + 0 \times 150 = 168$
-    \item Cueva Celeste: $\frac{252}{2.0} = 126$ encuentros, Costo = $126 + 0 \times 300 = 126$ \textbf{← ÓPTIMA}
-\end{itemize}
-
-\paragraph{Con $\lambda = 0.1$ (balance moderado):}
-\begin{itemize}
-    \item Ruta 1: Costo = $252 + 0.1 \times 10 = 253.0$
-    \item Ruta 16: Costo = $168 + 0.1 \times 150 = 183.0$
-    \item Cueva Celeste: Costo = $126 + 0.1 \times 300 = 156.0$ \textbf{← ÓPTIMA}
-\end{itemize}
-
-\paragraph{Con $\lambda = 0.5$ (penalización alta):}
-\begin{itemize}
-    \item Ruta 1: Costo = $252 + 0.5 \times 10 = 257.0$ \textbf{← ÓPTIMA}
-    \item Ruta 16: Costo = $168 + 0.5 \times 150 = 243.0$
-    \item Cueva Celeste: Costo = $126 + 0.5 \times 300 = 276.0$
-\end{itemize}
-
-\textbf{Conclusión:} El factor $\lambda$ determina si el jugador debe viajar a zonas lejanas pero eficientes (Cueva Celeste con $\lambda$ bajo) o quedarse en zonas cercanas aunque requieran más encuentros (Ruta 1 con $\lambda$ alto).
-
 
 % Modelo y alternativas de solución
 \section{Modelo y alternativas de solución}

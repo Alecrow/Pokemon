@@ -124,10 +124,6 @@ CREATE TABLE zones (
     region region_type NOT NULL DEFAULT 'Kanto',
     zone_type VARCHAR(50), -- 'Route', 'City', 'Cave', 'Forest', etc.
     
-    -- Coordenadas en el mapa (si aplica)
-    map_x INTEGER,
-    map_y INTEGER,
-    
     -- Metadata
     description TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -147,9 +143,10 @@ CREATE TABLE encounters (
     -- Probabilidad de aparición (será actualizada cuando tengas datos precisos)
     probability_percent DECIMAL(5,2), -- NULL hasta tener datos precisos
     
-    -- Niveles
+    -- Niveles de los Pokémon en esta zona
     min_level INTEGER NOT NULL,
     max_level INTEGER NOT NULL,
+    avg_level DECIMAL(4,1) GENERATED ALWAYS AS ((min_level + max_level) / 2.0) STORED,
     
     -- Generación del encuentro
     generation INTEGER DEFAULT 3,
@@ -161,10 +158,14 @@ CREATE TABLE encounters (
     -- Constraints
     CONSTRAINT unique_zone_pokemon_method UNIQUE(zone_id, pokemon_id, encounter_method),
     CONSTRAINT check_level_range CHECK (min_level <= max_level),
+    CONSTRAINT check_level_positive CHECK (min_level > 0 AND max_level > 0),
     CONSTRAINT check_probability CHECK (probability_percent IS NULL OR (probability_percent >= 0 AND probability_percent <= 100))
 );
 
 CREATE INDEX idx_encounters_pokemon ON encounters(pokemon_id);
+CREATE INDEX idx_encounters_zone ON encounters(zone_id);
+CREATE INDEX idx_encounters_avg_level ON encounters(avg_level);
+CREATE INDEX idx_encounters_level_range ON encounters(min_level, max_level);
 
 -- ============================================
 -- TABLAS AUXILIARES
@@ -217,3 +218,52 @@ CREATE TABLE natures (
         increased_stat != decreased_stat
     )
 );
+
+-- ============================================
+-- COMENTARIOS Y DOCUMENTACIÓN
+-- ============================================
+
+COMMENT ON TABLE pokemon IS 'Catálogo completo de Pokémon con estadísticas base y EVs otorgados al derrotarlos';
+COMMENT ON TABLE zones IS 'Zonas de entrenamiento del mapa (nodos del grafo). El usuario define qué zonas son accesibles según su progreso.';
+COMMENT ON TABLE encounters IS 'Encuentros de Pokémon en cada zona con probabilidades y rangos de nivel. El nivel promedio de la zona se calcula automáticamente.';
+COMMENT ON TABLE training_items IS 'Ítems que modifican la ganancia de EVs (Macho Brace: 2x, Pokérus: 2x, ambos: 4x)';
+COMMENT ON TABLE natures IS 'Naturalezas que modifican estadísticas en ±10% (25 naturalezas totales en Gen III)';
+
+COMMENT ON COLUMN encounters.probability_percent IS 'Probabilidad de aparición (NULL hasta obtener datos precisos del scraping). Suma debe ser ≈100% por zona y método.';
+COMMENT ON COLUMN encounters.min_level IS 'Nivel mínimo del Pokémon en esta zona';
+COMMENT ON COLUMN encounters.max_level IS 'Nivel máximo del Pokémon en esta zona';
+COMMENT ON COLUMN encounters.avg_level IS 'Nivel promedio calculado automáticamente. Útil para filtrar zonas según nivel del Pokémon a entrenar.';
+COMMENT ON COLUMN pokemon.ev_hp IS 'EVs de HP otorgados al derrotar este Pokémon (0-3)';
+COMMENT ON COLUMN training_items.ev_multiplier IS 'Multiplicador de EVs. Macho Brace: 2.0, Pokérus: 2.0, Macho Brace + Pokérus: 4.0';
+COMMENT ON COLUMN training_items.stat_affected IS 'Estadística afectada por vitaminas (HP, Attack, etc.). NULL para multiplicadores globales.';
+
+-- ============================================
+-- NOTAS DE USO
+-- ============================================
+
+-- FILTRADO POR NIVEL:
+-- Para entrenar un Pokémon de nivel L, se recomienda filtrar zonas donde:
+--   avg_level BETWEEN (L - 5) AND (L + 10)
+-- 
+-- Ejemplo: Para un Pokémon nivel 15, considerar zonas con avg_level entre 10 y 25
+--
+-- Query ejemplo:
+--   SELECT z.name, AVG(e.avg_level) as zone_avg_level
+--   FROM zones z
+--   JOIN encounters e ON e.zone_id = z.id
+--   WHERE e.encounter_method = 'Walking'
+--   GROUP BY z.id, z.name
+--   HAVING AVG(e.avg_level) BETWEEN 10 AND 25;
+
+-- RESTRICCIONES DEL USUARIO:
+-- El usuario debe proporcionar:
+--   1. Zona inicial (posición actual)
+--   2. Lista de zonas accesibles (según HMs, medallas, progreso)
+--   3. Nivel del Pokémon a entrenar
+--   4. Estadística objetivo (HP, Attack, Defense, SpAttack, SpDefense, Speed)
+--   5. Multiplicador de EVs (m = 1, 2, o 4)
+--   6. Factor lambda (balance encuentros vs distancia)
+
+-- ============================================
+-- FIN DEL ESQUEMA
+-- ============================================
