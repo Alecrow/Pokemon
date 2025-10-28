@@ -357,13 +357,15 @@ $$\min \quad Z = \sum_{i \in V} x_i + \lambda \sum_{(i,j) \in E} d_{ij} \cdot y_
     
     \item \textbf{Conectividad del grafo:} Solo se pueden visitar zonas accesibles desde la posición inicial $v_0$, respetando las aristas del grafo.
     
-    \item \textbf{Restricciones de acceso:} Algunas zonas requieren HMs, medallas o progreso en la historia. Sea $R_i$ el conjunto de requisitos de la zona $i$:
+    \item \textbf{Restricciones de acceso definidas por el usuario:} Para efectos de este trabajo, se asume que el mapa completo de Kanto está desbloqueado. El usuario puede definir manualmente qué zonas desea considerar en su planificación, excluyendo aquellas que no ha desbloqueado en su partida (por falta de HMs, medallas o progreso en la historia). Esta simplificación permite que el sistema sea agnóstico al estado de progreso del jugador, delegando la responsabilidad de filtrar zonas accesibles a la entrada del usuario.
     
-    $$x_i > 0 \implies \text{requisitos } R_i \text{ satisfechos}$$
+    Formalmente, el usuario define un subconjunto $V_{\text{user}} \subseteq V$ de zonas disponibles, y el algoritmo opera únicamente sobre el subgrafo inducido $G_{\text{user}} = (V_{\text{user}}, E_{\text{user}})$ donde:
+    
+    $$E_{\text{user}} = \{(i,j) \in E : i,j \in V_{\text{user}}\}$$
     
     \item \textbf{No negatividad:} El número de encuentros debe ser no negativo:
     
-    $$x_i \geq 0, \quad \forall i \in V$$
+    $$x_i \geq 0, \quad \forall i \in V_{\text{user}}$$
 \end{enumerate}
 
 \subsection{Interpretación del factor \texorpdfstring{$\lambda$}{lambda}}
