@@ -1,0 +1,473 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath, amssymb}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{setspace}
+\usepackage{float}
+
+% Márgenes
+\geometry{top=2.5cm, bottom=2.5cm, left=3cm, right=3cm}
+
+% Portada
+\begin{document}
+\begin{titlepage}
+    \centering
+
+    {\Large UNIVERSIDAD DIEGO PORTALES}\\[1cm]
+
+    \includegraphics[scale=0.50]{img/udp-logo.png}\\[1cm]
+
+    {\Large FACULTAD DE INGENIERÍA Y CIENCIAS}\\[2cm]
+
+    % Bloque de reglas superior
+    \vspace*{1\baselineskip}
+    \hrule height 0.5pt
+    \vspace{1mm}
+    \hrule height 1.5pt
+
+    % Título
+    \vspace{1cm}
+    \begin{spacing}{1.5}
+        \LARGE\textsc{\textbf{Propuesta: \\ Minimizar el tiempo en entrenamiento Pokemon}}
+    \end{spacing}
+    \vspace{1cm}
+
+    % Bloque de reglas inferior
+    \hrule height 1.5pt
+    \vspace{1mm}
+    \hrule height 0.5pt
+    \vspace*{1\baselineskip}
+    \vspace{2cm}
+
+    % Autores
+    {\large Autores: \\[0.5cm]
+    Pablo Arévalo \\
+    Rafael Campos \\
+    Alejandro Jara \\
+    Alexis Lema \\}
+
+    % Espacio flexible para empujar la información al fondo
+    \vfill
+
+    % Información en las esquinas inferior izquierda y derecha
+    \makebox[\textwidth][s]{%
+        \textsc{Grafos y Algoritmos} \hfill \textsc{2025-2}%
+    }
+\end{titlepage}
+
+\newpage
+
+% Espacio superior y fecha
+\vspace*{2cm}
+\begin{center}
+    \large Septiembre de 2025
+\end{center}
+
+% Introducción
+\section{Introducción}
+
+\subsection{Contexto del juego}
+
+\textit{Pokémon} es un videojuego de rol por turnos. El jugador explora un mundo compuesto por rutas y ciudades. Su objetivo es capturar Pokémon, formar un equipo y combatir contra otros entrenadores. Los combates son por turnos, donde cada Pokémon realiza un movimiento. El orden de ataque de los turnos depende de la estadística de \textit{Velocidad}. Existen \textit{tipos} (por ejemplo, Fuego, Agua, Planta) que determinan las fortalezas y debilidades en batalla. Además, el jugador puede usar \textit{habilidades}, \textit{objetos equipables} y \textit{estados} (como quemadura o parálisis), que alteran la estrategia de combate. El objetivo es avanzar en la historia y mejorar el rendimiento de los Pokémon en combate (Ver \ref{fig:pokemon}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{img/pokemonresumen.png}
+    \caption{Capturas de \textbf{Pokemon Rojo Fuego} (\textit{Remasterizado no oficial})}
+    \label{fig:pokemon}
+\end{figure}
+
+\subsection{Ámbito de este trabajo}
+
+Este proyecto se centra en \textit{Pokémon Rojo Fuego} (\textit{FireRed}), un juego de la \textit{Tercera Generación} de Pokémon para Game Boy Advance. La \textit{Generación III} se caracteriza por su motor, reglas y balance de juego. La principal diferencia con generaciones anteriores es la cantidad de Pokémon y ubicaciones disponibles.
+
+En esta generación, se aplican las siguientes reglas relevantes para este proyecto:
+
+\begin{itemize}
+    \item IVs en un rango de 0 a 31.
+    \item El total de EVs acumulables es 510, con un máximo de 255 EVs por estadística.
+    \item Las naturalezas modifican las estadísticas en un rango de \(\pm 10\%\).
+\end{itemize}
+
+\subsection{Estadísticas del combate}
+
+Las estadísticas (\textit{stats}) son esenciales para determinar el rendimiento de un Pokémon en combate (ver Fig.~\ref{fig:statsbulbasaur}):
+
+\begin{itemize}
+    \item \textbf{HP (Puntos de Salud)}: cantidad de daño que un Pokémon puede recibir antes de desmayarse.
+    \item \textbf{Ataque}: determina el daño de los movimientos físicos.
+    \item \textbf{Defensa}: reduce el daño recibido de movimientos físicos.
+    \item \textbf{Ataque Especial}: determina el daño de los movimientos especiales.
+    \item \textbf{Defensa Especial}: reduce el daño recibido de movimientos especiales.
+    \item \textbf{Velocidad}: determina el orden de los turnos.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{img/stats bulbasaur.png}
+    \caption{Estadísticas de un Bulbasaur.}
+    \label{fig:statsbulbasaur}
+\end{figure}
+
+\subsection{Factores que moldean las estadísticas}
+
+Cada Pokémon tiene \textbf{IVs} (valores individuales), los cuales son fijos entre 0 y 31. Estos valores determinan el potencial máximo de cada una de sus estadísticas. Los IVs no pueden ser modificados a lo largo del juego, por lo que son un factor importante en el rendimiento final de un Pokémon.
+
+Además, los Pokémon acumulan \textbf{EVs} (Puntos de Esfuerzo) al derrotar otros Pokémon. Los EVs afectan directamente las estadísticas de un Pokémon y se distribuyen entre las seis estadísticas básicas: HP, Ataque, Defensa, Ataque Especial, Defensa Especial y Velocidad. Cada vez que un Pokémon obtiene un determinado número de EVs, su rendimiento en combate mejora en esas estadísticas específicas.
+
+En la \textit{Generación III}, cada 4 EVs en una estadística aumentan aproximadamente \(+1\) punto de esa estadística cuando el Pokémon alcanza el nivel 100. El límite máximo de EVs que un Pokémon puede obtener es de 510, distribuidos entre las estadísticas. Sin embargo, debido a la eficiencia en la asignación de EVs, generalmente se utilizan 252 EVs en una estadística específica, ya que se ha comprobado que 255 EVs no proporcionan un beneficio adicional.
+
+Además, existen objetos y estados que aceleran la ganancia de EVs. Por ejemplo, el objeto \textit{Macho Brace} duplica la cantidad de EVs ganados en combate, y el estado \textit{Pokérus} también aumenta la ganancia de EVs, duplicando la cantidad obtenida.
+
+\subsubsection{Las naturalezas}
+
+Las \textbf{naturalezas} también juegan un papel importante en la modificación de las estadísticas de un Pokémon. Cada naturaleza afecta dos estadísticas: una la aumenta en un 10\% y la otra la reduce en un 10\%. Existen 25 naturalezas en total, y su efecto es clave para personalizar aún más a cada Pokémon según el rol que se desee desempeñar en combate.
+
+Por ejemplo, la naturaleza \textit{Adamant} aumenta el Ataque y reduce el Ataque Especial, lo que es ideal para un Pokémon que se enfoque en movimientos físicos, como un \textit{Machamp}. Por otro lado, una naturaleza \textit{Modesta} aumenta el Ataque Especial y disminuye el Ataque, lo que favorece a los Pokémon que se especializan en ataques especiales.
+
+A continuación se muestra una tabla con las naturalezas y sus efectos en las estadísticas:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{img/tablaNature.jpg}
+    \caption{Tabla de Naturalezas}
+    \label{fig:naturalezas}
+\end{figure}
+
+Para más detalles sobre las naturalezas y cómo afectan las estadísticas, puedes consultar el artículo completo en \href{https://pokemon.fandom.com/es/wiki/Naturaleza#Efectos_en_las_estad%C3%ADsticas}{Bulbapedia: Naturalezas}.
+
+
+\subsection{Necesidad detectada}
+
+Entrenar EVs implica tomar decisiones estratégicas sobre:
+
+\begin{itemize}
+    \item Qué especies derrotar para maximizar EVs por encuentro.
+    \item En qué zonas combatir según tasas de aparición.
+    \item Cuántos encuentros realizar en cada zona.
+    \item Cuándo desplazarse a otra zona considerando el costo de viaje.
+\end{itemize}
+
+El juego no ofrece una herramienta para visualizar los EVs acumulados ni un sistema para calcular rutas eficientes de entrenamiento. Esto lleva a una planificación manual con alta carga cognitiva y desperdicio de recursos (encuentros innecesarios, viajes subóptimos).
+
+\subsection{Propuesta}
+
+Se propone modelar el entrenamiento de EVs como un \textit{problema de optimización sobre grafos}. Las zonas de entrenamiento son nodos, caracterizados por la tasa promedio de EVs por encuentro en cada estadística. Los desplazamientos entre zonas son aristas con peso (distancia en casillas).
+
+El objetivo es \textbf{minimizar el número total de encuentros necesarios} para alcanzar 252 EVs en la estadística objetivo, considerando una penalización ajustable por la distancia recorrida entre zonas. Esto reduce tanto el número de combates como los desplazamientos innecesarios, optimizando la experiencia del jugador.
+
+
+\section{Usuario}
+
+El usuario objetivo de este sistema es un \textbf{jugador de la franquicia Pokémon} que busca optimizar su experiencia de juego, ya sea en modo historia, competitivo o en desafíos personalizados. Este perfil abarca una amplia variedad de jugadores, cada uno con sus propias motivaciones y estilos de juego. Dependiendo de su tipo de interés, los usuarios interactúan con el juego de diferentes maneras.
+
+\subsection{Perfiles de usuario e interacción con el juego}
+
+\begin{itemize}[leftmargin=*,label=\textbullet]
+    \item \textbf{Jugador recreativo:} Se enfoca principalmente en disfrutar la historia y las mecánicas del juego sin un interés profundo en la optimización. Busca experiencias más relajadas y juega ocasionalmente. Este tipo de jugador interactúa con el juego de manera casual, disfrutando de la narrativa y exploración, sin preocuparse por optimizar estadísticas o estrategias complejas.
+    
+    \item \textbf{Jugador competitivo:} Busca maximizar el rendimiento de su equipo para participar en competiciones, torneos y ligas. Este tipo de jugador está profundamente involucrado en las mecánicas del juego, como el entrenamiento de EVs y la creación de estrategias avanzadas. Interactúa con el juego de manera meticulosa, dedicando tiempo a entrenar y optimizar sus Pokémon para combates estratégicos, buscando siempre mejorar su rendimiento en eventos competitivos.
+
+    \item \textbf{Jugador de Hackrooms o ROM hacks:} Participa en versiones modificadas del juego, conocidas como *ROM hacks* o *Hackrooms*, que introducen nuevas reglas, historias o niveles de dificultad. Estos jugadores buscan explorar contenido alternativo y desafiante, con mecánicas o historias creadas por la comunidad. Experimentan con el juego de forma más abierta, probando nuevas variantes del contenido tradicional y disfrutando de un enfoque más experimental y creativo, un ejemplo es el \href{fig:radicalred}{\textit{Pokemon Radical Red}}, una versión modificada y más dificil de \textbf{Pokemon Fire Red}. Más información es este sitio: \href{https://bulbapedia.bulbagarden.net/wiki/ROM_hack}{\textbf{Rom-Hack info}}.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.7\linewidth]{img/radical red.png}
+        \caption{Pantalla de inicio de \textbf{Pokemon Radical Red}}
+        \label{fig:radicalred}
+    \end{figure}
+
+    \item \textbf{Jugador de Nuzlocke Challenge:} Se enfrenta a un juego más desafiante, siguiendo reglas autoimpuestas que limitan la captura de Pokémon y sancionan el desmayo de sus criaturas. En el \textit{Nuzlocke Challenge}, los jugadores deben capturar solo el primer Pokémon encontrado en cada área y liberar a aquellos que se desmayen durante un combate. Este tipo de jugador busca una experiencia más intensa y emocionalmente significativa, donde cada decisión y cada combate tiene un alto impacto en el progreso del juego, \href{https://bulbapedia.bulbagarden.net/wiki/Nuzlocke_Challenge}{\textbf{NuzLocke info}}.
+\end{itemize}
+
+\subsection{Características comunes}
+
+Los usuarios de este sistema comparten ciertas características:
+
+\begin{itemize}[leftmargin=*,label=\textbullet]
+    \item \textbf{Experiencia previa:} Poseen un conocimiento consolidado de las mecánicas del juego, tipos de Pokémon, habilidades y estrategias. Esto incluye tanto a jugadores veteranos como a aquellos que han jugado varias entregas de la saga.
+    \item \textbf{Interés competitivo:} Buscan optimizar su equipo para participar en torneos, combates en línea y ligas, aplicando estrategias avanzadas de entrenamiento y combate.
+    \item \textbf{Diversidad etaria:} Pertenecen a un rango amplio de edades, desde jóvenes hasta adultos, unidos por su afición por la franquicia Pokémon.
+    \item \textbf{Búsqueda de interacción y comunidad:} Valoran la posibilidad de conectarse entre sí, intercambiar estrategias y competir en entornos digitales, lo cual fomenta una comunidad activa y dinámica.
+\end{itemize}
+
+Este perfil detallado nos permite diseñar el sistema con funcionalidades y interfaces que se alineen con las expectativas de los jugadores según su tipo de interés y nivel de conocimiento del videojuego.
+
+% Problema
+\section{Problema}
+
+El entrenamiento de Pokémon implica mejorar sus estadísticas mediante los \textbf{Puntos de Esfuerzo (EVs, Effort Values)}. Estos son valores ocultos que determinan cuánto crecerá una estadística específica —como Ataque, Defensa o Velocidad— cuando el Pokémon suba de nivel. Cada Pokémon que se derrota en combate otorga una cantidad determinada de EVs, normalmente relacionada con su estadística más fuerte. Por ejemplo, un \textit{Geodude} entrega EVs en Defensa, mientras que un \textit{Gengar} entrega EVs en Ataque Especial.
+
+Los EVs se acumulan en cada estadística de manera independiente. Cada 4 EVs equivalen a un punto adicional en la estadística correspondiente cuando el Pokémon alcanza el nivel 100. El valor máximo total de EVs que puede obtener un Pokémon es 510, con un límite de 255 por estadística. En la práctica, los jugadores utilizan 252 EVs por estadística para optimizar la eficiencia (63 puntos adicionales). 
+
+Los Pokémon recién capturados o nacidos de un huevo comienzan sin EVs, lo que permite planificar desde cero el entrenamiento. Sin embargo, el juego no muestra de forma directa cuántos EVs ha ganado un Pokémon, lo que dificulta la gestión precisa del entrenamiento. Además, las decisiones del jugador —qué Pokémon derrotar, en qué zonas combatir y cuánto tiempo permanecer— influyen directamente en la eficiencia del proceso.
+
+Existen métodos y objetos que modifican la obtención de EVs. Por ejemplo:
+\begin{itemize}
+    \item \textbf{Vitaminas} (como \textit{Protein}, \textit{Iron}, o \textit{Carbos}) otorgan 10 EVs en la estadística correspondiente.
+    \item El objeto equipable \textbf{Macho Brace} duplica los EVs obtenidos en combate, aunque reduce la velocidad del Pokémon mientras lo lleva equipado.
+    \item El virus beneficioso \textbf{Pokérus} también duplica los EVs ganados sin afectar negativamente al rendimiento.
+\end{itemize}
+
+\subsection{Desafíos en el entrenamiento de EVs}
+
+Entrenar EVs requiere planificación. El jugador debe elegir qué Pokémon derrotar para obtener los EVs deseados y en qué zonas del mapa hacerlo. Sin embargo, el juego carece de herramientas visuales para mostrar el progreso de EVs acumulados o los valores específicos que otorgan las especies. Esta falta de información genera incertidumbre y errores en la distribución de los puntos.
+
+A su vez, el entrenamiento puede volverse tedioso y repetitivo, ya que implica realizar muchos combates contra las mismas especies hasta alcanzar los valores deseados. Sin una guía o sistema automatizado, este proceso puede consumir grandes cantidades de tiempo.
+
+\subsection{Aspectos clave del problema}
+
+Los principales factores que dificultan el entrenamiento eficiente de EVs son:
+
+\begin{itemize}[leftmargin=*,label=\textbullet]
+    \item \textbf{Ausencia de información dentro del juego:} El jugador no puede visualizar los EVs acumulados ni conocer de manera directa qué especies otorgan puntos específicos.
+    \item \textbf{Complejidad de la planificación:} El entrenamiento requiere seleccionar rutas adecuadas considerando las tasas de aparición de los Pokémon, los desplazamientos entre zonas y los objetos disponibles que influyen en la ganancia de EVs.
+    \item \textbf{Posibilidad de errores:} Un mal cálculo o una decisión incorrecta puede causar una distribución ineficiente, obligando a reiniciar parte del proceso.
+    \item \textbf{Inversión de tiempo:} Los jugadores deben realizar numerosos combates y desplazamientos, lo que hace que el entrenamiento sea largo y tedioso.
+\end{itemize}
+
+\subsection{Dimensiones del problema}
+
+El problema de optimizar el entrenamiento de EVs puede analizarse desde tres dimensiones fundamentales:
+
+\begin{itemize}[leftmargin=*,label=\textbullet]
+    \item \textbf{Dimensión espacial:} Representa el desplazamiento del jugador en el mapa. Cada zona tiene diferentes especies y tasas de aparición, lo que afecta la eficiencia del entrenamiento. El costo de desplazamiento se mide en casillas recorridas, donde 6 casillas equivalen aproximadamente a 1.25 segundos de caminata.
+    
+    \item \textbf{Dimensión de combate:} Relacionada con el número de encuentros necesarios para alcanzar el objetivo de EVs. La eficiencia de cada zona se caracteriza por la tasa promedio de EVs ganados por encuentro, que depende de las probabilidades de aparición de cada especie y los EVs que otorgan al ser derrotadas.
+    
+    \item \textbf{Dimensión cognitiva:} El jugador debe gestionar múltiples variables simultáneamente: probabilidades de aparición, EVs otorgados por especie, multiplicadores de objetos (Macho Brace, Pokérus), límites de EVs (252 por estadística, 510 totales) y restricciones de acceso a zonas. Esta complejidad aumenta la carga mental y el riesgo de error en la planificación manual.
+\end{itemize}
+
+\subsection{Formulación del problema de optimización}
+
+El desafío central consiste en encontrar una \textbf{ruta óptima} que minimice el costo total del entrenamiento, balanceando dos objetivos potencialmente conflictivos:
+
+\begin{enumerate}
+    \item \textbf{Minimizar el número de encuentros:} Combatir en zonas donde los Pokémon otorgan más EVs por encuentro en la estadística objetivo.
+    \item \textbf{Minimizar la distancia recorrida:} Reducir el desplazamiento entre zonas, priorizando aquellas cercanas a la posición inicial del jugador.
+\end{enumerate}
+
+La solución óptima depende de las preferencias del jugador. Por ejemplo:
+\begin{itemize}
+    \item Un jugador que prioriza eficiencia de combate preferirá viajar largas distancias hacia zonas con alta tasa de EVs por encuentro.
+    \item Un jugador que busca conveniencia preferirá entrenar en zonas cercanas, incluso si requieren más encuentros.
+\end{itemize}
+
+Para capturar esta flexibilidad, se propone una \textbf{función de costo híbrida} con un parámetro ajustable $\lambda$ que permite al usuario definir el balance deseado entre ambos objetivos.
+
+\subsection{Incidencia en la experiencia de juego}
+
+La ausencia de herramientas adecuadas para gestionar el entrenamiento de EVs afecta la experiencia de los jugadores competitivos:
+
+\begin{itemize}[leftmargin=*,label=\textbullet]
+    \item \textbf{Desmotivación:} La falta de claridad y eficiencia puede llevar a que los jugadores abandonen esta parte del entrenamiento.
+    \item \textbf{Dependencia de recursos externos:} Muchos jugadores recurren a guías o calculadoras en línea, lo que interrumpe la inmersión del juego.
+    \item \textbf{Desventaja competitiva:} Aquellos que no usan herramientas externas entrenan de forma menos eficiente, generando desigualdad en combates o torneos.
+    \item \textbf{Reducción del disfrute:} El entrenamiento se vuelve una tarea mecánica y poco gratificante, alejando al jugador del foco principal del juego: la estrategia y la diversión.
+\end{itemize}
+
+% Objetivos
+\section{Objetivos}
+
+\subsection{Objetivo general}
+Desarrollar una aplicación que modele el entrenamiento competitivo de un Pokémon como un grafo ponderado y calcule rutas óptimas que minimicen el costo total (encuentros y desplazamiento) para alcanzar una estadística objetivo, considerando las restricciones de los EVs y otros factores relevantes.
+
+\subsection{Objetivos específicos}
+\begin{itemize}
+    \item \textbf{Modelado del mundo:} Representar zonas de entrenamiento como nodos con tasa promedio de EVs por encuentro, y desplazamientos como aristas con peso (distancia en casillas).
+    \item \textbf{Cálculo de eficiencia:} Determinar tasas esperadas de ganancia de EVs en cada zona según probabilidades de aparición y EVs otorgados por especie.
+    \item \textbf{Búsqueda de rutas óptimas:} Implementar algoritmos de grafos (Dijkstra, A*) para encontrar la ruta que minimice una función de costo híbrida: número de encuentros más una penalización ajustable por distancia recorrida.
+    \item \textbf{Gestión de restricciones:} Respetar límites de EVs (510 totales, 252 óptimos por estadística), progreso del jugador y acceso a zonas.
+    \item \textbf{Entrada de usuario:} Permitir al usuario especificar:
+    \begin{itemize}
+        \item Zona inicial (posición actual en el mapa)
+        \item Zonas accesibles según su progreso (lista de zonas desbloqueadas)
+        \item Nivel del Pokémon a entrenar (para filtrar zonas apropiadas)
+        \item Estadística objetivo (HP, Attack, Defense, SpAttack, SpDefense, Speed)
+        \item EVs deseados (típicamente 252)
+        \item Objetos/estado disponibles (Macho Brace, Pokérus)
+        \item Factor de penalización $\lambda$ por desplazamiento
+    \end{itemize}
+    \item \textbf{Interfaz de usuario:} Diseñar una UI simple (mapa/listado) que permita ingresar parámetros y visualizar la ruta óptima con su costo estimado (encuentros y distancia).
+    \item \textbf{Evaluación cuantitativa:} Medir calidad de las rutas con métricas como costo total, número de encuentros, distancia recorrida y tiempo de cómputo del algoritmo.
+    \item \textbf{Análisis de sensibilidad:} Estudiar cómo variaciones en el factor de penalización $\lambda$ afectan la ruta óptima y el balance entre eficiencia de combate y desplazamiento.
+\end{itemize}
+
+
+% Modelo matemático
+\section{Modelo matemático}
+
+\subsection{Definición del grafo}
+
+El problema se modela como un \textbf{grafo dirigido ponderado} $G = (V, E)$, donde:
+
+\begin{itemize}
+    \item $V$ es el conjunto de \textbf{nodos}, donde cada nodo $i \in V$ representa una zona de entrenamiento en el mapa de Kanto.
+    \item $E \subseteq V \times V$ es el conjunto de \textbf{aristas}, donde cada arista $(i, j) \in E$ representa la posibilidad de desplazarse desde la zona $i$ hasta la zona $j$.
+    \item $d_{ij}$ es el \textbf{peso de la arista} $(i, j)$, que representa la distancia en casillas entre la salida de la zona $i$ y la entrada de la zona $j$.
+\end{itemize}
+
+\subsection{Parámetros del modelo}
+
+Para cada zona $i \in V$ y cada estadística 
+$$s \in \{\text{HP, Attack, Defense, SP\_Attack, SP\_Defense, Speed}\},$$
+se define:
+
+\begin{itemize}
+    \item $\text{EV}_{i,s}$: Tasa promedio de EVs ganados por encuentro en la zona $i$ para la estadística $s$, calculada como:
+    
+    $$\text{EV}_{i,s} = \sum_{k \in P_i} p_{i,k} \cdot e_{k,s}$$
+    
+    donde:
+    \begin{itemize}
+        \item $P_i$ es el conjunto de especies de Pokémon que aparecen en la zona $i$.
+        \item $p_{i,k}$ es la probabilidad de encontrar el Pokémon $k$ en la zona $i$.
+        \item $e_{k,s}$ es la cantidad de EVs que otorga el Pokémon $k$ en la estadística $s$ al ser derrotado.
+    \end{itemize}
+    
+    \item $L_i$: Nivel promedio de los Pokémon que aparecen en la zona $i$, calculado como:
+    
+    $$L_i = \frac{1}{|P_i|} \sum_{k \in P_i} \frac{L_{i,k}^{\min} + L_{i,k}^{\max}}{2}$$
+    
+    donde $L_{i,k}^{\min}$ y $L_{i,k}^{\max}$ son los niveles mínimo y máximo del Pokémon $k$ en la zona $i$.
+    
+    \item $L_{\text{player}}$: Nivel actual del Pokémon que el jugador desea entrenar.
+    
+    \item $m$: Factor multiplicador de EVs por objetos/estado (e.g., $m = 2$ con Macho Brace, $m = 4$ con Macho Brace + Pokérus).
+    \item $\text{EV}_{\text{objetivo}}$: Cantidad de EVs que se desea alcanzar (típicamente 252).
+    \item $\lambda \geq 0$: Factor de penalización por desplazamiento, que pondera la importancia relativa entre minimizar encuentros y minimizar distancia recorrida.
+\end{itemize}
+
+\subsection{Variables de decisión}
+
+\begin{itemize}
+    \item $x_i \in \mathbb{Z}^+$: Número de encuentros realizados en la zona $i$.
+    \item $y_{ij} \in \{0, 1\}$: Variable binaria que indica si se realiza el desplazamiento desde la zona $i$ hasta la zona $j$ ($y_{ij} = 1$) o no ($y_{ij} = 0$).
+\end{itemize}
+
+\subsection{Función objetivo}
+
+El objetivo es minimizar el \textbf{costo total} del entrenamiento, definido como la suma del número de encuentros necesarios y una penalización proporcional a la distancia total recorrida:
+
+$$\min \quad Z = \sum_{i \in V} x_i + \lambda \sum_{(i,j) \in E} d_{ij} \cdot y_{ij}$$
+
+\subsection{Restricciones}
+
+\begin{enumerate}
+    \item \textbf{Cumplimiento del objetivo de EVs:} La suma de EVs ganados debe alcanzar o superar el objetivo:
+    
+    $$\sum_{i \in V} x_i \cdot m \cdot \text{EV}_{i,s} \geq \text{EV}_{\text{objetivo}}$$
+    
+    \item \textbf{Límite de EVs por estadística:} Los EVs acumulados no pueden exceder 252 (óptimo) o 255 (máximo del juego):
+    
+    $$\sum_{i \in V} x_i \cdot m \cdot \text{EV}_{i,s} \leq 252$$
+    
+    \item \textbf{Límite total de EVs:} La suma de EVs en todas las estadísticas no puede superar 510:
+    
+    $$\sum_{s'} \sum_{i \in V} x_i \cdot m \cdot \text{EV}_{i,s'} \leq 510$$
+    
+    \item \textbf{Conectividad del grafo:} Solo se pueden visitar zonas accesibles desde la posición inicial $v_0$, respetando las aristas del grafo.
+    
+    \item \textbf{Restricciones de acceso definidas por el usuario:} Para efectos de este trabajo, se asume que el mapa completo de Kanto está desbloqueado. El usuario debe proporcionar explícitamente:
+    
+    \begin{itemize}
+        \item Su \textbf{zona actual} $v_0 \in V$ (posición de inicio)
+        \item El conjunto de \textbf{zonas accesibles} $V_{\text{user}} \subseteq V$ según su progreso (HMs, medallas, historia)
+        \item El \textbf{nivel del Pokémon} $L_{\text{player}}$ que desea entrenar
+    \end{itemize}
+    
+    Esta simplificación permite que el sistema sea agnóstico al estado de progreso del jugador, delegando la responsabilidad de filtrar zonas accesibles a la entrada del usuario. El algoritmo opera únicamente sobre el subgrafo inducido $G_{\text{user}} = (V_{\text{user}}, E_{\text{user}})$ donde:
+    
+    $$E_{\text{user}} = \{(i,j) \in E : i,j \in V_{\text{user}}\}$$
+    
+    \item \textbf{Restricción por nivel de Pokémon:} Para evitar combates desequilibrados, solo se consideran zonas donde el nivel promedio de los Pokémon salvajes esté dentro de un rango aceptable respecto al nivel del Pokémon a entrenar. Formalmente:
+    
+    $$x_i > 0 \implies |L_i - L_{\text{player}}| \leq \Delta L$$
+    
+    donde $\Delta L$ es el margen de nivel permitido (recomendado: $\Delta L = 10$). Esto asegura que el Pokémon a entrenar pueda derrotar eficientemente a los Pokémon salvajes sin riesgo de derrota.
+    
+    En la práctica, se filtran zonas donde:
+    $$L_{\text{player}} - 5 \leq L_i \leq L_{\text{player}} + 10$$
+    
+    Ejemplo: Un Pokémon de nivel 15 solo entrenará en zonas con nivel promedio entre 10 y 25.
+    
+    \item \textbf{No negatividad:} El número de encuentros debe ser no negativo:
+    
+    $$x_i \geq 0, \quad \forall i \in V_{\text{user}}$$
+\end{enumerate}
+
+\subsection{Interpretación del factor \texorpdfstring{$\lambda$}{lambda}}
+
+El parámetro $\lambda$ controla el balance entre eficiencia de combate y costo de desplazamiento:
+
+\begin{itemize}
+    \item $\lambda = 0$: Solo se minimiza el número de encuentros. El algoritmo elegirá las zonas con mayor $\text{EV}_{i,s}$, sin importar la distancia.
+    \item $\lambda$ pequeño ($0.01 - 0.1$): Se prefieren zonas eficientes, pero se considera el desplazamiento como factor secundario.
+    \item $\lambda$ moderado ($0.1 - 0.5$): Balance equilibrado entre encuentros y distancia. Recomendado para la mayoría de casos.
+    \item $\lambda$ grande ($> 0.5$): Se priorizan zonas cercanas, incluso si son menos eficientes en EVs por encuentro.
+\end{itemize}
+
+\subsection{Algoritmo de solución}
+
+Para resolver este problema, se propone utilizar:
+
+\begin{itemize}
+    \item \textbf{Dijkstra modificado:} Para encontrar la ruta de costo mínimo desde la posición inicial, donde el costo de cada nodo incluye tanto los encuentros necesarios como el desplazamiento acumulado.
+    \item \textbf{A* (A-estrella):} Con una heurística que estime el costo restante para alcanzar el objetivo de EVs, considerando la zona más eficiente disponible.
+    \item \textbf{Programación dinámica:} Para casos donde se desea optimizar la distribución de encuentros entre múltiples zonas visitadas en secuencia.
+\end{itemize}
+
+% Modelo y alternativas de solución
+\section{Modelo y alternativas de solución}
+
+\subsection{Posibles modelos}
+En esta subsección se describen los modelos conceptuales que se podrían implementar para el sistema propuesto. Cada modelo se analiza considerando su viabilidad técnica, complejidad y escalabilidad. Entre los modelos posibles se incluyen:
+
+\begin{itemize}[leftmargin=*,label=\textbullet]
+    \item \textbf{Modelo basado en bases de datos relacionales:} Permite organizar información de Pokémon, jugadores y partidas mediante tablas interrelacionadas. Es robusto y ampliamente utilizado, pero puede requerir consultas complejas para relaciones avanzadas.
+    \item \textbf{Modelo orientado a objetos:} Cada Pokémon, entrenador y objeto del juego se representa como un objeto con atributos y métodos. Facilita la extensibilidad y reutilización de código.
+    \item \textbf{Modelo basado en grafos:} Representa Pokémon, movimientos y relaciones como nodos y aristas. Permite algoritmos eficientes de búsqueda y recorrido, ideal para mecánicas como combates estratégicos o evolución de Pokémon.
+\end{itemize}
+
+\subsection{Modelo propuesto}
+Tras analizar las alternativas, se propone implementar un \textbf{modelo basado en grafos} debido a su flexibilidad y capacidad de representar relaciones complejas de manera eficiente. Este modelo permite:
+
+\begin{itemize}[leftmargin=*,label=\textbullet]
+    \item Mapear las relaciones entre Pokémon, tipos y habilidades.
+    \item Implementar algoritmos de búsqueda óptima para combates y evolución.
+    \item Escalar el sistema incorporando nuevos Pokémon, movimientos y reglas sin modificar la estructura básica.
+\end{itemize}
+
+\subsection{Alternativas de solución}
+Aunque el modelo basado en grafos es la opción principal, se consideran las siguientes alternativas de solución para complementar o sustituirlo según necesidades futuras:
+
+\begin{enumerate}[leftmargin=*,label=\arabic*.]
+    \item \textbf{Modelo híbrido (objetos + grafos):} Combina objetos para la representación de Pokémon y jugadores, y grafos para relaciones y estrategias de combate. Permite flexibilidad y mantiene eficiencia en algoritmos complejos.
+    \item \textbf{Sistema basado en reglas:} Definición explícita de reglas de combate y evolución mediante un motor de inferencia. Útil para validar nuevas mecánicas de juego rápidamente.
+    \item \textbf{Aplicación con almacenamiento en nube:} Integración con bases de datos en la nube para garantizar persistencia, accesibilidad desde múltiples dispositivos y sincronización en tiempo real.
+\end{enumerate}
+
+La selección final del modelo se realizará considerando criterios de rendimiento, escalabilidad, facilidad de mantenimiento y experiencia de usuario.
+
+\begin{thebibliography}{9}
+
+\bibitem{cormen}
+Cormen, T. H., Leiserson, C. E., Rivest, R. L., \& Stein, C. (2009). \textit{Introduction to Algorithms} (3rd ed.). MIT Press.
+
+\bibitem{grafo}
+Gross, J. L., \& Yellen, J. (2006). \textit{Graph Theory and Its Applications} (2nd ed.). Chapman \& Hall/CRC.
+
+\bibitem{pokemon}
+Nintendo. (1996). \textit{Pokémon Red and Blue Version} [Video game]. Game Freak.
+
+\bibitem{dbdesign}
+Elmasri, R., \& Navathe, S. B. (2016). \textit{Fundamentals of Database Systems} (7th ed.). Pearson.
+
+\end{thebibliography}
+\end{document}
