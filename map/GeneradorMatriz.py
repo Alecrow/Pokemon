@@ -66,6 +66,20 @@ def main():
     if not args.mask and not (args.passable and args.blocked):
         ap.error("Debes pasar --mask o bien --passable y --blocked.")
 
+    # Determinar nombre base según la imagen que se está procesando
+    input_path = args.mask if args.mask else args.passable
+    base_name = os.path.splitext(os.path.basename(input_path))[0]
+
+    # Crear carpetas de salida (relativas al working dir)
+    out_dir_csv = os.path.join(os.getcwd(), "matrices")
+    out_dir_png = os.path.join(os.getcwd(), "matricesPng")
+    os.makedirs(out_dir_csv, exist_ok=True)
+    os.makedirs(out_dir_png, exist_ok=True)
+
+    # Forzar nombres de salida a partir de la imagen
+    args.out_csv = os.path.join(out_dir_csv, base_name + ".csv")
+    args.out_overlay = os.path.join(out_dir_png, base_name + ".png")
+
     # 1) Cargar imágenes base
     if args.mask:
         img = load_image(args.mask)
@@ -119,9 +133,6 @@ def main():
         if has_encounter_img and enc_mask_full is not None:
             enc = 1 if majority(enc_mask_full, y0, y1, x0, x1) else 0
         else:
-            # Si no hay máscara de encounter, puedes inferir encounter del “verde” de tu máscara
-            # sólo si el verde en esa export corresponde a pasto. Si tu export marca camino como verde,
-            # deja encounter=0 y luego podrás suministrar una máscara específica.
             enc = 0
         rows_out.append({
             "row": r, "col": c,
