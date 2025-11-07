@@ -18,7 +18,7 @@ npm run dev -- --host
 
 ### 1. Crear Entorno Virtual
 
-Para mantener las dependencias del proyecto aisladas, crea un entorno virtual:
+Para mantener las dependencias del proyecto aisladas, crea un entorno virtual:1
 
 ```bash
 python -m venv .venv
@@ -29,17 +29,21 @@ python -m venv .venv
 Una vez creado, activa el entorno.
 
 **En Windows (CMD):**
+
 ```bash
 .\.venv\Scripts\activate
 ```
 
 **En Windows (PowerShell):**
+
 ```powershell
 .venv\Scripts\Activate.ps1
 ```
-*Nota: Si tienes problemas en PowerShell, puede que necesites cambiar la política de ejecución con `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process`.*
+
+_Nota: Si tienes problemas en PowerShell, puede que necesites cambiar la política de ejecución con `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process`._
 
 **En macOS/Linux:**
+
 ```bash
 source .venv/bin/activate
 ```
