@@ -1,4 +1,4 @@
-# INSTRUCCIONES DE USO - BASE DE DATOS POKÉMON EV + Frontend App
+# INSTRUCCIONES DE USO - BASE DE DATOS POKÉMON EV + FRONTEND APP
 
 ## Requisitos
 - Docker
@@ -58,13 +58,13 @@ WHERE z1.code = 'kanto-pallet-town'
 ORDER BY zd.distance_tiles;
 ```
 
-## Detener los contenedores
+## 3. Detener los contenedores
 
 ```bash
 docker-compose down
 ```
 
-## Eliminar todo (incluidos los datos)
+## 4. Eliminar todo (incluidos los datos)
 
 ```bash
 docker-compose down -v
