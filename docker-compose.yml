@@ -32,8 +32,6 @@ services:
     command: >
       sh -c "
         echo 'Esperando que Postgres esté listo...' &&
-        pwd &&
-        ls &&
         python3 ./02_load_data.py &&
         python3 ./03_verify_data.py
       "
