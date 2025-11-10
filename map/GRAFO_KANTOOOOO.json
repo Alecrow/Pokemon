@@ -1,0 +1,988 @@
+{
+  "CeladonCity": {
+    "Route16_East": [
+      {
+        "to": "Route7",
+        "dist": 68
+      }
+    ],
+    "Route7": [
+      {
+        "to": "Route16_East",
+        "dist": 68
+      }
+    ]
+  },
+  "CeruleanCity": {
+    "Route24": [
+      {
+        "to": "Route4",
+        "dist": 44
+      },
+      {
+        "to": "Route5",
+        "dist": 72
+      },
+      {
+        "to": "Route9",
+        "dist": 98
+      }
+    ],
+    "Route4": [
+      {
+        "to": "Route24",
+        "dist": 44
+      },
+      {
+        "to": "Route5",
+        "dist": 48
+      },
+      {
+        "to": "Route9",
+        "dist": 74
+      }
+    ],
+    "Route5": [
+      {
+        "to": "Route24",
+        "dist": 72
+      },
+      {
+        "to": "Route4",
+        "dist": 48
+      },
+      {
+        "to": "Route9",
+        "dist": 38
+      }
+    ],
+    "Route9": [
+      {
+        "to": "Route24",
+        "dist": 98
+      },
+      {
+        "to": "Route4",
+        "dist": 74
+      },
+      {
+        "to": "Route5",
+        "dist": 38
+      }
+    ]
+  },
+  "CinnabarIsland": {
+    "Route20_West": [
+      {
+        "to": "Route21_South",
+        "dist": 19
+      }
+    ],
+    "Route21_South": [
+      {
+        "to": "Route20_West",
+        "dist": 19
+      }
+    ]
+  },
+  "FuchsiaCity": {
+    "Route15_West": [
+      {
+        "to": "Route18_East",
+        "dist": 52
+      },
+      {
+        "to": "Route19",
+        "dist": 87
+      }
+    ],
+    "Route18_East": [
+      {
+        "to": "Route15_West",
+        "dist": 52
+      },
+      {
+        "to": "Route19",
+        "dist": 49
+      }
+    ],
+    "Route19": [
+      {
+        "to": "Route15_West",
+        "dist": 87
+      },
+      {
+        "to": "Route18_East",
+        "dist": 49
+      }
+    ]
+  },
+  "LavenderTown": {
+    "Route10": [
+      {
+        "to": "Route12",
+        "dist": 24
+      },
+      {
+        "to": "Route8",
+        "dist": 20
+      }
+    ],
+    "Route12": [
+      {
+        "to": "Route10",
+        "dist": 24
+      },
+      {
+        "to": "Route8",
+        "dist": 20
+      }
+    ],
+    "Route8": [
+      {
+        "to": "Route10",
+        "dist": 20
+      },
+      {
+        "to": "Route12",
+        "dist": 20
+      }
+    ]
+  },
+  "PalletTown": {
+    "Route1": [
+      {
+        "to": "Route21",
+        "dist": 22
+      }
+    ],
+    "Route21": [
+      {
+        "to": "Route1",
+        "dist": 22
+      }
+    ]
+  },
+  "PewterCity": {
+    "Route2_North": [
+      {
+        "to": "Route3",
+        "dist": 44
+      }
+    ],
+    "Route3": [
+      {
+        "to": "Route2_North",
+        "dist": 44
+      }
+    ]
+  },
+  "Route1": {
+    "PalletTown": [
+      {
+        "to": "ViridianCity",
+        "dist": 60
+      }
+    ],
+    "ViridianCity": [
+      {
+        "to": "PalletTown",
+        "dist": 60
+      }
+    ]
+  },
+  "Route10_North": {
+    "Route10_South": [
+      {
+        "to": "Route9",
+        "dist": 38
+      }
+    ],
+    "Route9": [
+      {
+        "to": "Route10_South",
+        "dist": 38
+      }
+    ]
+  },
+  "Route10_South": {
+    "LavanderTown": [
+      {
+        "to": "Route10_North",
+        "dist": 46
+      }
+    ],
+    "Route10_North": [
+      {
+        "to": "LavanderTown",
+        "dist": 46
+      }
+    ]
+  },
+  "Route11_East": {
+    "Route11_EastEntrance": [
+      {
+        "to": "Route12_South",
+        "dist": 6
+      }
+    ],
+    "Route12_South": [
+      {
+        "to": "Route11_EastEntrance",
+        "dist": 6
+      }
+    ]
+  },
+  "Route11_EastEntrance": {
+    "Route11_East": [
+      {
+        "to": "Route11_West",
+        "dist": 10
+      }
+    ],
+    "Route11_West": [
+      {
+        "to": "Route11_East",
+        "dist": 10
+      }
+    ]
+  },
+  "Route11_West": {
+    "Route11_EastEntrance": [
+      {
+        "to": "VermilionCity",
+        "dist": 59
+      }
+    ],
+    "VermilionCity": [
+      {
+        "to": "Route11_EastEntrance",
+        "dist": 59
+      }
+    ]
+  },
+  "Route12_North": {
+    "LavanderTown": [
+      {
+        "to": "Route12_NorthEntrance",
+        "dist": 17
+      }
+    ],
+    "Route12_NorthEntrance": [
+      {
+        "to": "LavanderTown",
+        "dist": 17
+      }
+    ]
+  },
+  "Route12_NorthEntrance": {
+    "Route12_North": [
+      {
+        "to": "Route12_South",
+        "dist": 10
+      }
+    ],
+    "Route12_South": [
+      {
+        "to": "Route12_North",
+        "dist": 10
+      }
+    ]
+  },
+  "Route12_South": {
+    "Route11": [
+      {
+        "to": "Route12_NorthEntrance",
+        "dist": 103
+      },
+      {
+        "to": "Route13",
+        "dist": 87
+      }
+    ],
+    "Route12_NorthEntrance": [
+      {
+        "to": "Route11",
+        "dist": 103
+      },
+      {
+        "to": "Route13",
+        "dist": 162
+      }
+    ],
+    "Route13": [
+      {
+        "to": "Route11",
+        "dist": 87
+      },
+      {
+        "to": "Route12_NorthEntrance",
+        "dist": 162
+      }
+    ]
+  },
+  "Route13": {
+    "Route12_South": [
+      {
+        "to": "Route14",
+        "dist": 86
+      }
+    ],
+    "Route14": [
+      {
+        "to": "Route12_South",
+        "dist": 86
+      }
+    ]
+  },
+  "Route14": {
+    "Route13": [
+      {
+        "to": "Route15_East",
+        "dist": 62
+      }
+    ],
+    "Route15_East": [
+      {
+        "to": "Route13",
+        "dist": 62
+      }
+    ]
+  },
+  "Route15_East": {
+    "Route14": [
+      {
+        "to": "Route15_WestEntrance",
+        "dist": 56
+      }
+    ],
+    "Route15_WestEntrance": [
+      {
+        "to": "Route14",
+        "dist": 56
+      }
+    ]
+  },
+  "Route15_West": {
+    "FuchsiaCity": [
+      {
+        "to": "Route15_WestEntrance",
+        "dist": 9
+      }
+    ],
+    "Route15_WestEntrance": [
+      {
+        "to": "FuchsiaCity",
+        "dist": 9
+      }
+    ]
+  },
+  "Route15_WestEntrance": {
+    "Route15_East": [
+      {
+        "to": "Route15_West",
+        "dist": 10
+      }
+    ],
+    "Route15_West": [
+      {
+        "to": "Route15_East",
+        "dist": 10
+      }
+    ]
+  },
+  "Route16_East": {
+    "CeladonCity": [
+      {
+        "to": "Route16_NorthEntrance",
+        "dist": 20
+      }
+    ],
+    "Route16_NorthEntrance": [
+      {
+        "to": "CeladonCity",
+        "dist": 20
+      }
+    ]
+  },
+  "Route16_NorthEntrance": {
+    "Route16_East": [
+      {
+        "to": "Route16_West",
+        "dist": 10
+      }
+    ],
+    "Route16_West": [
+      {
+        "to": "Route16_East",
+        "dist": 10
+      }
+    ]
+  },
+  "Route16_West": {
+    "Route16_NorthEntrance": [
+      {
+        "to": "Route17",
+        "dist": 16
+      }
+    ],
+    "Route17": [
+      {
+        "to": "Route16_NorthEntrance",
+        "dist": 16
+      }
+    ]
+  },
+  "Route17": {
+    "Route16_West": [
+      {
+        "to": "Route18_West",
+        "dist": 161
+      }
+    ],
+    "Route18_West": [
+      {
+        "to": "Route16_West",
+        "dist": 161
+      }
+    ]
+  },
+  "Route18_East": {
+    "FuchsiaCity": [
+      {
+        "to": "Route18_EastEntrance",
+        "dist": 11
+      }
+    ],
+    "Route18_EastEntrance": [
+      {
+        "to": "FuchsiaCity",
+        "dist": 11
+      }
+    ]
+  },
+  "Route18_EastEntrance": {
+    "Route18_East": [
+      {
+        "to": "Route18_West",
+        "dist": 10
+      }
+    ],
+    "Route18_West": [
+      {
+        "to": "Route18_East",
+        "dist": 10
+      }
+    ]
+  },
+  "Route18_West": {
+    "Route17": [
+      {
+        "to": "Route18_EastEntrance",
+        "dist": 38
+      }
+    ],
+    "Route18_EastEntrance": [
+      {
+        "to": "Route17",
+        "dist": 38
+      }
+    ]
+  },
+  "Route19": {
+    "FuchsiaCity": [
+      {
+        "to": "Route20_East",
+        "dist": 63
+      }
+    ],
+    "Route20_East": [
+      {
+        "to": "FuchsiaCity",
+        "dist": 63
+      }
+    ]
+  },
+  "Route20_East": {
+    "Route19": [
+      {
+        "to": "Route20_West",
+        "dist": 65
+      }
+    ],
+    "Route20_West": [
+      {
+        "to": "Route19",
+        "dist": 65
+      }
+    ]
+  },
+  "Route20_West": {
+    "CinnabarIsland": [
+      {
+        "to": "Route20_East",
+        "dist": 81
+      }
+    ],
+    "Route20_East": [
+      {
+        "to": "CinnabarIsland",
+        "dist": 81
+      }
+    ]
+  },
+  "Route21_North": {
+    "PalletTown": [
+      {
+        "to": "Route21_South",
+        "dist": 52
+      }
+    ],
+    "Route21_South": [
+      {
+        "to": "PalletTown",
+        "dist": 52
+      }
+    ]
+  },
+  "Route21_South": {
+    "CinnabarIsland": [
+      {
+        "to": "Route21_North",
+        "dist": 50
+      }
+    ],
+    "Route21_North": [
+      {
+        "to": "CinnabarIsland",
+        "dist": 50
+      }
+    ]
+  },
+  "Route22": {
+    "Route22_NorthEntrance": [
+      {
+        "to": "ViridianCity",
+        "dist": 75
+      }
+    ],
+    "ViridianCity": [
+      {
+        "to": "Route22_NorthEntrance",
+        "dist": 75
+      }
+    ]
+  },
+  "Route22_NorthEntrance": {
+    "Route22": [
+      {
+        "to": "Route23",
+        "dist": 9
+      }
+    ],
+    "Route23": [
+      {
+        "to": "Route22",
+        "dist": 9
+      }
+    ]
+  },
+  "Route23": {
+    "Route22_NorthEntrance": []
+  },
+  "Route24": {
+    "CeruleanCity": [
+      {
+        "to": "Route25",
+        "dist": 43
+      }
+    ],
+    "Route25": [
+      {
+        "to": "CeruleanCity",
+        "dist": 43
+      }
+    ]
+  },
+  "Route25": {
+    "Route24": []
+  },
+  "Route2_EastBuilding": {
+    "Route2_North": [
+      {
+        "to": "Route2_South",
+        "dist": 9
+      }
+    ],
+    "Route2_South": [
+      {
+        "to": "Route2_North",
+        "dist": 9
+      }
+    ]
+  },
+  "Route2_North": {
+    "PewterCity": [
+      {
+        "to": "Route2_EastBuilding",
+        "dist": 54
+      },
+      {
+        "to": "Route2_ViridianForest_NorthEntrance",
+        "dist": 17
+      }
+    ],
+    "Route2_EastBuilding": [
+      {
+        "to": "PewterCity",
+        "dist": 54
+      },
+      {
+        "to": "Route2_ViridianForest_NorthEntrance",
+        "dist": 47
+      }
+    ],
+    "Route2_ViridianForest_NorthEntrance": [
+      {
+        "to": "PewterCity",
+        "dist": 17
+      },
+      {
+        "to": "Route2_EastBuilding",
+        "dist": 47
+      }
+    ]
+  },
+  "Route2_South": {
+    "Route2_EastBuilding": [
+      {
+        "to": "Route2_ViridianForest_SouthEntrance",
+        "dist": 40
+      },
+      {
+        "to": "ViridianCity",
+        "dist": 43
+      }
+    ],
+    "Route2_ViridianForest_SouthEntrance": [
+      {
+        "to": "Route2_EastBuilding",
+        "dist": 40
+      },
+      {
+        "to": "ViridianCity",
+        "dist": 43
+      }
+    ],
+    "ViridianCity": [
+      {
+        "to": "Route2_EastBuilding",
+        "dist": 43
+      },
+      {
+        "to": "Route2_ViridianForest_SouthEntrance",
+        "dist": 43
+      }
+    ]
+  },
+  "Route2_ViridianForest_NorthEntrance": {
+    "Route2_North": [
+      {
+        "to": "Route2_ViridianForest_NorthEntrance",
+        "dist": 9
+      }
+    ],
+    "Route2_ViridianForest_NorthEntrance": [
+      {
+        "to": "Route2_North",
+        "dist": 9
+      }
+    ]
+  },
+  "Route2_ViridianForest_SouthEntrance": {
+    "Route2_South": [
+      {
+        "to": "Route2_ViridianForest_NorthEntrance",
+        "dist": 9
+      }
+    ],
+    "Route2_ViridianForest_NorthEntrance": [
+      {
+        "to": "Route2_South",
+        "dist": 9
+      }
+    ]
+  },
+  "Route3": {
+    "PewterCity": [
+      {
+        "to": "Route4",
+        "dist": 98
+      }
+    ],
+    "Route4": [
+      {
+        "to": "PewterCity",
+        "dist": 98
+      }
+    ]
+  },
+  "Route4_East": {
+    "CeruleanCity": [
+      {
+        "to": "Route4_West",
+        "dist": 87
+      }
+    ],
+    "Route4_West": [
+      {
+        "to": "CeruleanCity",
+        "dist": 87
+      }
+    ]
+  },
+  "Route4_West": {
+    "Route3": [
+      {
+        "to": "Route4_East",
+        "dist": 21
+      }
+    ],
+    "Route4_East": [
+      {
+        "to": "Route3",
+        "dist": 21
+      }
+    ]
+  },
+  "Route5": {
+    "CeruleanCity": [
+      {
+        "to": "Route5_SouthEntrance",
+        "dist": 38
+      }
+    ],
+    "Route5_SouthEntrance": [
+      {
+        "to": "CeruleanCity",
+        "dist": 38
+      }
+    ]
+  },
+  "Route5_SouthEntrance": {
+    "Route5": [
+      {
+        "to": "SaffronCity",
+        "dist": 8
+      }
+    ],
+    "SaffronCity": [
+      {
+        "to": "Route5",
+        "dist": 8
+      }
+    ]
+  },
+  "Route6": {
+    "Route6_NorthEntrance": [
+      {
+        "to": "VermilionCity",
+        "dist": 39
+      }
+    ],
+    "VermilionCity": [
+      {
+        "to": "Route6_NorthEntrance",
+        "dist": 39
+      }
+    ]
+  },
+  "Route6_NorthEntrance": {
+    "Route6": [
+      {
+        "to": "SaffronCity",
+        "dist": 8
+      }
+    ],
+    "SaffronCity": [
+      {
+        "to": "Route6",
+        "dist": 8
+      }
+    ]
+  },
+  "Route7": {
+    "CeladonCity": [
+      {
+        "to": "Route7_EastEntrance",
+        "dist": 21
+      }
+    ],
+    "Route7_EastEntrance": [
+      {
+        "to": "CeladonCity",
+        "dist": 21
+      }
+    ]
+  },
+  "Route7_EastEntrance": {
+    "Route7": [
+      {
+        "to": "SaffronCity",
+        "dist": 10
+      }
+    ],
+    "SaffronCity": [
+      {
+        "to": "Route7",
+        "dist": 10
+      }
+    ]
+  },
+  "Route8": {
+    "LavanderTown": [
+      {
+        "to": "Route8_WestEntrance",
+        "dist": 79
+      }
+    ],
+    "Route8_WestEntrance": [
+      {
+        "to": "LavanderTown",
+        "dist": 79
+      }
+    ]
+  },
+  "Route8_WestEntrance": {
+    "Route8": [
+      {
+        "to": "SaffronCity",
+        "dist": 10
+      }
+    ],
+    "SaffronCity": [
+      {
+        "to": "Route8",
+        "dist": 10
+      }
+    ]
+  },
+  "Route9": {
+    "CeruleanCity": [
+      {
+        "to": "Route10_North",
+        "dist": null
+      }
+    ],
+    "Route10_North": [
+      {
+        "to": "CeruleanCity",
+        "dist": null
+      }
+    ]
+  },
+  "SaffronCity": {
+    "Route5_SouthEntrance": [
+      {
+        "to": "Route6_NorthEntrance",
+        "dist": 71
+      },
+      {
+        "to": "Route7_EastEntrance",
+        "dist": 44
+      },
+      {
+        "to": "Route8_WestEntrance",
+        "dist": 42
+      }
+    ],
+    "Route6_NorthEntrance": [
+      {
+        "to": "Route5_SouthEntrance",
+        "dist": 71
+      },
+      {
+        "to": "Route7_EastEntrance",
+        "dist": 43
+      },
+      {
+        "to": "Route8_WestEntrance",
+        "dist": 43
+      }
+    ],
+    "Route7_EastEntrance": [
+      {
+        "to": "Route5_SouthEntrance",
+        "dist": 44
+      },
+      {
+        "to": "Route6_NorthEntrance",
+        "dist": 43
+      },
+      {
+        "to": "Route8_WestEntrance",
+        "dist": 58
+      }
+    ],
+    "Route8_WestEntrance": [
+      {
+        "to": "Route5_SouthEntrance",
+        "dist": 42
+      },
+      {
+        "to": "Route6_NorthEntrance",
+        "dist": 43
+      },
+      {
+        "to": "Route7_EastEntrance",
+        "dist": 58
+      }
+    ]
+  },
+  "VermilionCity": {
+    "Route11": [
+      {
+        "to": "Route6",
+        "dist": 43
+      }
+    ],
+    "Route6": [
+      {
+        "to": "Route11",
+        "dist": 43
+      }
+    ]
+  },
+  "ViridianCity": {
+    "Route1": [
+      {
+        "to": "Route2",
+        "dist": 41
+      },
+      {
+        "to": "Route22",
+        "dist": 45
+      }
+    ],
+    "Route2": [
+      {
+        "to": "Route1",
+        "dist": 41
+      },
+      {
+        "to": "Route22",
+        "dist": 38
+      }
+    ],
+    "Route22": [
+      {
+        "to": "Route1",
+        "dist": 45
+      },
+      {
+        "to": "Route2",
+        "dist": 38
+      }
+    ]
+  }
+}
