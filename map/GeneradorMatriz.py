@@ -61,6 +61,8 @@ def main():
     ap.add_argument("--out_csv", default="grid_labels.csv", help="Salida CSV.")
     ap.add_argument("--out_overlay", default="grid_overlay.png", help="PNG de validación.")
     ap.add_argument("--debug", action="store_true", help="Muestra info adicional.")
+    ap.add_argument("--water-mode", choices=["none","passable","blocked"], default="none",
+                    help="Cómo tratar el agua detectada: none (por defecto), passable, blocked.")
     args = ap.parse_args()
 
     if not args.mask and not (args.passable and args.blocked):
@@ -91,6 +93,7 @@ def main():
         # Default: si no cae en verde o rojo, lo tratamos como "otro" (no transitable).
         has_encounter_img = False
         enc_mask_full = None
+        base_img = img
     else:
         # Dos imágenes: transitables/obstáculos
         img_pass = load_image(args.passable)
@@ -107,15 +110,10 @@ def main():
         red_mask   = nonwhite_mask(img_block)  # bloqueado
         has_encounter_img = False
         enc_mask_full = None
-
-    # Zonas de aparición (encuentro) opcional
-    if args.encounter:
-        enc_img = load_image(args.encounter)
-        if enc_img.shape[:2] != (h, w):
-            raise ValueError("La imagen de encounter no coincide en tamaño con la base.")
-        # Detectar “pasto”: por defecto usamos verde otra vez; ajusta si tu máscara es distinta:
-        enc_mask_full = hsv_mask(enc_img, hue_ranges=[(40, 90)], s_min=40, v_min=40)
-        has_encounter_img = True
+        base_img = img_pass
+    # Detectar agua (azul/waves) en la imagen base (ajusta rango si tu agua es distinta)
+    # azul ≈ 90..140 en H (OpenCV 0..179)
+    water_mask = hsv_mask(base_img, hue_ranges=[(90, 140)], s_min=40, v_min=40)
 
     tile = args.tile
     nrows = h // tile
@@ -128,8 +126,17 @@ def main():
         y1 = min(y1, h); x1 = min(x1, w)
         is_green = majority(green_mask, y0, y1, x0, x1)
         is_red   = majority(red_mask,   y0, y1, x0, x1)
+        is_water = majority(water_mask, y0, y1, x0, x1)
         # Resolución de conflictos: rojo gana a verde (bloqueado tiene prioridad)
-        passable = 1 if (is_green and not is_red) else 0
+        # Aplicar opción de agua
+        if is_red:
+            passable = 0
+        elif args.water_mode == "blocked" and is_water:
+            passable = 0
+        elif args.water_mode == "passable" and is_water:
+            passable = 1
+        else:
+            passable = 1 if (is_green and not is_red) else 0
         if has_encounter_img and enc_mask_full is not None:
             enc = 1 if majority(enc_mask_full, y0, y1, x0, x1) else 0
         else:
@@ -137,6 +144,7 @@ def main():
         rows_out.append({
             "row": r, "col": c,
             "passable": passable,
+            "water": 1 if is_water else 0,
             "encounter": enc
         })
 
@@ -157,10 +165,18 @@ def main():
     overlay = np.ones((h, w, 3), dtype=np.uint8)*255
     for r, c, y0, y1, x0, x1 in tile_iter(h, w, tile):
         rec = df[(df.row==r) & (df.col==c)].iloc[0]
-        if rec.passable == 1:
-            color = (255, 200, 0)  # BGR cian-ish (para OpenCV: (B,G,R) → (255,200,0))
+        # colores: passable normal (cian), bloqueado (rojo), agua marcada en azul
+        if rec.water == 1:
+            # azul para agua (si es passable o no)
+            if rec.passable == 1:
+                color = (255, 150, 50)   # azul claro (B,G,R)
+            else:
+                color = (200, 120, 30)   # azul oscuro (B,G,R)
         else:
-            color = (0, 0, 255)    # rojo
+            if rec.passable == 1:
+                color = (255, 200, 0)  # BGR cian-ish
+            else:
+                color = (0, 0, 255)    # rojo
         cv2.rectangle(overlay, (x0, y0), (x1-1, y1-1), color, thickness=-1)
         if rec.encounter == 1:
             # mezclar verde encima
