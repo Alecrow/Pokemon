@@ -11,11 +11,11 @@ from psycopg2.extras import execute_batch
 import time
 
 DB_CONFIG = {
-    'host': 'localhost',
-    'database': 'pokemon_ev',
-    'user': 'trainer',
-    'password': 'pikachu123',
-    'port': 5432
+    'host': os.getenv('POSTGRES_HOST', 'postgres'),
+    'database': os.getenv('POSTGRES_DB', 'pokemon_ev'),
+    'user': os.getenv('POSTGRES_USER', 'trainer'),
+    'password': os.getenv('POSTGRES_PASSWORD', 'pikachu123'),
+    'port': int(os.getenv('POSTGRES_PORT', 5432))
 }
 
 def wait_for_db(max_retries=30):
@@ -47,7 +47,6 @@ def load_pokemon_data(conn):
         pokemon_data = []
         
         for row in reader:
-            # Convertir valores vacíos a None
             def clean_val(val):
                 return None if val == '' else val
             
@@ -119,11 +118,9 @@ def load_zones_and_encounters(conn):
         if not filename.endswith('.csv'):
             continue
         
-        # Extraer código de zona del nombre del archivo
         zone_code = filename.replace('.csv', '')
         zone_name = zone_code.replace('kanto-', '').replace('-', ' ').title()
         
-        # Insertar zona
         cursor.execute("""
             INSERT INTO zones (code, name, region, zone_type)
             VALUES (%s, %s, %s, %s)
@@ -134,7 +131,6 @@ def load_zones_and_encounters(conn):
         zone_id = cursor.fetchone()[0]
         zone_id_map[zone_code] = zone_id
         
-        # Leer encuentros
         filepath = os.path.join(locations_dir, filename)
         with open(filepath, 'r', encoding='utf-8') as f:
             reader = csv.DictReader(f)
@@ -143,7 +139,6 @@ def load_zones_and_encounters(conn):
             for row in reader:
                 pokemon_name = row['Pokémon'].strip()
                 
-                # Buscar ID del Pokémon
                 cursor.execute("SELECT id FROM pokemon WHERE name = %s", (pokemon_name,))
                 result = cursor.fetchone()
                 if not result:
@@ -151,16 +146,26 @@ def load_zones_and_encounters(conn):
                 
                 pokemon_id = result[0]
                 
-                # Parsear nivel
+                # Parsear nivel - manejar casos especiales
                 nivel_str = row['Nivel'].strip()
-                if '-' in nivel_str:
-                    min_level, max_level = map(int, nivel_str.split('-'))
-                else:
-                    min_level = max_level = int(nivel_str)
+                
+                # Saltar si no hay nivel válido
+                if not nivel_str or nivel_str in ['—', '-', 'N/A', '']:
+                    continue
+                
+                try:
+                    if '-' in nivel_str:
+                        parts = nivel_str.split('-')
+                        min_level = int(parts[0].strip())
+                        max_level = int(parts[1].strip())
+                    else:
+                        min_level = max_level = int(nivel_str)
+                except (ValueError, IndexError):
+                    # Si no se puede parsear, saltar este registro
+                    continue
                 
                 avg_level = (min_level + max_level) / 2.0
                 
-                # Mapear rareza a probabilidad aproximada
                 rarity_map = {
                     'Common': 40.0,
                     'Uncommon': 20.0,
@@ -197,11 +202,8 @@ def load_zones_and_encounters(conn):
     return zone_id_map
 
 def calculate_zone_distances(conn, zone_id_map):
-    """Calcula distancias entre zonas usando grid_labels.csv"""
+    """Calcula distancias entre zonas"""
     print("\n📏 Calculando distancias entre zonas...")
-    
-    # Por ahora, crear distancias básicas entre zonas secuenciales
-    # En una versión completa, usarías el grid_labels.csv y un algoritmo de pathfinding
     
     cursor = conn.cursor()
     zones_list = list(zone_id_map.items())
@@ -210,7 +212,6 @@ def calculate_zone_distances(conn, zone_id_map):
     for i, (code1, id1) in enumerate(zones_list):
         for j, (code2, id2) in enumerate(zones_list):
             if i != j:
-                # Distancia simplificada: diferencia de índices * 50 tiles
                 distance = abs(i - j) * 50
                 distances.append((id1, id2, distance))
     

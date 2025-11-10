@@ -7,11 +7,11 @@ import psycopg2
 import os
 
 DB_CONFIG = {
-    'host': os.getenv('PGHOST', 'localhost'),
-    'database': os.getenv('PGDATABASE', 'pokemon_ev'),
-    'user': os.getenv('PGUSER', 'trainer'),
-    'password': os.getenv('PGPASSWORD', 'pikachu123'),
-    'port': int(os.getenv('PGPORT', 5432))
+    'host': os.getenv('POSTGRES_HOST', 'postgres'),
+    'database': os.getenv('POSTGRES_DB', 'pokemon_ev'),
+    'user': os.getenv('POSTGRES_USER', 'trainer'),
+    'password': os.getenv('POSTGRES_PASSWORD', 'pikachu123'),
+    'port': int(os.getenv('POSTGRES_PORT', 5432))
 }
 
 def verify_data():
