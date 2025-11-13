@@ -405,7 +405,7 @@ const App = () => {
                     <div className="pt-2 border-t border-gray-200">
                         {/* Checkbox/Toggle para habilitar el filtro */}
                         <div className="flex items-center justify-between mb-2">
-                            <label htmlFor="enableZoneFilter" className="block text-sm font-bold text-gray-700 flex items-center">
+                            <label htmlFor="enableZoneFilter" className="block text-sm font-bold text-gray-700 items-center">
                                 Habilitar Filtro de Zonas Accesibles
                             </label>
                             <input
@@ -538,7 +538,7 @@ const App = () => {
                                 <div className="space-y-2">
                                     {result.ev_path.map((step, index) => (
                                         <div key={index} className="flex items-center space-x-2 p-3 bg-white rounded-md shadow-sm border border-gray-200">
-                                            <div className="text-center font-bold text-red-500 min-w-[3rem]">
+                                            <div className="text-center font-bold text-red-500 min-w-12">
                                                 {step.count}x
                                             </div>
                                             <div className="flex-1">
