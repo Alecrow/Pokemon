@@ -46,6 +46,6 @@ services:
     working_dir: /app
     command: npm run dev -- --host
     environment:
-      VITE_API_URL: http://localhost:8000  # O ajusta según tu backend real
+      VITE_API_URL: http://localhost:8000
     depends_on:
       - postgres
