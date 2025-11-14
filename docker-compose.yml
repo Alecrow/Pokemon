@@ -35,6 +35,24 @@ services:
         python3 ./02_load_data.py &&
         python3 ./03_verify_data.py
       "
+  backend:
+    build: ./backend
+    container_name: pokemon_backend
+    ports:
+      - "8000:8000"
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_DB: pokemon_ev
+      POSTGRES_USER: trainer
+      POSTGRES_PASSWORD: pikachu123
+      POSTGRES_PORT: 5432
+    volumes:
+      - ./backend:/app
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
   frontend:
     build: ./frontend
     container_name: frontend
@@ -49,3 +67,4 @@ services:
       VITE_API_URL: http://localhost:8000
     depends_on:
       - postgres
+      - backend

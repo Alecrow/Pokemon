@@ -1,45 +1,8 @@
 import React, { useState, useCallback, useMemo, useRef, useEffect } from 'react';
 
-// Constantes de la API (DEBES CAMBIAR ESTO CUANDO IMPLEMENTES TU BACKEND PYTHON)
-const API_URL = '/api/estimate_evs'; // Reemplazar con la URL de tu API de Flask/FastAPI
-const API_KEY = ""; // Dejar vacío si se usa el entorno de Canvas
-
-// --- MOCK DATA para Listas Desplegables y Autocompletar (Pokémon Fire Red/Kanto) ---
-const FIRE_RED_POKEMON = [
-    'Bulbasaur', 'Ivysaur', 'Venusaur', 'Charmander', 'Charmeleon', 'Charizard',
-    'Squirtle', 'Wartortle', 'Blastoise', 'Caterpie', 'Metapod', 'Butterfree',
-    'Weedle', 'Kakuna', 'Beedrill', 'Pidgey', 'Pidgeotto', 'Pidgeot', 'Rattata',
-    'Raticate', 'Spearow', 'Fearow', 'Ekans', 'Arbok', 'Pikachu', 'Raichu',
-    'Sandshrew', 'Sandslash', 'Nidoran♀', 'Nidorina', 'Nidoqueen', 'Nidoran♂',
-    'Nidorino', 'Nidoking', 'Clefairy', 'Clefable', 'Vulpix', 'Ninetales',
-    'Jigglypuff', 'Wigglytuff', 'Zubat', 'Golbat', 'Oddish', 'Gloom', 'Vileplume',
-    'Paras', 'Parasect', 'Venonat', 'Venomoth', 'Diglett', 'Dugtrio',
-    'Meowth', 'Persian', 'Psyduck', 'Golduck', 'Mankey', 'Primeape',
-    'Growlithe', 'Arcanine', 'Poliwag', 'Poliwhirl', 'Poliwrath', 'Abra',
-    'Kadabra', 'Alakazam', 'Machop', 'Machoke', 'Machamp', 'Bellsprout',
-    'Weepinbell', 'Victreebel', 'Tentacool', 'Tentacruel', 'Geodude',
-    'Graveler', 'Golem', 'Ponyta', 'Rapidash', 'Slowpoke', 'Slowbro',
-    'Magnemite', 'Magneton', 'Farfetch\'d', 'Doduo', 'Dodrio', 'Seel',
-    'Dewgong', 'Grimer', 'Muk', 'Shellder', 'Cloyster', 'Gastly', 'Haunter',
-    'Gengar', 'Onix', 'Drowzee', 'Hypno', 'Krabby', 'Kingler', 'Voltorb',
-    'Electrode', 'Exeggcute', 'Exeggutor', 'Cubone', 'Marowak', 'Hitmonlee',
-    'Hitmonchan', 'Lickitung', 'Koffing', 'Weezing', 'Rhyhorn', 'Rhydon',
-    'Chansey', 'Tangela', 'Kangaskhan', 'Horsea', 'Seadra', 'Goldeen',
-    'Seaking', 'Staryu', 'Starmie', 'Mr. Mime', 'Scyther', 'Jynx',
-    'Electabuzz', 'Magmar', 'Pinsir', 'Tauros', 'Magikarp', 'Gyarados',
-    'Lapras', 'Ditto', 'Eevee', 'Vaporeon', 'Jolteon', 'Flareon',
-    'Porygon', 'Omanyte', 'Omastar', 'Kabuto', 'Kabutops', 'Aerodactyl',
-    'Snorlax', 'Articuno', 'Zapdos', 'Moltres', 'Dratini', 'Dragonair',
-    'Dragonite', 'Mewtwo', 'Mew'
-].sort();
-
-const FIRE_RED_ZONES = [
-    'Pueblo Paleta', 'Ruta 1', 'Ciudad Verde', 'Ruta 2', 'Bosque Verde',
-    'Ciudad Plateada', 'Ruta 3', 'Ruta 4', 'Mt. Moon', 'Ciudad Celeste',
-    'Ruta 5', 'Ruta 6', 'Ciudad Carmin', 'Cueva Diglett', 'Ruta 11',
-    'Torre Pokémon', 'Ciudad Fucsia', 'Ruta 18', 'Isla Canela',
-    'Mansion Pokémon', 'Islas Espuma', 'Calle Victoria', 'Meseta Añil'
-].sort();
+// Constantes de la API
+const API_BASE_URL = 'http://localhost:8000';
+const API_URL = `${API_BASE_URL}/api/estimate_evs`;
 
 // Simulamos la respuesta de la API de Python para la prueba inicial
 const MOCK_SUCCESS_RESPONSE = {
@@ -219,10 +182,52 @@ const App = () => {
     const [error, setError] = useState(null);
     const [result, setResult] = useState(null);
 
+    // Estados para datos cargados desde la API
+    const [pokemonList, setPokemonList] = useState([]);
+    const [zonesList, setZonesList] = useState([]);
+    const [loadingData, setLoadingData] = useState(true);
+
     // Lista de estadísticas para el selector
     const stats = useMemo(() => [
         "HP", "Attack", "Defense", "Special Attack", "Special Defense", "Speed"
     ], []);
+
+    // Cargar Pokémon y Zonas al montar el componente
+    useEffect(() => {
+        const fetchInitialData = async () => {
+            setLoadingData(true);
+            try {
+                // Cargar Pokémon
+                const pokemonResponse = await fetch(`${API_BASE_URL}/api/pokemon`);
+                if (!pokemonResponse.ok) throw new Error('Error al cargar Pokémon');
+                const pokemonData = await pokemonResponse.json();
+                const pokemonNames = pokemonData.pokemon.map(p => p.name).sort();
+                setPokemonList(pokemonNames);
+
+                // Cargar Zonas
+                const zonesResponse = await fetch(`${API_BASE_URL}/api/zones`);
+                if (!zonesResponse.ok) throw new Error('Error al cargar zonas');
+                const zonesData = await zonesResponse.json();
+                const zoneNames = zonesData.zones.map(z => z.name).sort();
+                setZonesList(zoneNames);
+
+                // Establecer valores por defecto si hay datos
+                if (pokemonNames.length > 0 && !pokemonNames.includes(selectedPokemon)) {
+                    setSelectedPokemon(pokemonNames[0]);
+                }
+                if (zoneNames.length > 0 && !zoneNames.includes(startZone)) {
+                    setStartZone(zoneNames[0]);
+                }
+            } catch (err) {
+                console.error('Error cargando datos iniciales:', err);
+                setError(`Error al cargar datos: ${err.message}`);
+            } finally {
+                setLoadingData(false);
+            }
+        };
+
+        fetchInitialData();
+    }, []);
 
     // Simulación de lógica para Potenciadores: Si el Pokémon es inicial o legendario, se asume que se está en el endgame y los objetos están disponibles.
     useEffect(() => {
@@ -306,6 +311,13 @@ const App = () => {
     // --- Renderizado ---
     return (
         <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4 font-['Inter']">
+            {loadingData ? (
+                <div className="flex flex-col items-center justify-center p-10">
+                    <PokeballIcon className="animate-spin w-12 h-12 text-red-600 mb-4"/>
+                    <p className="text-lg font-semibold text-gray-700">Cargando datos desde la base de datos...</p>
+                    <p className="text-sm text-gray-500 mt-2">Conectando con el backend</p>
+                </div>
+            ) : (
             <div className="w-full max-w-5xl bg-white shadow-2xl rounded-xl overflow-hidden grid md:grid-cols-3 gap-8 p-6 lg:p-10 border-t-8 border-red-500">
                 
                 {/* Columna 1: Título y Formulario Principal */}
@@ -323,7 +335,7 @@ const App = () => {
                         {/* INPUT: Pokémon (Select with Search) */}
                         <SelectWithSearch
                             label="Pokémon"
-                            items={FIRE_RED_POKEMON}
+                            items={pokemonList}
                             selectedItem={selectedPokemon}
                             onSelectItem={setSelectedPokemon}
                         />
@@ -395,7 +407,7 @@ const App = () => {
                             required
                             className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md shadow-sm"
                         >
-                            {FIRE_RED_ZONES.map(zone => (
+                            {zonesList.map(zone => (
                                 <option key={zone} value={zone}>{zone}</option>
                             ))}
                         </select>
@@ -424,7 +436,7 @@ const App = () => {
                         <div className={!isZoneFilterEnabled ? 'opacity-50 pointer-events-none' : ''}>
                             <TagsInput
                                 label="Zonas Accesibles"
-                                items={FIRE_RED_ZONES}
+                                items={zonesList}
                                 selectedItems={accessibleZones}
                                 onUpdateItems={setAccessibleZones}
                             />
@@ -556,6 +568,7 @@ const App = () => {
                     )}
                 </div>
             </div>
+            )}
         </div>
     );
 };
