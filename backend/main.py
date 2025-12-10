@@ -1,11 +1,29 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
 from database import get_all_pokemon, get_all_zones
+from graph import PokemonGraph
+from optimizer import EVOptimizer
 import logging
+import os
 
 # Configurar logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+# Inicializar Grafo y Optimizador
+# Intentar localizar adjacency.json
+ADJ_PATH = "adjacency.json"
+if not os.path.exists(ADJ_PATH):
+    # Fallback para desarrollo local si backend se ejecuta desde su carpeta
+    potential_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "map", "adjacency.json")
+    if os.path.exists(potential_path):
+        ADJ_PATH = potential_path
+    else:
+        logger.warning("adjacency.json no encontrado. La optimización no funcionará correctamente hasta que se copie el archivo.")
+
+graph = PokemonGraph(ADJ_PATH)
+optimizer = EVOptimizer(graph)
 
 app = FastAPI(
     title="Pokemon EV Training API",
@@ -108,3 +126,52 @@ def get_zones():
 def health_check():
     """Endpoint para verificar que el servicio está activo"""
     return {"status": "healthy"}
+
+from typing import Dict, Optional
+
+class OptimizationRequest(BaseModel):
+    start_zone: str
+    # Deprecated single target fields
+    target_stat: Optional[str] = None
+    target_evs: Optional[int] = None
+    # New multi-target field
+    targets: Optional[Dict[str, int]] = None
+    
+    pokemon_level: int = 50
+    lambda_val: float = 0.1
+
+@app.post("/api/optimize")
+def optimize_ev_training(request: OptimizationRequest):
+    """
+    Calcula la ruta óptima para entrenar EVs.
+    Soporta un solo objetivo (target_stat) o múltiples (targets).
+    """
+    try:
+        # Normalizar entrada
+        targets = request.targets
+        if not targets:
+            if request.target_stat and request.target_evs:
+                targets = {request.target_stat: request.target_evs}
+            else:
+                raise HTTPException(status_code=400, detail="Debes especificar 'targets' o 'target_stat'/'target_evs'")
+
+        logger.info(f"Optimizando para {targets} desde {request.start_zone}")
+        
+        result = optimizer.find_optimal_multistat_route(
+            request.start_zone,
+            targets,
+            request.lambda_val,
+            request.pokemon_level
+        )
+        
+        if not result:
+            return {"message": "No se encontró una ruta adecuada."}
+            
+        return {
+            "optimal_route": result["route"],
+            "total_cost": result["total_cost"],
+            "message": f"Ruta optimizada encontrada con costo total {result['total_cost']:.2f}"
+        }
+    except Exception as e:
+        logger.error(f"Error en optimización: {e}")
+        raise HTTPException(status_code=500, detail=f"Error calculando optimización: {str(e)}")

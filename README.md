@@ -4,6 +4,13 @@
 - Docker
 - Docker Compose
 
+### Librerías para scripts de prueba y visualización (Local)
+Si deseas ejecutar los scripts de visualización del grafo (`visualize_graph.py`) o probar la API localmente (`test_api.py`), necesitas instalar:
+
+```bash
+pip install networkx pyvis requests
+```
+
 ## 1. Levantar servicios con docker-compose
 
 ```bash
