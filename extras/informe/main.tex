@@ -34,7 +34,7 @@
     % Título
     \vspace{1cm}
     \begin{spacing}{1.5}
-        \LARGE\textsc{\textbf{Propuesta: \\ Minimizar el tiempo en entrenamiento Pokemon}}
+        \LARGE\textsc{\textbf{Propuesta: \\ Mejorar el entrenamiento Pokémon}}
     \end{spacing}
     \vspace{1cm}
 
@@ -66,7 +66,7 @@
 % Espacio superior y fecha
 \vspace*{2cm}
 \begin{center}
-    \large Septiembre de 2025
+    \large Noviembre de 2025
 \end{center}
 
 % Introducción
@@ -74,14 +74,54 @@
 
 \subsection{Contexto del juego}
 
-\textit{Pokémon} es un videojuego de rol por turnos. El jugador explora un mundo compuesto por rutas y ciudades. Su objetivo es capturar Pokémon, formar un equipo y combatir contra otros entrenadores. Los combates son por turnos, donde cada Pokémon realiza un movimiento. El orden de ataque de los turnos depende de la estadística de \textit{Velocidad}. Existen \textit{tipos} (por ejemplo, Fuego, Agua, Planta) que determinan las fortalezas y debilidades en batalla. Además, el jugador puede usar \textit{habilidades}, \textit{objetos equipables} y \textit{estados} (como quemadura o parálisis), que alteran la estrategia de combate. El objetivo es avanzar en la historia y mejorar el rendimiento de los Pokémon en combate (Ver \ref{fig:pokemon}).
+\textit{Pokémon} es un videojuego de rol por turnos. El jugador explora un mundo compuesto por rutas y ciudades. Su objetivo es capturar Pokémon, formar un equipo y combatir contra otros entrenadores. Los combates son por turnos, donde cada Pokémon realiza un movimiento. El orden de ataque de los turnos depende de la estadística de \textit{Velocidad}. Existen \textit{tipos} (por ejemplo, Fuego, Agua, Planta) que determinan las fortalezas y debilidades en batalla. Además, el jugador puede usar \textit{habilidades}, \textit{objetos equipables} y \textit{estados} (como quemadura o parálisis), que alteran la estrategia de combate.\cite{pokemon} El objetivo es avanzar en la historia y mejorar el rendimiento de los Pokémon en combate (Ver Figura \ref{fig:pokemon}).
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\linewidth]{img/pokemonresumen.png}
-    \caption{Capturas de \textbf{Pokemon Rojo Fuego} (\textit{Remasterizado no oficial})}
+    \caption{Capturas de \textbf{Pokemon Rojo Fuego}}
     \label{fig:pokemon}
 \end{figure}
+\subsection{Factores que moldean las estadísticas}
+
+Cada Pokémon tiene \textbf{IVs} (valores individuales), los cuales son fijos entre 0 y 31. Estos valores determinan el potencial máximo de cada una de sus estadísticas. Los IVs no pueden ser modificados a lo largo del juego, por lo que son un factor importante en el rendimiento final de un Pokémon. En la Figura \ref{fig:iv} se puede apreciar que el Pokémon tiene características que sobresalen al resto, éstas son las que se buscarán maximizar. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{img/ivs.jpeg}
+    \caption{Gráfica de IVs}
+    \label{fig:iv}
+\end{figure}
+
+Además, los Pokémon acumulan \textbf{EVs} (Puntos de Esfuerzo) al derrotar otros Pokémon. Los EVs afectan directamente las estadísticas de un Pokémon y se distribuyen entre las seis estadísticas básicas: HP, Ataque, Defensa, Ataque Especial, Defensa Especial y Velocidad. Cada vez que un Pokémon obtiene un determinado número de EVs, su rendimiento en combate mejora en esas estadísticas específicas.
+
+En la \textit{Generación III}, cada 4 EVs en una estadística aumentan aproximadamente \(+1\) punto de esa estadística cuando el Pokémon alcanza el nivel 100. El límite máximo de EVs que un Pokémon puede obtener es de 510, distribuidos entre las estadísticas. Sin embargo, debido a la eficiencia en la asignación de EVs, generalmente se utilizan 252 EVs en una estadística específica, ya que se ha comprobado que 255 EVs no proporcionan un beneficio adicional.
+
+Además, existen objetos y estados que aceleran la ganancia de EVs. Por ejemplo, el objeto \textit{Macho Brace} duplica la cantidad de EVs ganados en combate, y el estado \textit{Pokérus} también aumenta la ganancia de EVs, duplicando la cantidad obtenida.
+
+En la Figura \ref{fig:ev} se puede apreciar que cada característica tiene un valor asociado, estos son los puntos de esfuerzo que van incrementando a medida que sube de nivel, estos pueden variar dependiendo de cómo se entrene.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{img/evs.jpeg}
+    \caption{EVs asignados}
+    \label{fig:ev}
+\end{figure}
+\subsubsection{Las naturalezas}
+
+Las \textbf{naturalezas} también juegan un papel importante en la modificación de las estadísticas de un Pokémon. Cada naturaleza afecta dos estadísticas: un aumento de 10\% para una y una reducción de un 10\% en otra. Existen 25 naturalezas en total, y su efecto es clave para personalizar aún más a cada Pokémon según el rol que se desee desempeñar en combate.
+
+Por ejemplo, la naturaleza \textit{Adamant} aumenta el Ataque y reduce el Ataque Especial, lo que es ideal para un Pokémon que se enfoque en movimientos físicos, como un \textit{Machamp}. Por otro lado, una naturaleza \textit{Modesta} aumenta el Ataque Especial y disminuye el Ataque, lo que favorece a los Pokémon que se especializan en ataques especiales.
+
+A continuación se muestra una tabla con las naturalezas y sus efectos en las estadísticas:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{img/tablaNature.jpg}
+    \caption{Tabla de Naturalezas}
+    \label{fig:naturalezas}
+\end{figure}
+
+Para más detalles sobre las naturalezas y cómo afectan las estadísticas, se puede consultar el  artículo completo en \href{https://pokemon.fandom.com/es/wiki/Naturaleza#Efectos_en_las_estad%C3%ADsticas}{Bulbapedia: Naturalezas}.
 
 \subsection{Ámbito de este trabajo}
 
@@ -97,7 +137,7 @@ En esta generación, se aplican las siguientes reglas relevantes para este proye
 
 \subsection{Estadísticas del combate}
 
-Las estadísticas (\textit{stats}) son esenciales para determinar el rendimiento de un Pokémon en combate (ver Fig.~\ref{fig:statsbulbasaur}):
+Las estadísticas (\textit{stats}) son esenciales para determinar el rendimiento de un Pokémon en combate (ver Figura ~\ref{fig:statsbulbasaur}):
 
 \begin{itemize}
     \item \textbf{HP (Puntos de Salud)}: cantidad de daño que un Pokémon puede recibir antes de desmayarse.
@@ -115,34 +155,6 @@ Las estadísticas (\textit{stats}) son esenciales para determinar el rendimiento
     \label{fig:statsbulbasaur}
 \end{figure}
 
-\subsection{Factores que moldean las estadísticas}
-
-Cada Pokémon tiene \textbf{IVs} (valores individuales), los cuales son fijos entre 0 y 31. Estos valores determinan el potencial máximo de cada una de sus estadísticas. Los IVs no pueden ser modificados a lo largo del juego, por lo que son un factor importante en el rendimiento final de un Pokémon.
-
-Además, los Pokémon acumulan \textbf{EVs} (Puntos de Esfuerzo) al derrotar otros Pokémon. Los EVs afectan directamente las estadísticas de un Pokémon y se distribuyen entre las seis estadísticas básicas: HP, Ataque, Defensa, Ataque Especial, Defensa Especial y Velocidad. Cada vez que un Pokémon obtiene un determinado número de EVs, su rendimiento en combate mejora en esas estadísticas específicas.
-
-En la \textit{Generación III}, cada 4 EVs en una estadística aumentan aproximadamente \(+1\) punto de esa estadística cuando el Pokémon alcanza el nivel 100. El límite máximo de EVs que un Pokémon puede obtener es de 510, distribuidos entre las estadísticas. Sin embargo, debido a la eficiencia en la asignación de EVs, generalmente se utilizan 252 EVs en una estadística específica, ya que se ha comprobado que 255 EVs no proporcionan un beneficio adicional.
-
-Además, existen objetos y estados que aceleran la ganancia de EVs. Por ejemplo, el objeto \textit{Macho Brace} duplica la cantidad de EVs ganados en combate, y el estado \textit{Pokérus} también aumenta la ganancia de EVs, duplicando la cantidad obtenida.
-
-\subsubsection{Las naturalezas}
-
-Las \textbf{naturalezas} también juegan un papel importante en la modificación de las estadísticas de un Pokémon. Cada naturaleza afecta dos estadísticas: una la aumenta en un 10\% y la otra la reduce en un 10\%. Existen 25 naturalezas en total, y su efecto es clave para personalizar aún más a cada Pokémon según el rol que se desee desempeñar en combate.
-
-Por ejemplo, la naturaleza \textit{Adamant} aumenta el Ataque y reduce el Ataque Especial, lo que es ideal para un Pokémon que se enfoque en movimientos físicos, como un \textit{Machamp}. Por otro lado, una naturaleza \textit{Modesta} aumenta el Ataque Especial y disminuye el Ataque, lo que favorece a los Pokémon que se especializan en ataques especiales.
-
-A continuación se muestra una tabla con las naturalezas y sus efectos en las estadísticas:
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\linewidth]{img/tablaNature.jpg}
-    \caption{Tabla de Naturalezas}
-    \label{fig:naturalezas}
-\end{figure}
-
-Para más detalles sobre las naturalezas y cómo afectan las estadísticas, puedes consultar el artículo completo en \href{https://pokemon.fandom.com/es/wiki/Naturaleza#Efectos_en_las_estad%C3%ADsticas}{Bulbapedia: Naturalezas}.
-
-
 \subsection{Necesidad detectada}
 
 Entrenar EVs implica tomar decisiones estratégicas sobre:
@@ -154,14 +166,13 @@ Entrenar EVs implica tomar decisiones estratégicas sobre:
     \item Cuándo desplazarse a otra zona considerando el costo de viaje.
 \end{itemize}
 
-El juego no ofrece una herramienta para visualizar los EVs acumulados ni un sistema para calcular rutas eficientes de entrenamiento. Esto lleva a una planificación manual con alta carga cognitiva y desperdicio de recursos (encuentros innecesarios, viajes subóptimos).
+El juego no ofrece una herramienta para visualizar los EVs acumulados ni un sistema para calcular rutas eficientes de entrenamiento. Esto lleva a una planificación manual con alta carga cognitiva y, en muchas ocasiones, una compleja administración de recursos (intentando evitar encuentros innecesarios, viajes no óptimos, entre otros).
 
 \subsection{Propuesta}
 
-Se propone modelar el entrenamiento de EVs como un \textit{problema de optimización sobre grafos}. Las zonas de entrenamiento son nodos, caracterizados por la tasa promedio de EVs por encuentro en cada estadística. Los desplazamientos entre zonas son aristas con peso (distancia en casillas).
+Se propone modelar el entrenamiento de EVs como un \textit{problema de optimización sobre grafos} \cite{grafo}. Las zonas de entrenamiento son nodos, caracterizados por la tasa promedio de EVs por encuentro en cada estadística. Los desplazamientos entre zonas son aristas con peso (distancia en casillas).
 
-El objetivo es \textbf{minimizar el número total de encuentros necesarios} para alcanzar 252 EVs en la estadística objetivo, considerando una penalización ajustable por la distancia recorrida entre zonas. Esto reduce tanto el número de combates como los desplazamientos innecesarios, optimizando la experiencia del jugador.
-
+El objetivo es \textbf{minimizar el número total de encuentros necesarios para alcanzar 252 EVs en una estadística objetivo}, considerando una penalización ajustable por la distancia recorrida entre zonas. Esto reduce tanto el número de combates como los desplazamientos innecesarios, optimizando la experiencia del jugador.
 
 \section{Usuario}
 
@@ -170,11 +181,11 @@ El usuario objetivo de este sistema es un \textbf{jugador de la franquicia Poké
 \subsection{Perfiles de usuario e interacción con el juego}
 
 \begin{itemize}[leftmargin=*,label=\textbullet]
-    \item \textbf{Jugador recreativo:} Se enfoca principalmente en disfrutar la historia y las mecánicas del juego sin un interés profundo en la optimización. Busca experiencias más relajadas y juega ocasionalmente. Este tipo de jugador interactúa con el juego de manera casual, disfrutando de la narrativa y exploración, sin preocuparse por optimizar estadísticas o estrategias complejas.
+    \item \textbf{Jugador recreativo:} se enfoca principalmente en disfrutar la historia y las mecánicas del juego sin un interés profundo en la optimización. Busca experiencias más relajadas y juega ocasionalmente. Este tipo de jugador interactúa con el juego de manera casual, disfrutando de la narrativa y exploración, sin preocuparse por optimizar estadísticas o estrategias complejas.
     
-    \item \textbf{Jugador competitivo:} Busca maximizar el rendimiento de su equipo para participar en competiciones, torneos y ligas. Este tipo de jugador está profundamente involucrado en las mecánicas del juego, como el entrenamiento de EVs y la creación de estrategias avanzadas. Interactúa con el juego de manera meticulosa, dedicando tiempo a entrenar y optimizar sus Pokémon para combates estratégicos, buscando siempre mejorar su rendimiento en eventos competitivos.
+    \item \textbf{Jugador competitivo:} busca maximizar el rendimiento de su equipo para participar en competiciones, torneos y ligas. Este tipo de jugador está profundamente involucrado en las mecánicas del juego, como el entrenamiento de EVs y la creación de estrategias avanzadas. Interactúa con el juego de manera meticulosa, dedicando tiempo a entrenar y optimizar sus Pokémon para combates estratégicos, buscando siempre mejorar su rendimiento en eventos competitivos.
 
-    \item \textbf{Jugador de Hackrooms o ROM hacks:} Participa en versiones modificadas del juego, conocidas como *ROM hacks* o *Hackrooms*, que introducen nuevas reglas, historias o niveles de dificultad. Estos jugadores buscan explorar contenido alternativo y desafiante, con mecánicas o historias creadas por la comunidad. Experimentan con el juego de forma más abierta, probando nuevas variantes del contenido tradicional y disfrutando de un enfoque más experimental y creativo, un ejemplo es el \href{fig:radicalred}{\textit{Pokemon Radical Red}}, una versión modificada y más dificil de \textbf{Pokemon Fire Red}. Más información es este sitio: \href{https://bulbapedia.bulbagarden.net/wiki/ROM_hack}{\textbf{Rom-Hack info}}.
+    \item \textbf{Jugador de Hackrooms o ROM hacks:} participa en versiones modificadas del juego, conocidas como *ROM hacks* o *Hackrooms*, que introducen nuevas reglas, historias o niveles de dificultad. Estos jugadores buscan explorar contenido alternativo y desafiante, con mecánicas o historias creadas por la comunidad. Experimentan con el juego de forma más abierta, probando nuevas variantes del contenido tradicional y disfrutando de un enfoque más experimental y creativo, un ejemplo es el \href{fig:radicalred}{\textit{Pokemon Radical Red}}, una versión modificada y más dificil de \textbf{Pokemon Fire Red}. Más información es este sitio: \href{https://bulbapedia.bulbagarden.net/wiki/ROM_hack}{\textbf{Rom-Hack info}}.
 
     \begin{figure}[H]
         \centering
@@ -183,7 +194,7 @@ El usuario objetivo de este sistema es un \textbf{jugador de la franquicia Poké
         \label{fig:radicalred}
     \end{figure}
 
-    \item \textbf{Jugador de Nuzlocke Challenge:} Se enfrenta a un juego más desafiante, siguiendo reglas autoimpuestas que limitan la captura de Pokémon y sancionan el desmayo de sus criaturas. En el \textit{Nuzlocke Challenge}, los jugadores deben capturar solo el primer Pokémon encontrado en cada área y liberar a aquellos que se desmayen durante un combate. Este tipo de jugador busca una experiencia más intensa y emocionalmente significativa, donde cada decisión y cada combate tiene un alto impacto en el progreso del juego, \href{https://bulbapedia.bulbagarden.net/wiki/Nuzlocke_Challenge}{\textbf{NuzLocke info}}.
+    \item \textbf{Jugador de Nuzlocke Challenge:} se enfrenta a un juego más desafiante, siguiendo reglas autoimpuestas que limitan la captura de Pokémon y sancionan el desmayo de sus criaturas. En el \textit{Nuzlocke Challenge}, los jugadores deben capturar solo el primer Pokémon encontrado en cada área y liberar a aquellos que se desmayen durante un combate. Este tipo de jugador busca una experiencia más intensa y emocionalmente significativa, donde cada decisión y cada combate tiene un alto impacto en el progreso del juego, \href{https://bulbapedia.bulbagarden.net/wiki/Nuzlocke_Challenge}{\textbf{NuzLocke info}}.
 \end{itemize}
 
 \subsection{Características comunes}
@@ -204,7 +215,7 @@ Este perfil detallado nos permite diseñar el sistema con funcionalidades y inte
 
 El entrenamiento de Pokémon implica mejorar sus estadísticas mediante los \textbf{Puntos de Esfuerzo (EVs, Effort Values)}. Estos son valores ocultos que determinan cuánto crecerá una estadística específica —como Ataque, Defensa o Velocidad— cuando el Pokémon suba de nivel. Cada Pokémon que se derrota en combate otorga una cantidad determinada de EVs, normalmente relacionada con su estadística más fuerte. Por ejemplo, un \textit{Geodude} entrega EVs en Defensa, mientras que un \textit{Gengar} entrega EVs en Ataque Especial.
 
-Los EVs se acumulan en cada estadística de manera independiente. Cada 4 EVs equivalen a un punto adicional en la estadística correspondiente cuando el Pokémon alcanza el nivel 100. El valor máximo total de EVs que puede obtener un Pokémon es 510, con un límite de 255 por estadística. En la práctica, los jugadores utilizan 252 EVs por estadística para optimizar la eficiencia (63 puntos adicionales). 
+Los EVs se acumulan en cada estadística de manera independiente. Por cada 4 EVs poseídos, es posible obtener 1 punto adicional en la estadística correspondiente cuando el Pokémon alcanza el nivel 100. El valor máximo total de EVs que puede obtener un Pokémon es 510, con un límite de 255 por estadística. En la práctica, los jugadores utilizan 252 EVs por estadística para optimizar la eficiencia (63 puntos adicionales). 
 
 Los Pokémon recién capturados o nacidos de un huevo comienzan sin EVs, lo que permite planificar desde cero el entrenamiento. Sin embargo, el juego no muestra de forma directa cuántos EVs ha ganado un Pokémon, lo que dificulta la gestión precisa del entrenamiento. Además, las decisiones del jugador —qué Pokémon derrotar, en qué zonas combatir y cuánto tiempo permanecer— influyen directamente en la eficiencia del proceso.
 
@@ -413,7 +424,7 @@ El parámetro $\lambda$ controla el balance entre eficiencia de combate y costo 
     \item $\lambda$ grande ($> 0.5$): Se priorizan zonas cercanas, incluso si son menos eficientes en EVs por encuentro.
 \end{itemize}
 
-\subsection{Algoritmo de solución}
+\subsection{Algoritmos de solución \cite{cormen}}
 
 Para resolver este problema, se propone utilizar:
 
@@ -430,44 +441,33 @@ Para resolver este problema, se propone utilizar:
 En esta subsección se describen los modelos conceptuales que se podrían implementar para el sistema propuesto. Cada modelo se analiza considerando su viabilidad técnica, complejidad y escalabilidad. Entre los modelos posibles se incluyen:
 
 \begin{itemize}[leftmargin=*,label=\textbullet]
-    \item \textbf{Modelo basado en bases de datos relacionales:} Permite organizar información de Pokémon, jugadores y partidas mediante tablas interrelacionadas. Es robusto y ampliamente utilizado, pero puede requerir consultas complejas para relaciones avanzadas.
-    \item \textbf{Modelo orientado a objetos:} Cada Pokémon, entrenador y objeto del juego se representa como un objeto con atributos y métodos. Facilita la extensibilidad y reutilización de código.
-    \item \textbf{Modelo basado en grafos:} Representa Pokémon, movimientos y relaciones como nodos y aristas. Permite algoritmos eficientes de búsqueda y recorrido, ideal para mecánicas como combates estratégicos o evolución de Pokémon.
+    \item \textbf{Modelo basado en bases de datos relacionales:} Permite organizar información de Pokémon, jugadores y partidas mediante tablas interrelacionadas. Es robusto y ampliamente utilizado, pero puede requerir consultas complejas para relaciones avanzadas \cite{dbdesign}.
+    \item \textbf{Modelo orientado a objetos:} Cada Pokémon, entrenador y objeto del juego se representa como un objeto con atributos y métodos.
+    \item \textbf{Modelo basado en grafos:} Representa Pokémon, movimientos y relaciones como nodos y aristas. Permite algoritmos eficientes de búsqueda y recorrido.
 \end{itemize}
 
 \subsection{Modelo propuesto}
 Tras analizar las alternativas, se propone implementar un \textbf{modelo basado en grafos} debido a su flexibilidad y capacidad de representar relaciones complejas de manera eficiente. Este modelo permite:
 
 \begin{itemize}[leftmargin=*,label=\textbullet]
-    \item Mapear las relaciones entre Pokémon, tipos y habilidades.
-    \item Implementar algoritmos de búsqueda óptima para combates y evolución.
-    \item Escalar el sistema incorporando nuevos Pokémon, movimientos y reglas sin modificar la estructura básica.
+    \item Mapear las relaciones entre Pokémon y las zonas de aparición de ellos.
+    \item Implementar algoritmos de búsqueda óptima para combates y evolución, acorde a restricciones de nivel (nivel de Pokemon, puede ser desde 1 al 100).
 \end{itemize}
-
-\subsection{Alternativas de solución}
-Aunque el modelo basado en grafos es la opción principal, se consideran las siguientes alternativas de solución para complementar o sustituirlo según necesidades futuras:
-
-\begin{enumerate}[leftmargin=*,label=\arabic*.]
-    \item \textbf{Modelo híbrido (objetos + grafos):} Combina objetos para la representación de Pokémon y jugadores, y grafos para relaciones y estrategias de combate. Permite flexibilidad y mantiene eficiencia en algoritmos complejos.
-    \item \textbf{Sistema basado en reglas:} Definición explícita de reglas de combate y evolución mediante un motor de inferencia. Útil para validar nuevas mecánicas de juego rápidamente.
-    \item \textbf{Aplicación con almacenamiento en nube:} Integración con bases de datos en la nube para garantizar persistencia, accesibilidad desde múltiples dispositivos y sincronización en tiempo real.
-\end{enumerate}
-
-La selección final del modelo se realizará considerando criterios de rendimiento, escalabilidad, facilidad de mantenimiento y experiencia de usuario.
 
 \begin{thebibliography}{9}
 
-\bibitem{cormen}
-Cormen, T. H., Leiserson, C. E., Rivest, R. L., \& Stein, C. (2009). \textit{Introduction to Algorithms} (3rd ed.). MIT Press.
+\bibitem{pokemon}
+Nintendo. (1996). \textit{Pokémon Red and Blue Version} [Video game]. Game Freak.
 
 \bibitem{grafo}
 Gross, J. L., \& Yellen, J. (2006). \textit{Graph Theory and Its Applications} (2nd ed.). Chapman \& Hall/CRC.
 
-\bibitem{pokemon}
-Nintendo. (1996). \textit{Pokémon Red and Blue Version} [Video game]. Game Freak.
+\bibitem{cormen}
+Cormen, T. H., Leiserson, C. E., Rivest, R. L., \& Stein, C. (2009). \textit{Introduction to Algorithms} (3rd ed.). MIT Press.
 
 \bibitem{dbdesign}
 Elmasri, R., \& Navathe, S. B. (2016). \textit{Fundamentals of Database Systems} (7th ed.). Pearson.
 
 \end{thebibliography}
+
 \end{document}
