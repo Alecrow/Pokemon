@@ -413,6 +413,22 @@ $$\min \quad Z = \sum_{i \in V} x_i + \lambda \sum_{(i,j) \in E} d_{ij} \cdot y_
     $$x_i \geq 0, \quad \forall i \in V_{\text{user}}$$
 \end{enumerate}
 
+\subsection{Extensión: Optimización Multi-Objetivo}
+
+En escenarios competitivos reales, es común requerir EVs en múltiples estadísticas simultáneamente (por ejemplo, 252 en Ataque y 252 en Velocidad). El modelo se generaliza para buscar una \textbf{secuencia de zonas} $S = (z_1, z_2, \dots, z_k)$ que satisfaga un conjunto de objetivos $O = \{O_1, O_2, \dots, O_m\}$.
+
+La función objetivo se adapta para minimizar el costo total de la trayectoria secuencial:
+
+$$ \min Z_{multi} = \sum_{t=1}^{k} \left( x_{z_t} + \lambda \cdot d_{z_{t-1}, z_t} \right) $$
+
+Donde:
+\begin{itemize}
+    \item $x_{z_t}$ son los encuentros realizados en la zona $z_t$ de la secuencia para cumplir el objetivo parcial.
+    \item $d_{z_{t-1}, z_t}$ es la distancia desde la zona anterior a la actual.
+\end{itemize}
+
+El algoritmo implementado explora permutaciones en el orden de cumplimiento de los objetivos para encontrar la secuencia que minimiza la distancia total recorrida entre las zonas óptimas de cada estadística, resolviendo efectivamente un problema de ruta más corta sobre un grafo de estados.
+
 \subsection{Interpretación del factor \texorpdfstring{$\lambda$}{lambda}}
 
 El parámetro $\lambda$ controla el balance entre eficiencia de combate y costo de desplazamiento:
