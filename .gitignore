@@ -1,3 +1,5 @@
 .vscode/
 .venv/
 db/data
+openspec/
+.github/prompts/
