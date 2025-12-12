@@ -1,0 +1,523 @@
+{
+    "SSAnne": {},
+    "Route14": {
+        "Route13": {
+            "dist": 0,
+            "direction": "noreste"
+        },
+        "Route15": {
+            "dist": 0,
+            "direction": "suroeste"
+        }
+    },
+    "Lista de ciudades y pueblos por región": {},
+    "SSAqua": {},
+    "Surcamar Veloce": {},
+    "FuchsiaCity": {
+        "Route18": {
+            "dist": 0,
+            "direction": "oeste"
+        },
+        "Route15": {
+            "dist": 0,
+            "direction": "este"
+        },
+        "Route19": {
+            "dist": 0,
+            "direction": "sur"
+        }
+    },
+    "Route17": {
+        "Route16": {
+            "dist": 0,
+            "direction": "norte"
+        },
+        "Route18": {
+            "dist": 0,
+            "direction": "sur"
+        }
+    },
+    "MtMoon": {
+        "Route3": {
+            "dist": 0,
+            "direction": "oeste"
+        },
+        "Route4": {
+            "dist": 0,
+            "direction": "este"
+        }
+    },
+    "ViridianCity": {
+        "Route1": {
+            "dist": 0,
+            "direction": "sur"
+        },
+        "Route2": {
+            "dist": 0,
+            "direction": "norte"
+        },
+        "Route22": {
+            "dist": 0,
+            "direction": "oeste"
+        }
+    },
+    "Route27": {
+        "Pueblo Primavera": {
+            "dist": 0,
+            "direction": "oeste"
+        },
+        "Route26": {
+            "dist": 0,
+            "direction": "este"
+        },
+        "TohjoFalls": {
+            "dist": 0,
+            "direction": "norte"
+        }
+    },
+    "LavenderTown": {
+        "Route10": {
+            "dist": 0,
+            "direction": "norte"
+        },
+        "Route12": {
+            "dist": 0,
+            "direction": "sur"
+        },
+        "Route8": {
+            "dist": 0,
+            "direction": "oeste"
+        }
+    },
+    "VictoryRoad": {},
+    "VermilionCity": {
+        "Route6": {
+            "dist": 0,
+            "direction": "norte"
+        },
+        "Route11": {
+            "dist": 0,
+            "direction": "este"
+        }
+    },
+    "Route23": {
+        "IndigoPlateau": {
+            "dist": 0,
+            "direction": "norte"
+        },
+        "VictoryRoad": {
+            "dist": 0,
+            "direction": "centro"
+        },
+        "PokemonLeagueReception": {
+            "dist": 0,
+            "direction": "sur"
+        }
+    },
+    "Route16": {
+        "Route17": {
+            "dist": 0,
+            "direction": "sur"
+        },
+        "CeladonCity": {
+            "dist": 0,
+            "direction": "este"
+        }
+    },
+    "TohjoFalls": {},
+    "Route22": {
+        "PokemonLeagueReception": {
+            "dist": 0,
+            "direction": "noroeste"
+        },
+        "ViridianCity": {
+            "dist": 0,
+            "direction": "este"
+        }
+    },
+    "SeafoamIslands": {},
+    "CyclingRoad": {},
+    "GlitchIslands": {
+        "CinnabarIsland": {
+            "dist": 0,
+            "direction": "oeste"
+        },
+        "Route20": {
+            "dist": 0,
+            "direction": "este"
+        }
+    },
+    "Route25": {
+        "Route24": {
+            "dist": 0,
+            "direction": "suroeste"
+        }
+    },
+    "Rutas": {},
+    "Route20": {
+        "CinnabarIsland": {
+            "dist": 0,
+            "direction": "oeste"
+        },
+        "SeafoamIslands": {
+            "dist": 0,
+            "direction": "centro"
+        },
+        "Route19": {
+            "dist": 0,
+            "direction": "este"
+        }
+    },
+    "Route1": {
+        "ViridianCity": {
+            "dist": 0,
+            "direction": "norte"
+        },
+        "PalletTown": {
+            "dist": 0,
+            "direction": "sur"
+        }
+    },
+    "Route28": {
+        "MtSilverCave": {
+            "dist": 0,
+            "direction": "oeste"
+        },
+        "PokemonLeagueReception": {
+            "dist": 0,
+            "direction": "este"
+        }
+    },
+    "SafariZone": {
+        "FuchsiaCity": {
+            "dist": 0,
+            "direction": "sur"
+        }
+    },
+    "PalPark": {},
+    "PalletTown": {
+        "Route1": {
+            "dist": 0,
+            "direction": "norte"
+        },
+        "Route21": {
+            "dist": 0,
+            "direction": "sur"
+        }
+    },
+    "SaffronCity": {
+        "Route5": {
+            "dist": 0,
+            "direction": "norte"
+        },
+        "Route6": {
+            "dist": 0,
+            "direction": "sur"
+        },
+        "Route7": {
+            "dist": 0,
+            "direction": "oeste"
+        },
+        "Route8": {
+            "dist": 0,
+            "direction": "este"
+        }
+    },
+    "Route11": {
+        "VermilionCity": {
+            "dist": 0,
+            "direction": "oeste"
+        },
+        "Route12": {
+            "dist": 0,
+            "direction": "este"
+        },
+        "DiglettsCave": {
+            "dist": 0,
+            "direction": "oeste"
+        }
+    },
+    "Route5": {
+        "CeruleanCity": {
+            "dist": 0,
+            "direction": "norte"
+        },
+        "SaffronCity": {
+            "dist": 0,
+            "direction": "sur"
+        }
+    },
+    "Route24": {
+        "Route25": {
+            "dist": 0,
+            "direction": "noreste"
+        },
+        "CeruleanCity": {
+            "dist": 0,
+            "direction": "sur"
+        }
+    },
+    "RocketHideout": {
+        "Sala de Juegos Rocket": {
+            "dist": 0,
+            "direction": "encima"
+        }
+    },
+    "Route13": {
+        "Route14": {
+            "dist": 0,
+            "direction": "suroeste"
+        },
+        "Route12": {
+            "dist": 0,
+            "direction": "noreste"
+        }
+    },
+    "MtMoonSquare": {
+        "MtMoon": {
+            "dist": 0,
+            "direction": "abajo"
+        }
+    },
+    "Route10": {
+        "Route9": {
+            "dist": 0,
+            "direction": "noroeste"
+        },
+        "LavenderTown": {
+            "dist": 0,
+            "direction": "sur"
+        }
+    },
+    "GOPark": {},
+    "CeruleanCity": {
+        "Route24": {
+            "dist": 0,
+            "direction": "norte"
+        },
+        "Route5": {
+            "dist": 0,
+            "direction": "sur"
+        },
+        "Route4": {
+            "dist": 0,
+            "direction": "oeste"
+        },
+        "Route9": {
+            "dist": 0,
+            "direction": "este"
+        }
+    },
+    "UndergroundPath": {
+        "Route5": {
+            "dist": 0,
+            "direction": "norte"
+        },
+        "Route6": {
+            "dist": 0,
+            "direction": "sur"
+        },
+        "Route7": {
+            "dist": 0,
+            "direction": "oeste"
+        },
+        "Route8": {
+            "dist": 0,
+            "direction": "este"
+        }
+    },
+    "Route6": {
+        "SaffronCity": {
+            "dist": 0,
+            "direction": "norte"
+        },
+        "VermilionCity": {
+            "dist": 0,
+            "direction": "sur"
+        }
+    },
+    "Route7": {
+        "CeladonCity": {
+            "dist": 0,
+            "direction": "oeste"
+        },
+        "SaffronCity": {
+            "dist": 0,
+            "direction": "este"
+        }
+    },
+    "Route12": {
+        "LavenderTown": {
+            "dist": 0,
+            "direction": "norte"
+        },
+        "Route11": {
+            "dist": 0,
+            "direction": "oeste"
+        },
+        "Route13": {
+            "dist": 0,
+            "direction": "suroeste"
+        }
+    },
+    "DiglettsCave": {
+        "Route2": {
+            "dist": 0,
+            "direction": "norte"
+        },
+        "Route11": {
+            "dist": 0,
+            "direction": "sur"
+        }
+    },
+    "Route26": {
+        "Route27": {
+            "dist": 0,
+            "direction": "suroeste"
+        },
+        "PokemonLeagueReception": {
+            "dist": 0,
+            "direction": "norte"
+        }
+    },
+    "CeladonCity": {
+        "Route16": {
+            "dist": 0,
+            "direction": "oeste"
+        },
+        "Route7": {
+            "dist": 0,
+            "direction": "este"
+        }
+    },
+    "Route15": {
+        "FuchsiaCity": {
+            "dist": 0,
+            "direction": "oeste"
+        },
+        "Route14": {
+            "dist": 0,
+            "direction": "este"
+        }
+    },
+    "Route19": {
+        "FuchsiaCity": {
+            "dist": 0,
+            "direction": "norte"
+        },
+        "Route20": {
+            "dist": 0,
+            "direction": "suroeste"
+        }
+    },
+    "Route4": {
+        "Route3": {
+            "dist": 0,
+            "direction": "suroeste"
+        },
+        "CeruleanCity": {
+            "dist": 0,
+            "direction": "este"
+        },
+        "MtMoon": {
+            "dist": 0,
+            "direction": "noroeste"
+        }
+    },
+    "Route8": {
+        "SaffronCity": {
+            "dist": 0,
+            "direction": "oeste"
+        },
+        "LavenderTown": {
+            "dist": 0,
+            "direction": "este"
+        }
+    },
+    "Route3": {
+        "PewterCity": {
+            "dist": 0,
+            "direction": "este"
+        },
+        "Route4": {
+            "dist": 0,
+            "direction": "sureste"
+        }
+    },
+    "Route9": {
+        "CeruleanCity": {
+            "dist": 0,
+            "direction": "oeste"
+        },
+        "Route10": {
+            "dist": 0,
+            "direction": "sureste"
+        }
+    },
+    "Route18": {
+        "Route17": {
+            "dist": 0,
+            "direction": "noroeste"
+        },
+        "FuchsiaCity": {
+            "dist": 0,
+            "direction": "este"
+        }
+    },
+    "CeruleanCave": {},
+    "RockTunnel": {},
+    "PewterCity": {
+        "Route3": {
+            "dist": 0,
+            "direction": "este"
+        },
+        "Route2": {
+            "dist": 0,
+            "direction": "sur"
+        }
+    },
+    "Route21": {
+        "PalletTown": {
+            "dist": 0,
+            "direction": "norte"
+        },
+        "CinnabarIsland": {
+            "dist": 0,
+            "direction": "sur"
+        }
+    },
+    "ViridianForest": {
+        "Route2": {
+            "dist": 0,
+            "direction": "sur"
+        }
+    },
+    "CinnabarIsland": {
+        "Route21": {
+            "dist": 0,
+            "direction": "norte"
+        },
+        "Route20": {
+            "dist": 0,
+            "direction": "este"
+        }
+    },
+    "Route2": {
+        "ViridianCity": {
+            "dist": 0,
+            "direction": "sur"
+        },
+        "ViridianForest": {
+            "dist": 0,
+            "direction": "centro"
+        },
+        "DiglettsCave": {
+            "dist": 0,
+            "direction": "salida"
+        },
+        "PewterCity": {
+            "dist": 0,
+            "direction": "norte"
+        }
+    }
+}
