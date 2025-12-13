@@ -13,6 +13,7 @@ DB_CONFIG = {
 def get_db_connection():
     """Crea y retorna una conexión a la base de datos"""
     try:
+        # print(f"Connecting to DB: {DB_CONFIG['host']}:{DB_CONFIG['port']} as {DB_CONFIG['user']}")
         conn = psycopg2.connect(**DB_CONFIG, cursor_factory=RealDictCursor)
         return conn
     except Exception as e:
@@ -123,6 +124,79 @@ def get_zone_details(zone_code: str, target_stat: str, pokemon_level: int = 50):
             AND e.avg_level BETWEEN %s AND %s
             AND p.{col} > 0
             ORDER BY p.{col} DESC, e.probability_percent DESC
+        """
+        cursor.execute(query, (zone_code, max(1, pokemon_level - 10), pokemon_level + 10))
+        return cursor.fetchall()
+    finally:
+        cursor.close()
+        conn.close()
+
+def get_all_zone_yields(pokemon_level: int = 50):
+    """
+    Obtiene el yield promedio de TODAS las estadísticas para TODAS las zonas.
+    Retorna: { 'zone_code': { 'Attack': 1.5, 'Speed': 0.5, ... } }
+    """
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    
+    try:
+        # Obtener todos los encuentros relevantes
+        query = """
+            SELECT 
+                z.code,
+                p.ev_hp, p.ev_attack, p.ev_defense, 
+                p.ev_sp_attack, p.ev_sp_defense, p.ev_speed,
+                e.probability_percent
+            FROM zones z
+            JOIN encounters e ON z.id = e.zone_id
+            JOIN pokemon p ON e.pokemon_id = p.id
+            WHERE e.avg_level BETWEEN %s AND %s
+        """
+        cursor.execute(query, (max(1, pokemon_level - 10), pokemon_level + 10))
+        rows = cursor.fetchall()
+        
+        zone_yields = {}
+        
+        for row in rows:
+            code = row['code']
+            prob = float(row['probability_percent']) / 100.0
+            
+            if code not in zone_yields:
+                zone_yields[code] = {
+                    "HP": 0.0, "Attack": 0.0, "Defense": 0.0,
+                    "Special Attack": 0.0, "Special Defense": 0.0, "Speed": 0.0
+                }
+            
+            zone_yields[code]["HP"] += row['ev_hp'] * prob
+            zone_yields[code]["Attack"] += row['ev_attack'] * prob
+            zone_yields[code]["Defense"] += row['ev_defense'] * prob
+            zone_yields[code]["Special Attack"] += row['ev_sp_attack'] * prob
+            zone_yields[code]["Special Defense"] += row['ev_sp_defense'] * prob
+            zone_yields[code]["Speed"] += row['ev_speed'] * prob
+            
+        return zone_yields
+    finally:
+        cursor.close()
+        conn.close()
+
+def get_zone_encounters(zone_code: str, pokemon_level: int = 50):
+    """
+    Obtiene todos los encuentros de una zona.
+    """
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    try:
+        query = """
+            SELECT 
+                p.name,
+                p.ev_hp, p.ev_attack, p.ev_defense, 
+                p.ev_sp_attack, p.ev_sp_defense, p.ev_speed,
+                e.probability_percent
+            FROM zones z
+            JOIN encounters e ON z.id = e.zone_id
+            JOIN pokemon p ON e.pokemon_id = p.id
+            WHERE z.code = %s
+            AND e.avg_level BETWEEN %s AND %s
         """
         cursor.execute(query, (zone_code, max(1, pokemon_level - 10), pokemon_level + 10))
         return cursor.fetchall()

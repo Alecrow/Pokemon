@@ -362,11 +362,21 @@ se define:
     \item $y_{ij} \in \{0, 1\}$: Variable binaria que indica si se realiza el desplazamiento desde la zona $i$ hasta la zona $j$ ($y_{ij} = 1$) o no ($y_{ij} = 0$).
 \end{itemize}
 
-\subsection{Función objetivo}
+\subsection{Función objetivo y Estrategia de Solución}
 
-El objetivo es minimizar el \textbf{costo total} del entrenamiento, definido como la suma del número de encuentros necesarios y una penalización proporcional a la distancia total recorrida:
+El objetivo es minimizar el \textbf{costo total} del entrenamiento. Dado que las unidades de "encuentros" y "distancia en tiles" no son directamente comparables, se utiliza una función de puntuación ponderada para evaluar la idoneidad de cada zona candidata $z$ desde la posición actual $p$:
 
-$$\min \quad Z = \sum_{i \in V} x_i + \lambda \sum_{(i,j) \in E} d_{ij} \cdot y_{ij}$$
+$$ \text{Score}_z = \lambda \cdot d_{p,z} + (1 - \lambda) \cdot \text{Encounters}_z \cdot K $$
+
+Donde:
+\begin{itemize}
+    \item $d_{p,z}$ es la distancia mínima desde la posición actual $p$ a la zona $z$ (calculada mediante Dijkstra).
+    \item $\text{Encounters}_z$ es el número estimado de combates necesarios en la zona $z$ para satisfacer la necesidad de EVs.
+    \item $\lambda \in [0, 1]$ es el factor de preferencia del usuario.
+    \item $K$ es un factor de escala (empíricamente $K=10$) para normalizar el peso de los encuentros frente a la distancia, dado que un combate consume significativamente más tiempo que dar un paso.
+\end{itemize}
+
+El algoritmo selecciona iterativamente la zona que minimiza este puntaje.
 
 \subsection{Restricciones}
 
@@ -413,21 +423,22 @@ $$\min \quad Z = \sum_{i \in V} x_i + \lambda \sum_{(i,j) \in E} d_{ij} \cdot y_
     $$x_i \geq 0, \quad \forall i \in V_{\text{user}}$$
 \end{enumerate}
 
-\subsection{Extensión: Optimización Multi-Objetivo}
+\subsection{Algoritmo Implementado: Heurística Codiciosa Iterativa}
 
-En escenarios competitivos reales, es común requerir EVs en múltiples estadísticas simultáneamente (por ejemplo, 252 en Ataque y 252 en Velocidad). El modelo se generaliza para buscar una \textbf{secuencia de zonas} $S = (z_1, z_2, \dots, z_k)$ que satisfaga un conjunto de objetivos $O = \{O_1, O_2, \dots, O_m\}$.
+Para resolver el problema de optimización multi-objetivo (varias estadísticas a la vez) de manera eficiente, se implementó una estrategia \textbf{Greedy (Codiciosa) Iterativa} apoyada en el algoritmo de Dijkstra.
 
-La función objetivo se adapta para minimizar el costo total de la trayectoria secuencial:
+El procedimiento es el siguiente:
 
-$$ \min Z_{multi} = \sum_{t=1}^{k} \left( x_{z_t} + \lambda \cdot d_{z_{t-1}, z_t} \right) $$
+\begin{enumerate}
+    \item \textbf{Inicialización:} Se parte de la zona actual del jugador y el estado actual de EVs.
+    \item \textbf{Cálculo de Necesidades:} En cada iteración, se calcula el déficit de EVs para cada estadística objetivo. Si no hay déficit, el algoritmo termina.
+    \item \textbf{Cálculo de Distancias:} Se ejecuta el algoritmo de \textbf{Dijkstra} desde la zona actual para obtener la distancia mínima a todas las demás zonas accesibles del mapa.
+    \item \textbf{Evaluación de Candidatos:} Se evalúa cada zona accesible utilizando la función de puntuación definida en 5.4. Se considera la zona solo si provee EVs para alguna de las estadísticas deficitarias.
+    \item \textbf{Selección y Acción:} Se selecciona la zona con el menor puntaje (mejor balance costo-beneficio). El algoritmo simula el desplazamiento a esa zona y la realización de combates hasta satisfacer la necesidad de la estadística principal de esa zona o alcanzar un límite de seguridad.
+    \item \textbf{Actualización:} Se actualiza la posición actual y los EVs acumulados. Se repite el proceso desde el paso 2.
+\end{enumerate}
 
-Donde:
-\begin{itemize}
-    \item $x_{z_t}$ son los encuentros realizados en la zona $z_t$ de la secuencia para cumplir el objetivo parcial.
-    \item $d_{z_{t-1}, z_t}$ es la distancia desde la zona anterior a la actual.
-\end{itemize}
-
-El algoritmo implementado explora permutaciones en el orden de cumplimiento de los objetivos para encontrar la secuencia que minimiza la distancia total recorrida entre las zonas óptimas de cada estadística, resolviendo efectivamente un problema de ruta más corta sobre un grafo de estados.
+Este enfoque permite encontrar soluciones sub-óptimas de muy buena calidad en tiempo casi real, adaptándose dinámicamente a múltiples objetivos sin la complejidad exponencial de buscar la ruta global perfecta en un espacio de estados masivo.
 
 \subsection{Interpretación del factor \texorpdfstring{$\lambda$}{lambda}}
 
@@ -442,12 +453,11 @@ El parámetro $\lambda$ controla el balance entre eficiencia de combate y costo 
 
 \subsection{Algoritmos de solución \cite{cormen}}
 
-Para resolver este problema, se propone utilizar:
+Para resolver este problema, se han considerado y utilizado:
 
 \begin{itemize}
-    \item \textbf{Dijkstra modificado:} Para encontrar la ruta de costo mínimo desde la posición inicial, donde el costo de cada nodo incluye tanto los encuentros necesarios como el desplazamiento acumulado.
-    \item \textbf{A* (A-estrella):} Con una heurística que estime el costo restante para alcanzar el objetivo de EVs, considerando la zona más eficiente disponible.
-    \item \textbf{Programación dinámica:} Para casos donde se desea optimizar la distribución de encuentros entre múltiples zonas visitadas en secuencia.
+    \item \textbf{Dijkstra:} Utilizado en cada paso de la heurística para calcular la matriz de distancias desde el nodo actual a todos los demás nodos del grafo. Es fundamental para evaluar el componente de costo de desplazamiento.
+    \item \textbf{Heurística Greedy:} Estrategia principal para la toma de decisiones paso a paso, seleccionando localmente la mejor opción para converger a la solución global.
 \end{itemize}
 
 % Modelo y alternativas de solución
@@ -460,14 +470,6 @@ En esta subsección se describen los modelos conceptuales que se podrían implem
     \item \textbf{Modelo basado en bases de datos relacionales:} Permite organizar información de Pokémon, jugadores y partidas mediante tablas interrelacionadas. Es robusto y ampliamente utilizado, pero puede requerir consultas complejas para relaciones avanzadas \cite{dbdesign}.
     \item \textbf{Modelo orientado a objetos:} Cada Pokémon, entrenador y objeto del juego se representa como un objeto con atributos y métodos.
     \item \textbf{Modelo basado en grafos:} Representa Pokémon, movimientos y relaciones como nodos y aristas. Permite algoritmos eficientes de búsqueda y recorrido.
-\end{itemize}
-
-\subsection{Modelo propuesto}
-Tras analizar las alternativas, se propone implementar un \textbf{modelo basado en grafos} debido a su flexibilidad y capacidad de representar relaciones complejas de manera eficiente. Este modelo permite:
-
-\begin{itemize}[leftmargin=*,label=\textbullet]
-    \item Mapear las relaciones entre Pokémon y las zonas de aparición de ellos.
-    \item Implementar algoritmos de búsqueda óptima para combates y evolución, acorde a restricciones de nivel (nivel de Pokemon, puede ser desde 1 al 100).
 \end{itemize}
 
 \begin{thebibliography}{9}

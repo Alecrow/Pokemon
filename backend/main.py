@@ -127,51 +127,70 @@ def health_check():
     """Endpoint para verificar que el servicio está activo"""
     return {"status": "healthy"}
 
-from typing import Dict, Optional
+from typing import Dict, Optional, List
 
 class OptimizationRequest(BaseModel):
-    start_zone: str
-    # Deprecated single target fields
-    target_stat: Optional[str] = None
-    target_evs: Optional[int] = None
-    # New multi-target field
-    targets: Optional[Dict[str, int]] = None
-    
+    pokemon_name: str
     pokemon_level: int = 50
-    lambda_val: float = 0.1
+    start_zone: str
+    accessible_zones: List[str] = []
+    target_stat: str
+    target_evs: int
+    has_macho_brace: bool = False
+    has_pokerus: bool = False
+    lambda_penalty: float = 0.1
 
 @app.post("/api/optimize")
-def optimize_ev_training(request: OptimizationRequest):
+async def optimize_ev_training(request: OptimizationRequest):
     """
     Calcula la ruta óptima para entrenar EVs.
-    Soporta un solo objetivo (target_stat) o múltiples (targets).
     """
     try:
-        # Normalizar entrada
-        targets = request.targets
-        if not targets:
-            if request.target_stat and request.target_evs:
-                targets = {request.target_stat: request.target_evs}
-            else:
-                raise HTTPException(status_code=400, detail="Debes especificar 'targets' o 'target_stat'/'target_evs'")
-
-        logger.info(f"Optimizando para {targets} desde {request.start_zone}")
+        logger.info(f"Optimizando desde {request.start_zone} para {request.target_stat}")
         
-        result = optimizer.find_optimal_multistat_route(
-            request.start_zone,
-            targets,
-            request.lambda_val,
-            request.pokemon_level
+        # Construct target_evs dict
+        target_evs_dict = {request.target_stat: request.target_evs}
+        
+        # Construct current_evs dict (assume 0 for now as frontend doesn't send it)
+        current_evs_dict = {
+            "HP": 0, "Attack": 0, "Defense": 0, 
+            "Special Attack": 0, "Special Defense": 0, "Speed": 0
+        }
+        
+        result = await optimizer.find_optimal_path(
+            start_zone=request.start_zone,
+            current_evs=current_evs_dict,
+            target_evs=target_evs_dict,
+            accessible_zones=request.accessible_zones,
+            has_macho_brace=request.has_macho_brace,
+            has_pokerus=request.has_pokerus,
+            lambda_penalty=request.lambda_penalty,
+            pokemon_level=request.pokemon_level
         )
         
-        if not result:
-            return {"message": "No se encontró una ruta adecuada."}
+        # Add metadata to result for frontend display
+        if result:
+            result['pokemon_name'] = request.pokemon_name
+            result['target_stat'] = request.target_stat
+            result['total_battles'] = result['total_encounters']
+            # Generate a description
+            result['optimal_route_description'] = f"Start at {request.start_zone}. Travel {result['total_distance']} tiles. Defeat {result['total_encounters']} Pokemon."
             
-        return {
-            "optimal_route": result["route"],
-            "total_cost": result["total_cost"],
-            "message": f"Ruta optimizada encontrada con costo total {result['total_cost']:.2f}"
-        }
+            # Transform path for frontend if needed
+            # Frontend expects: ev_path: [{pokemon, ev_yield, count}]
+            # Backend returns: path: [{type, zone, target_pokemon, count, ...}]
+            
+            frontend_path = []
+            for step in result['path']:
+                if step['type'] == 'farm':
+                    frontend_path.append({
+                        "pokemon": step['target_pokemon'],
+                        "ev_yield": f"{step['stat_focus']} (Yield TBD)", # Simplify
+                        "count": step['count']
+                    })
+            result['ev_path'] = frontend_path
+
+        return result
     except Exception as e:
         logger.error(f"Error en optimización: {e}")
         raise HTTPException(status_code=500, detail=f"Error calculando optimización: {str(e)}")

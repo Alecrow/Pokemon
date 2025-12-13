@@ -3,11 +3,13 @@ import math
 import re
 from typing import Dict, List, Tuple, Optional, Any
 from graph import PokemonGraph
-from database import get_zone_ev_yields, get_zone_details
+from database import get_all_zone_yields, get_zone_encounters
 
 class EVOptimizer:
     def __init__(self, graph: PokemonGraph):
         self.graph = graph
+        # Cache yields to avoid DB hits on every step
+        self.zone_yields_cache = {} 
 
     def _get_db_code(self, graph_zone: str) -> str:
         """
@@ -22,28 +24,21 @@ class EVOptimizer:
         candidate = f"kanto-{s2}"
         return candidate
 
-    def _match_yield(self, graph_zone: str, yields_map: Dict[str, float]) -> float:
+    def _match_yield(self, graph_zone: str, yields_map: Dict[str, Dict[str, float]]) -> Optional[Dict[str, float]]:
         """
-        Tries to find the yield for a graph zone in the yields map.
-        Handles suffix mismatches (e.g. Route16_East vs kanto-route-16).
+        Tries to find the yield dict for a graph zone in the yields map.
         """
         db_code = self._get_db_code(graph_zone)
         
-        # Exact match
         if db_code in yields_map:
             return yields_map[db_code]
         
-        # Prefix match (remove -east, -west, -north, -south)
-        # Try removing last part
         if "-" in db_code:
             prefix = db_code.rsplit("-", 1)[0]
             if prefix in yields_map:
                 return yields_map[prefix]
             
-            # Try removing last two parts? (e.g. route-2-viridian-forest-north-entrance)
-            # This is getting hacky.
-            
-        return 0.0
+        return None
 
     def _calculate_distances(self, start_zone: str) -> Dict[str, int]:
         """
@@ -84,10 +79,8 @@ class EVOptimizer:
             # Neighbors (Inter-zone)
             target_zone = self.graph.get_inter_zone_neighbor(zone, label)
             if target_zone:
-                # Target label in target_zone is usually current_zone name
-                target_lbl = zone
-                # Verify
-                if target_zone in self.graph.adjacency_data and target_lbl in self.graph.adjacency_data[target_zone]:
+                target_lbl = zone # Assuming symmetry
+                if target_zone in self.graph.adjacency_data:
                     new_dist = d # 0 cost to cross
                     if new_dist < min_dists.get((target_zone, target_lbl), float('inf')):
                         min_dists[(target_zone, target_lbl)] = new_dist
@@ -95,252 +88,194 @@ class EVOptimizer:
         
         return zone_min_dists
 
-    def find_optimal_zone(self, start_zone: str, target_evs: int, target_stat: str, lambda_val: float, pokemon_level: int = 50) -> Dict[str, Any]:
+    def _normalize_zone_name(self, zone_name: str) -> str:
         """
-        Finds the optimal zone to grind EVs, minimizing Z = Encounters + lambda * Distance.
+        Normalizes DB zone name to Graph zone name.
+        e.g. "Route 1" -> "Route1", "Mt. Moon" -> "MtMoon"
         """
-        # 1. Get Yields for all zones
-        yields_map = get_zone_ev_yields(target_stat, pokemon_level)
+        # Remove spaces, dots, underscores
+        normalized = re.sub(r'[\s\._]', '', zone_name)
         
-        # 2. Calculate Distances from StartZone to ALL reachable (Zone, Label)
-        zone_min_dists = self._calculate_distances(start_zone)
-
-        # 3. Evaluate Objective Function for each Zone
-
-        # 3. Evaluate Objective Function for each Zone
-        best_zone = None
-        min_Z = float('inf')
-        
-        results = []
-        
-        for zone, dist in zone_min_dists.items():
-            ev_yield = self._match_yield(zone, yields_map)
-            if ev_yield <= 0:
-                continue
-                
-            # x_i: Encounters needed
-            encounters = math.ceil(target_evs / ev_yield)
+        # Check if this normalized name exists in the graph
+        if normalized in self.graph.adjacency_data:
+            return normalized
             
-            # Z = x_i + lambda * d_ij
-            # Note: dist is in "tiles". lambda scales tiles to "encounter equivalents".
-            Z = encounters + (lambda_val * dist)
-            
-            if Z < min_Z:
-                min_Z = Z
+        # Try case-insensitive match
+        for key in self.graph.adjacency_data.keys():
+            if key.lower() == normalized.lower():
+                return key
                 
-                # Obtener detalles de los Pokémon en la zona óptima
-                db_code = self._get_db_code(zone)
-                # Intentar match exacto o prefijo si no encuentra
-                if db_code not in yields_map and "-" in db_code:
-                     prefix = db_code.rsplit("-", 1)[0]
-                     if prefix in yields_map:
-                         db_code = prefix
-                
-                pokemon_details = get_zone_details(db_code, target_stat, pokemon_level)
-                
-                best_zone = {
-                    "zone": zone,
-                    "ev_yield": ev_yield,
-                    "encounters": encounters,
-                    "distance": dist,
-                    "total_cost": Z,
-                    "pokemon_list": [
-                        {
-                            "name": p['name'],
-                            "ev_yield": p['ev_yield'],
-                            "probability": f"{p['probability_percent']}%",
-                            "level": int(p['avg_level'])
-                        } for p in pokemon_details
-                    ]
-                }
-        
-        return best_zone
+        # If not found, return original (might be already correct)
+        return zone_name
 
-    def find_optimal_multistat_route(self, start_zone: str, targets: Dict[str, int], lambda_val: float, pokemon_level: int = 50) -> Dict[str, Any]:
+    async def find_optimal_path(self, start_zone: str, current_evs: Dict[str, int], target_evs: Dict[str, int], accessible_zones: List[str], has_macho_brace: bool, has_pokerus: bool, lambda_penalty: float, pokemon_level: int = 50) -> Dict[str, Any]:
         """
-        Finds the optimal sequence of zones to grind multiple stats.
-        targets: {"Attack": 252, "Speed": 252, ...}
+        Finds a sequence of zones to visit to reach target EVs.
+        Uses a greedy heuristic:
+        1. Calculate needed EVs.
+        2. Find best zone to farm needed EVs (Cost = Lambda*Dist + (1-Lambda)*Encounters).
+        3. 'Travel' there, 'Farm' until capped or exhausted.
+        4. Repeat.
         """
-        import itertools
+        # Normalize start_zone
+        start_zone = self._normalize_zone_name(start_zone)
+        
+        # Normalize accessible_zones
+        if accessible_zones:
+            accessible_zones = [self._normalize_zone_name(z) for z in accessible_zones]
 
-        # 1. Filter stats with > 0 EVs
-        active_targets = [(stat, evs) for stat, evs in targets.items() if evs > 0]
-        if not active_targets:
-            print("DEBUG: No active targets.")
-            return None
-
-        # 2. Pre-calculate yields for all active stats for all zones
-        # yields_cache[stat] = {zone: yield}
-        yields_cache = {}
-        for stat, _ in active_targets:
-            yields_cache[stat] = get_zone_ev_yields(stat, pokemon_level)
-            print(f"DEBUG: Yields for {stat} (Level {pokemon_level}): Found {len(yields_cache[stat])} zones.")
-            # print(f"DEBUG: Sample yields for {stat}: {list(yields_cache[stat].items())[:3]}")
-
-        # Check if graph is loaded
-        if not self.graph.adjacency_data:
-            print("DEBUG: Graph adjacency data is empty!")
-            return None
-        else:
-            print(f"DEBUG: Graph has {len(self.graph.adjacency_data)} zones.")
-
-        # 3. Try all permutations of stats
-        best_route = None
-        min_total_cost = float('inf')
-
-        for perm in itertools.permutations(active_targets):
-            print(f"DEBUG: Testing permutation: {[p[0] for p in perm]}")
-            # perm is a tuple of (stat, evs)
+        path = []
+        total_distance = 0
+        total_encounters = 0
+        
+        current_location = start_zone
+        current_stats = current_evs.copy()
+        
+        # Multipliers
+        multiplier = 1
+        if has_pokerus: multiplier *= 2
+        # Macho brace adds yield but we need to know base yield. 
+        # For simplicity, let's assume it doubles yield (it actually doubles EV gain).
+        if has_macho_brace: multiplier *= 2 
+        
+        # Load yields once
+        all_yields = get_all_zone_yields(pokemon_level)
+        print(f"DEBUG: Loaded yields for {len(all_yields)} zones.")
+        
+        # Safety loop limit
+        for i in range(10):
+            # 1. Calculate Needs
+            needs = {}
+            has_needs = False
+            for stat, target in target_evs.items():
+                current = current_stats.get(stat, 0)
+                if current < target:
+                    needs[stat] = target - current
+                    has_needs = True
             
-            # We use a greedy approach for each step in the permutation for simplicity,
-            # or a Viterbi-like approach if we want true optimality.
-            # Given the graph size, let's do a simplified Viterbi (Layered Graph Search).
+            print(f"DEBUG: Iteration {i}, Needs: {needs}")
             
-            # Layer 0: Start Node
-            # current_layer = { zone_name: (cumulative_cost, path_list) }
-            current_layer = {start_zone: (0, [])}
+            if not has_needs:
+                break
+                
+            # 2. Calculate Distances from current location
+            distances = self._calculate_distances(current_location)
+            print(f"DEBUG: Calculated distances from {current_location}. Reachable: {len(distances)}")
             
-            for stat, target_evs in perm:
-                next_layer = {}
-                
-                # Identify candidate zones for this stat (yield > 0)
-                # Optimization: Only consider top N zones or all valid zones?
-                # Let's take all valid zones to be safe.
-                # valid_zones = [z for z, y in yields_cache[stat].items() if y > 0]
-                
-                # We need to map DB codes back to Graph Zones?
-                # yields_cache keys are DB codes (kanto-route-1).
-                # We need to know which Graph Zone corresponds to kanto-route-1.
-                # This reverse mapping is tricky because _get_db_code is one-way heuristic.
-                # Let's iterate over Graph Zones and check match.
-                
-                graph_candidates = []
-                for g_zone in self.graph.adjacency_data.keys():
-                    y = self._match_yield(g_zone, yields_cache[stat])
-                    if y > 0:
-                        graph_candidates.append((g_zone, y))
-                
-                print(f"DEBUG: Stat {stat} has {len(graph_candidates)} graph candidates.")
+            # 3. Score Zones
+            best_zone = None
+            best_score = float('inf')
+            best_stat_to_farm = None
+            
+            for zone_name in self.graph.adjacency_data.keys():
+                # Filter accessible zones if provided
+                if accessible_zones and zone_name not in accessible_zones:
+                    continue
 
-                if not graph_candidates:
-                    # Cannot fulfill this stat
-                    print(f"DEBUG: No candidates for {stat}. Breaking permutation.")
-                    current_layer = {}
-                    break
-
-                # For each candidate zone in this layer
-                for cand_zone, yield_val in graph_candidates:
-                    encounters = math.ceil(target_evs / yield_val)
-                    
-                    # Find best previous zone to come from
-                    best_prev_cost = float('inf')
-                    best_prev_path = []
-                    
-                    # We need distances from ALL nodes in current_layer to cand_zone.
-                    # This is expensive if we run Dijkstra for each pair.
-                    # Optimization: Run Dijkstra from cand_zone backwards? Or just run from all current_layer nodes?
-                    # If current_layer has 1 node (start), it's 1 Dijkstra.
-                    # If current_layer has 20 nodes, it's 20 Dijkstras.
-                    # Better: Run Dijkstra from cand_zone (as source) to find distances TO it?
-                    # Since graph is undirected for movement (mostly), dist(A,B) ~ dist(B,A).
-                    # But our graph is directed.
-                    # Let's assume we run Dijkstra from each unique node in current_layer.
-                    # To avoid re-running, we can cache distances.
-                    
-                    # Actually, let's just pick the "Best" 3 candidates per stat to limit branching factor.
-                    pass
-
-                # Simplified Greedy Approach for Performance:
-                # Instead of full Viterbi, just pick the best zone for the current stat
-                # considering the distance from the *current best* location.
-                # But "current best" might be a local optimum.
+                dist = distances.get(zone_name, float('inf'))
+                if dist == float('inf'):
+                    continue
                 
-                # Let's stick to Viterbi but limit candidates to Top 5 by Yield.
-                graph_candidates.sort(key=lambda x: x[1], reverse=True)
-                top_candidates = graph_candidates[:5]
+                zone_yield_data = self._match_yield(zone_name, all_yields)
+                if not zone_yield_data:
+                    continue
                 
-                # If no candidates found for this stat, break this permutation
-                if not top_candidates:
-                    current_layer = {}
-                    break
-
-                # Calculate distances from all unique zones in current_layer
-                # We can optimize by grouping:
-                # For each `prev_zone` in `current_layer`, we need `dist(prev_zone, cand_zone)`.
-                # We can compute `dists = _calculate_distances(prev_zone)` once per prev_zone.
-                
-                unique_prev_zones = list(current_layer.keys())
-                
-                # Optimization: If current_layer has too many nodes, prune to top K best paths so far
-                if len(unique_prev_zones) > 5:
-                    unique_prev_zones.sort(key=lambda z: current_layer[z][0])
-                    unique_prev_zones = unique_prev_zones[:5]
-
-                for prev_zone in unique_prev_zones:
-                    prev_cost, prev_path = current_layer[prev_zone]
-                    
-                    # Calculate distances from this prev_zone to all top_candidates
-                    # We run Dijkstra once from prev_zone
-                    dists_from_prev = self._calculate_distances(prev_zone)
-                    
-                    for cand_zone, yield_val in top_candidates:
-                        # If cand_zone is not reachable, skip
-                        if cand_zone not in dists_from_prev:
-                            # print(f"DEBUG: {cand_zone} unreachable from {prev_zone}")
-                            continue 
-                            
-                        dist = dists_from_prev[cand_zone]
-                        encounters = math.ceil(target_evs / yield_val)
-                        step_cost = encounters + (lambda_val * dist)
-                        total_cost = prev_cost + step_cost
+                # Check if this zone provides any needed stat
+                for stat, amount_needed in needs.items():
+                    avg_yield = zone_yield_data.get(stat, 0) * multiplier
+                    if avg_yield > 0.1: # Threshold to consider useful
+                        # Estimate encounters needed
+                        encounters_needed = amount_needed / avg_yield
                         
-                        # Update next_layer
-                        if cand_zone not in next_layer or total_cost < next_layer[cand_zone][0]:
-                            # Get pokemon details for this step
-                            db_code = self._get_db_code(cand_zone)
-                            # Fix prefix matching logic duplication
-                            if db_code not in yields_cache[stat] and "-" in db_code:
-                                prefix = db_code.rsplit("-", 1)[0]
-                                if prefix in yields_cache[stat]:
-                                    db_code = prefix
-                                    
-                            pkmn_details = get_zone_details(db_code, stat, pokemon_level)
-                            
-                            step_info = {
-                                "stat": stat,
-                                "zone": cand_zone,
-                                "ev_yield": yield_val,
-                                "encounters": encounters,
-                                "distance": dist,
-                                "step_cost": step_cost,
-                                "pokemon_list": [
-                                    {
-                                        "name": p['name'],
-                                        "ev_yield": p['ev_yield'],
-                                        "probability": f"{p['probability_percent']}%",
-                                        "level": int(p['avg_level'])
-                                    } for p in pkmn_details
-                                ]
-                            }
-                            
-                            next_layer[cand_zone] = (total_cost, prev_path + [step_info])
-                
-                current_layer = next_layer
-                if not current_layer:
-                    print(f"DEBUG: Dead end for permutation at stat {stat}. No reachable candidates.")
-                    break # Dead end for this permutation
+                        # Score
+                        # Normalize distance (e.g. 100 tiles ~ 1 encounter?)
+                        # Let's say 1 tile = 1 unit, 1 encounter = 20 units?
+                        # Or just use raw values and let lambda handle it.
+                        # Problem: Distance is usually 0-500, Encounters 0-252.
+                        # Let's assume user lambda is balanced for raw values.
+                        
+                        score = (lambda_penalty * dist) + ((1 - lambda_penalty) * encounters_needed * 10) # *10 to weight encounters more?
+                        
+                        if score < best_score:
+                            best_score = score
+                            best_zone = zone_name
+                            best_stat_to_farm = stat
             
-            # End of permutation
-            if current_layer:
-                # Find best end state
-                for end_zone, (cost, path) in current_layer.items():
-                    if cost < min_total_cost:
-                        min_total_cost = cost
-                        best_route = path
+            if not best_zone:
+                # Cannot fulfill needs
+                break
+                
+            # 4. Add Travel Step
+            dist_to_zone = distances[best_zone]
+            if dist_to_zone > 0:
+                path.append({
+                    "type": "travel",
+                    "to": best_zone,
+                    "distance": dist_to_zone
+                })
+                total_distance += dist_to_zone
+                current_location = best_zone
+            
+            # 5. Add Farm Step
+            # Calculate exact encounters needed for the chosen stat
+            # We need to know WHICH pokemon to kill.
+            # Simple approach: Kill everything that gives the stat? Or just the best one?
+            # For now, let's simulate "farming the zone" generally.
+            
+            db_code = self._get_db_code(best_zone)
+            encounters = get_zone_encounters(db_code, pokemon_level)
+            
+            # Filter for pokemon that give the target stat
+            useful_encounters = [e for e in encounters if e[f'ev_{best_stat_to_farm.lower().replace(" ", "_")}'] > 0]
+            
+            if not useful_encounters:
+                # Should not happen given logic above
+                break
+                
+            # Sort by yield/prob?
+            # Let's pick the most common one that gives the stat
+            target_pokemon = sorted(useful_encounters, key=lambda x: x['probability_percent'], reverse=True)[0]
+            
+            stat_key = f'ev_{best_stat_to_farm.lower().replace(" ", "_")}'
+            yield_per_kill = target_pokemon[stat_key] * multiplier
+            needed = needs[best_stat_to_farm]
+            
+            kills = math.ceil(needed / yield_per_kill)
+            
+            # Update stats
+            # Note: This is a simplification. We might get other EVs too.
+            # For a robust solution, we should simulate the side effects.
+            
+            gained_evs = {}
+            for k in ['ev_hp', 'ev_attack', 'ev_defense', 'ev_sp_attack', 'ev_sp_defense', 'ev_speed']:
+                stat_name = k.replace('ev_', '').replace('_', ' ').title()
+                if stat_name == 'Hp': stat_name = 'HP'
+                if stat_name == 'Sp Attack': stat_name = 'Special Attack'
+                if stat_name == 'Sp Defense': stat_name = 'Special Defense'
+                
+                gain = kills * target_pokemon[k] * multiplier
+                current_stats[stat_name] = current_stats.get(stat_name, 0) + gain
+                gained_evs[stat_name] = gain
 
-        if best_route:
-            return {
-                "total_cost": min_total_cost,
-                "route": best_route
-            }
-        return None
+            path.append({
+                "type": "farm",
+                "zone": best_zone,
+                "target_pokemon": target_pokemon['name'],
+                "count": kills,
+                "stat_focus": best_stat_to_farm,
+                "gained_evs": gained_evs
+            })
+            
+            total_encounters += kills
+            
+            # Check if we overshot caps (252)
+            for s in current_stats:
+                if current_stats[s] > 252:
+                    current_stats[s] = 252 # Cap it
+                    
+        return {
+            "path": path,
+            "total_distance": total_distance,
+            "total_encounters": total_encounters,
+            "final_stats": current_stats
+        }

@@ -29,10 +29,13 @@ services:
       postgres:
         condition: service_healthy
     working_dir: /app
+    volumes:
+      - ./db/scrapingNew:/app/scrapingNew
     command: >
       sh -c "
         echo 'Esperando que Postgres esté listo...' &&
         python3 ./02_load_data.py &&
+        python3 ./04_load_geography.py &&
         python3 ./03_verify_data.py
       "
   backend:
