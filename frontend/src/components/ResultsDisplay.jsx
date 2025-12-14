@@ -68,6 +68,18 @@ const ResultsDisplay = ({ result }) => {
                     ))}
                 </div>
             </div>
+
+            {/* Reasoning Log */}
+            {result.reasoning && result.reasoning.length > 0 && (
+                <div className="mt-8 pt-6 border-t">
+                    <h3 className="font-bold text-lg text-gray-700 mb-3">Lógica de Decisión (Debug)</h3>
+                    <div className="bg-gray-100 p-4 rounded text-xs font-mono text-gray-600 overflow-x-auto">
+                        {result.reasoning.map((log, i) => (
+                            <div key={i} className="mb-1">{log}</div>
+                        ))}
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

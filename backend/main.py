@@ -1,4 +1,6 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from database import get_all_pokemon, get_all_zones
@@ -39,6 +41,14 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+@app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request: Request, exc: RequestValidationError):
+    logger.error(f"Validation error: {exc}")
+    return JSONResponse(
+        status_code=422,
+        content={"detail": exc.errors(), "body": exc.body},
+    )
 
 @app.get("/")
 def read_root():
@@ -122,6 +132,19 @@ def get_zones():
         logger.error(f"Error obteniendo zonas: {e}")
         raise HTTPException(status_code=500, detail=f"Error al consultar zonas: {str(e)}")
 
+@app.get("/api/graph")
+def get_graph_data():
+    """
+    Retorna la estructura completa del grafo (nodos y aristas) para visualización.
+    """
+    try:
+        logger.info("Obteniendo datos del grafo para visualización...")
+        # graph.adjacency_data es el dict cargado desde adjacency.json
+        return graph.adjacency_data
+    except Exception as e:
+        logger.error(f"Error obteniendo grafo: {e}")
+        raise HTTPException(status_code=500, detail=f"Error al obtener grafo: {str(e)}")
+
 @app.get("/health")
 def health_check():
     """Endpoint para verificar que el servicio está activo"""
@@ -134,9 +157,9 @@ class OptimizationRequest(BaseModel):
     pokemon_level: int = 50
     start_zone: str
     accessible_zones: List[str] = []
-    target_stat: str
-    target_evs: int
-    has_macho_brace: bool = False
+    target_evs: Dict[str, int]
+    current_evs: Dict[str, int] = {}
+    held_item: Optional[str] = None
     has_pokerus: bool = False
     lambda_penalty: float = 0.1
 
@@ -146,13 +169,19 @@ async def optimize_ev_training(request: OptimizationRequest):
     Calcula la ruta óptima para entrenar EVs.
     """
     try:
-        logger.info(f"Optimizando desde {request.start_zone} para {request.target_stat}")
+        logger.info(f"Optimizando desde {request.start_zone} para {request.target_evs}")
         
-        # Construct target_evs dict
-        target_evs_dict = {request.target_stat: request.target_evs}
-        
-        # Construct current_evs dict (assume 0 for now as frontend doesn't send it)
-        current_evs_dict = {
+        # Validate EV limits
+        total_target = sum(request.target_evs.values())
+        if total_target > 510:
+            raise HTTPException(status_code=400, detail=f"Total target EVs cannot exceed 510 (got {total_target})")
+            
+        for stat, val in request.target_evs.items():
+            if val > 252:
+                raise HTTPException(status_code=400, detail=f"{stat} EVs cannot exceed 252 (got {val})")
+
+        # Use request.current_evs directly, defaulting to 0 if empty
+        current_evs_dict = request.current_evs or {
             "HP": 0, "Attack": 0, "Defense": 0, 
             "Special Attack": 0, "Special Defense": 0, "Speed": 0
         }
@@ -160,9 +189,9 @@ async def optimize_ev_training(request: OptimizationRequest):
         result = await optimizer.find_optimal_path(
             start_zone=request.start_zone,
             current_evs=current_evs_dict,
-            target_evs=target_evs_dict,
+            target_evs=request.target_evs,
             accessible_zones=request.accessible_zones,
-            has_macho_brace=request.has_macho_brace,
+            held_item=request.held_item,
             has_pokerus=request.has_pokerus,
             lambda_penalty=request.lambda_penalty,
             pokemon_level=request.pokemon_level
@@ -171,10 +200,11 @@ async def optimize_ev_training(request: OptimizationRequest):
         # Add metadata to result for frontend display
         if result:
             result['pokemon_name'] = request.pokemon_name
-            result['target_stat'] = request.target_stat
+            result['target_evs'] = request.target_evs
             result['total_battles'] = result['total_encounters']
             # Generate a description
             result['optimal_route_description'] = f"Start at {request.start_zone}. Travel {result['total_distance']} tiles. Defeat {result['total_encounters']} Pokemon."
+            result['reasoning'] = result.get('decision_log', [])
             
             # Transform path for frontend if needed
             # Frontend expects: ev_path: [{pokemon, ev_yield, count}]
@@ -185,12 +215,18 @@ async def optimize_ev_training(request: OptimizationRequest):
                 if step['type'] == 'farm':
                     frontend_path.append({
                         "pokemon": step['target_pokemon'],
-                        "ev_yield": f"{step['stat_focus']} (Yield TBD)", # Simplify
-                        "count": step['count']
+                        "ev_yield": f"{step['stat_focus']}", 
+                        "count": step['count'],
+                        "zone": step['zone']
                     })
             result['ev_path'] = frontend_path
 
         return result
+    except ValueError as ve:
+        logger.warning(f"Validation error: {ve}")
+        raise HTTPException(status_code=400, detail=str(ve))
+    except HTTPException as he:
+        raise he
     except Exception as e:
         logger.error(f"Error en optimización: {e}")
         raise HTTPException(status_code=500, detail=f"Error calculando optimización: {str(e)}")

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import OptimizationForm from './components/OptimizationForm';
 import ResultsDisplay from './components/ResultsDisplay';
+import MapVisualization from './components/MapVisualization';
 
 const API_BASE_URL = 'http://localhost:8000';
 
@@ -11,6 +12,7 @@ const App = () => {
     const [error, setError] = useState(null);
     const [result, setResult] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+    const [showMap, setShowMap] = useState(false);
 
     // Fetch initial data
     useEffect(() => {
@@ -84,34 +86,51 @@ const App = () => {
                     <p className="text-lg font-semibold text-gray-700">Loading game data...</p>
                 </div>
             ) : (
-                <div className="w-full max-w-6xl bg-white shadow-2xl rounded-xl overflow-hidden grid md:grid-cols-3 gap-8 p-6 lg:p-10 border-t-8 border-red-500">
+                <div className="w-full max-w-6xl bg-white shadow-2xl rounded-xl grid md:grid-cols-3 gap-8 p-6 lg:p-10 border-t-8 border-red-500">
                     
                     {/* Header & Form Column */}
                     <div className="md:col-span-2 space-y-6">
-                        <h1 className="text-3xl font-extrabold text-red-600 flex items-center">
-                            <PokeballIcon className="w-8 h-8 mr-3 text-red-500"/>
-                            EV Optimization Planner
-                        </h1>
-                        <p className="text-gray-600">
-                            Configure your Pokemon and training goals to find the optimal EV training route.
-                        </p>
+                        <div className="flex justify-between items-center">
+                            <h1 className="text-3xl font-extrabold text-red-600 flex items-center">
+                                <PokeballIcon className="w-8 h-8 mr-3 text-red-500"/>
+                                EV Optimization Planner
+                            </h1>
+                            <button
+                                onClick={() => setShowMap(!showMap)}
+                                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                            >
+                                {showMap ? 'Hide Map' : 'Show Map'}
+                            </button>
+                        </div>
+                        
+                        {showMap ? (
+                            <MapVisualization />
+                        ) : (
+                            <>
+                                <p className="text-gray-600">
+                                    Configure your Pokemon and training goals to find the optimal EV training route.
+                                </p>
 
-                        <OptimizationForm 
-                            pokemonList={pokemonList}
-                            zonesList={zonesList}
-                            onSubmit={handleOptimizationSubmit}
-                            isLoading={isLoading}
-                        />
+                                <OptimizationForm 
+                                    pokemonList={pokemonList}
+                                    zonesList={zonesList}
+                                    onSubmit={handleOptimizationSubmit}
+                                    isLoading={isLoading}
+                                />
+                            </>
+                        )}
                     </div>
 
                     {/* Results Column */}
-                    <div className="md:col-span-1">
-                        <ResultsDisplay 
-                            result={result}
-                            isLoading={isLoading}
-                            error={error}
-                        />
-                    </div>
+                    {!showMap && (
+                        <div className="md:col-span-1">
+                            <ResultsDisplay 
+                                result={result}
+                                isLoading={isLoading}
+                                error={error}
+                            />
+                        </div>
+                    )}
                 </div>
             )}
         </div>

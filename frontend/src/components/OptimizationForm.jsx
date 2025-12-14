@@ -8,6 +8,8 @@ const OptimizationForm = ({ pokemonList, zoneList, onSubmit, isLoading }) => {
     const [startZone, setStartZone] = useState(null);
     const [level, setLevel] = useState(50);
     const [lambda, setLambda] = useState(0.5);
+    const [heldItem, setHeldItem] = useState("");
+    const [hasPokerus, setHasPokerus] = useState(false);
     
     const [currentEvs, setCurrentEvs] = useState({
         "HP": 0, "Attack": 0, "Defense": 0, 
@@ -33,20 +35,24 @@ const OptimizationForm = ({ pokemonList, zoneList, onSubmit, isLoading }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (!selectedPokemon) {
+            alert("Por favor selecciona o escribe un Pokémon.");
+            return;
+        }
         if (!startZone) {
-            alert("Por favor selecciona una zona de inicio.");
+            alert("Por favor selecciona o escribe una zona de inicio.");
             return;
         }
         
-        // Filter out 0 targets if needed, or send all.
-        // Backend expects dicts.
-        
         onSubmit({
-            start_zone: startZone.code || startZone, // Assuming zone object has code
+            pokemon_name: selectedPokemon,
+            start_zone: startZone,
             current_evs: currentEvs,
             target_evs: targetEvs,
             pokemon_level: level,
-            lambda_val: lambda
+            lambda_penalty: lambda,
+            held_item: heldItem || null,
+            has_pokerus: hasPokerus
         });
     };
 
@@ -73,15 +79,45 @@ const OptimizationForm = ({ pokemonList, zoneList, onSubmit, isLoading }) => {
                         placeholder="Ej: Pallet Town"
                     />
                     
-                    <div className="mb-4">
-                        <label className="block text-sm font-bold text-gray-700 mb-1">Nivel del Pokémon</label>
+                    <div className="grid grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <label className="block text-sm font-bold text-gray-700 mb-1">Nivel</label>
+                            <input 
+                                type="number" 
+                                value={level} 
+                                onChange={(e) => setLevel(parseInt(e.target.value))}
+                                className="w-full p-2 border border-gray-300 rounded"
+                                min="1" max="100"
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-sm font-bold text-gray-700 mb-1">Objeto</label>
+                            <select 
+                                value={heldItem} 
+                                onChange={(e) => setHeldItem(e.target.value)}
+                                className="w-full p-2 border border-gray-300 rounded"
+                            >
+                                <option value="">Ninguno</option>
+                                <option value="Macho Brace">Macho Brace (x2)</option>
+                                <option value="Power Weight">Power Weight (HP)</option>
+                                <option value="Power Bracer">Power Bracer (Atk)</option>
+                                <option value="Power Belt">Power Belt (Def)</option>
+                                <option value="Power Lens">Power Lens (SpA)</option>
+                                <option value="Power Band">Power Band (SpD)</option>
+                                <option value="Power Anklet">Power Anklet (Spe)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div className="mb-4 flex items-center">
                         <input 
-                            type="number" 
-                            value={level} 
-                            onChange={(e) => setLevel(parseInt(e.target.value))}
-                            className="w-full p-2 border border-gray-300 rounded"
-                            min="1" max="100"
+                            type="checkbox" 
+                            id="pokerus"
+                            checked={hasPokerus}
+                            onChange={(e) => setHasPokerus(e.target.checked)}
+                            className="mr-2 h-4 w-4 text-blue-600"
                         />
+                        <label htmlFor="pokerus" className="text-sm font-bold text-gray-700">Tiene Pokérus</label>
                     </div>
 
                     <div className="mb-4">

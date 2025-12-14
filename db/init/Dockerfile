@@ -10,7 +10,7 @@ RUN pip install psycopg2
 WORKDIR /app
 
 # Copia ficheros al contenedor
-COPY 02_load_data.py 03_verify_data.py 04_load_geography.py Pokedex_Limpiado.csv /app
+COPY 02_load_data.py 03_verify_data.py 04_load_geography.py 05_load_centralized_data.py Pokedex_Limpiado.csv /app
 COPY ./locations/csv /app/locations/csv
 
 CMD ["python3"]

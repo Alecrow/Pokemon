@@ -7,8 +7,12 @@ const SelectWithSearch = ({ items, label, selectedItem, onSelectItem, placeholde
 
     // Update query when selectedItem changes externally
     useEffect(() => {
-        if (selectedItem) {
-            setQuery(selectedItem.name || selectedItem);
+        if (selectedItem !== null && selectedItem !== undefined) {
+            const name = selectedItem.name || selectedItem;
+            // Only update if different to avoid cursor jumping if we were to sync back
+            if (name !== query) {
+                setQuery(name);
+            }
         }
     }, [selectedItem]);
 
@@ -16,7 +20,10 @@ const SelectWithSearch = ({ items, label, selectedItem, onSelectItem, placeholde
         if (!items) return [];
         return items.filter(item => {
             const name = item.name || item;
-            return name.toLowerCase().includes(query.toLowerCase());
+            // Normalize: remove spaces, lowercase
+            const normalizedName = name.toLowerCase().replace(/[^a-z0-9]/g, '');
+            const normalizedQuery = query.toLowerCase().replace(/[^a-z0-9]/g, '');
+            return normalizedName.includes(normalizedQuery);
         });
     }, [query, items]);
 
@@ -45,22 +52,43 @@ const SelectWithSearch = ({ items, label, selectedItem, onSelectItem, placeholde
                 placeholder={placeholder || "Buscar..."}
                 value={query}
                 onChange={(e) => {
-                    setQuery(e.target.value);
+                    const val = e.target.value;
+                    setQuery(val);
                     setIsOpen(true);
+                    
+                    // Allow custom values by updating parent immediately
+                    onSelectItem(val);
+                    
+                    // Auto-select if exact match found (case-insensitive, ignoring spaces)
+                    if (items) {
+                        const match = items.find(item => {
+                            const name = item.name || item;
+                            const nName = name.toLowerCase().replace(/[^a-z0-9]/g, '');
+                            const nVal = val.toLowerCase().replace(/[^a-z0-9]/g, '');
+                            return nName === nVal;
+                        });
+                        if (match) {
+                            onSelectItem(match);
+                        }
+                    }
                 }}
                 onFocus={() => setIsOpen(true)}
             />
-            {isOpen && filteredItems.length > 0 && (
-                <ul className="absolute z-10 w-full bg-white border border-gray-300 rounded mt-1 max-h-60 overflow-y-auto shadow-lg">
-                    {filteredItems.map((item, index) => (
-                        <li
-                            key={index}
-                            className="p-2 hover:bg-blue-100 cursor-pointer"
-                            onClick={() => handleSelect(item)}
-                        >
-                            {item.name || item}
-                        </li>
-                    ))}
+            {isOpen && (
+                <ul className="absolute z-[1000] w-full bg-white border border-gray-300 rounded mt-1 max-h-60 overflow-y-auto shadow-2xl">
+                    {filteredItems.length > 0 ? (
+                        filteredItems.map((item, index) => (
+                            <li
+                                key={index}
+                                className="p-2 hover:bg-blue-100 cursor-pointer text-gray-800"
+                                onClick={() => handleSelect(item)}
+                            >
+                                {item.name || item}
+                            </li>
+                        ))
+                    ) : (
+                        <li className="p-2 text-gray-500 italic">No se encontraron resultados</li>
+                    )}
                 </ul>
             )}
         </div>

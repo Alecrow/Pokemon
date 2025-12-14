@@ -1,0 +1,1529 @@
+Pokemon,Ubicacion,Tasa_Aparicion,Metodo,Juego
+Caterpie,Ruta 2,5,Caminar,Rojo Fuego
+Caterpie,Ruta 24,20,Caminar,Rojo Fuego
+Caterpie,Ruta 25,20,Caminar,Rojo Fuego
+Caterpie,Bosque Verde,40,Caminar,Rojo Fuego
+Caterpie,Bosquejo,10,Caminar,Rojo Fuego
+Caterpie,Ruta 2,5,Caminar,Verde Hoja
+Caterpie,Ruta 24,20,Caminar,Verde Hoja
+Caterpie,Ruta 25,20,Caminar,Verde Hoja
+Caterpie,Bosque Verde,40,Caminar,Verde Hoja
+Caterpie,Bosquejo,10,Caminar,Verde Hoja
+Metapod,Ruta 24,1,Caminar,Rojo Fuego
+Metapod,Ruta 25,1,Caminar,Rojo Fuego
+Metapod,Bosque Verde,5,Caminar,Rojo Fuego
+Metapod,Bosquejo,5,Caminar,Rojo Fuego
+Metapod,Ruta 24,4,Caminar,Verde Hoja
+Metapod,Ruta 25,4,Caminar,Verde Hoja
+Metapod,Bosque Verde,10,Caminar,Verde Hoja
+Metapod,Bosquejo,20,Caminar,Verde Hoja
+Weedle,Ruta 2,5,Caminar,Rojo Fuego
+Weedle,Ruta 24,20,Caminar,Rojo Fuego
+Weedle,Ruta 25,20,Caminar,Rojo Fuego
+Weedle,Bosque Verde,40,Caminar,Rojo Fuego
+Weedle,Bosquejo,10,Caminar,Rojo Fuego
+Weedle,Ruta 2,5,Caminar,Verde Hoja
+Weedle,Ruta 24,20,Caminar,Verde Hoja
+Weedle,Ruta 25,20,Caminar,Verde Hoja
+Weedle,Bosque Verde,40,Caminar,Verde Hoja
+Weedle,Bosquejo,10,Caminar,Verde Hoja
+Kakuna,Ruta 24,4,Caminar,Rojo Fuego
+Kakuna,Ruta 25,4,Caminar,Rojo Fuego
+Kakuna,Bosque Verde,10,Caminar,Rojo Fuego
+Kakuna,Bosquejo,20,Caminar,Rojo Fuego
+Kakuna,Ruta 24,1,Caminar,Verde Hoja
+Kakuna,Ruta 25,1,Caminar,Verde Hoja
+Kakuna,Bosque Verde,5,Caminar,Verde Hoja
+Kakuna,Bosquejo,5,Caminar,Verde Hoja
+Pidgey,Ruta 1,50,Caminar,Rojo Fuego
+Pidgey,Ruta 2,45,Caminar,Rojo Fuego
+Pidgey,Ruta 3,30,Caminar,Rojo Fuego
+Pidgey,Ruta 7,30,Caminar,Rojo Fuego
+Pidgey,Ruta 8,30,Caminar,Rojo Fuego
+Pidgey,Ruta 12,30,Caminar,Rojo Fuego
+Pidgey,Puente Unión,30,Caminar,Rojo Fuego
+Pidgey,Ruta 5,40,Caminar,Rojo Fuego
+Pidgey,Ruta 6,40,Caminar,Rojo Fuego
+Pidgey,Ruta 13,20,Caminar,Rojo Fuego
+Pidgey,Ruta 15,20,Caminar,Rojo Fuego
+Pidgey,Prado Isla Inta,20,Caminar,Rojo Fuego
+Pidgey,Ruta 14,10,Caminar,Rojo Fuego
+Pidgey,Bosque Baya,10,Caminar,Rojo Fuego
+Pidgey,Ruta 24,15,Caminar,Rojo Fuego
+Pidgey,Ruta 25,15,Caminar,Rojo Fuego
+Pidgey,Ruta 1,50,Caminar,Verde Hoja
+Pidgey,Ruta 2,45,Caminar,Verde Hoja
+Pidgey,Ruta 3,30,Caminar,Verde Hoja
+Pidgey,Ruta 7,30,Caminar,Verde Hoja
+Pidgey,Ruta 8,30,Caminar,Verde Hoja
+Pidgey,Ruta 12,30,Caminar,Verde Hoja
+Pidgey,Puente Unión,30,Caminar,Verde Hoja
+Pidgey,Ruta 5,40,Caminar,Verde Hoja
+Pidgey,Ruta 6,40,Caminar,Verde Hoja
+Pidgey,Ruta 13,20,Caminar,Verde Hoja
+Pidgey,Ruta 15,20,Caminar,Verde Hoja
+Pidgey,Prado Isla Inta,20,Caminar,Verde Hoja
+Pidgey,Ruta 14,10,Caminar,Verde Hoja
+Pidgey,Bosque Baya,10,Caminar,Verde Hoja
+Pidgey,Ruta 24,15,Caminar,Verde Hoja
+Pidgey,Ruta 25,15,Caminar,Verde Hoja
+Pidgeotto,Ruta 13,5,Caminar,Rojo Fuego
+Pidgeotto,Ruta 14,5,Caminar,Rojo Fuego
+Pidgeotto,Ruta 15,5,Caminar,Rojo Fuego
+Pidgeotto,Bosque Baya,20,Caminar,Rojo Fuego
+Pidgeotto,Prado Isla Inta,15,Caminar,Rojo Fuego
+Pidgeotto,Puente Unión,15,Caminar,Rojo Fuego
+Pidgeotto,Ruta 13,5,Caminar,Verde Hoja
+Pidgeotto,Ruta 14,5,Caminar,Verde Hoja
+Pidgeotto,Ruta 15,5,Caminar,Verde Hoja
+Pidgeotto,Bosque Baya,20,Caminar,Verde Hoja
+Pidgeotto,Prado Isla Inta,15,Caminar,Verde Hoja
+Pidgeotto,Puente Unión,15,Caminar,Verde Hoja
+Rattata,Ruta 1,50,Caminar,Rojo Fuego
+Rattata,Ruta 2,45,Caminar,Rojo Fuego
+Rattata,Ruta 22,45,Caminar,Rojo Fuego
+Rattata,Ruta 4,35,Caminar,Rojo Fuego
+Rattata,Ruta 9,40,Caminar,Rojo Fuego
+Rattata,Ruta 16,30,Caminar,Rojo Fuego
+Rattata,Ruta 17,5,Caminar,Rojo Fuego
+Rattata,Ruta 18,5,Caminar,Rojo Fuego
+Rattata,Mansión Pokémon (Planta Baja),15,Caminar,Rojo Fuego
+Rattata,Mansión Pokémon (Planta 1),15,Caminar,Rojo Fuego
+Rattata,Mansión Pokémon (Planta 2),15,Caminar,Rojo Fuego
+Rattata,Mansión Pokémon (Sótano),5,Caminar,Rojo Fuego
+Rattata,Ruta 1,50,Caminar,Verde Hoja
+Rattata,Ruta 2,45,Caminar,Verde Hoja
+Rattata,Ruta 22,45,Caminar,Verde Hoja
+Rattata,Ruta 4,35,Caminar,Verde Hoja
+Rattata,Ruta 9,40,Caminar,Verde Hoja
+Rattata,Ruta 16,30,Caminar,Verde Hoja
+Rattata,Ruta 17,5,Caminar,Verde Hoja
+Rattata,Ruta 18,5,Caminar,Verde Hoja
+Rattata,Mansión Pokémon (Planta Baja),15,Caminar,Verde Hoja
+Rattata,Mansión Pokémon (Planta 1),15,Caminar,Verde Hoja
+Rattata,Mansión Pokémon (Planta 2),15,Caminar,Verde Hoja
+Rattata,Mansión Pokémon (Sótano),5,Caminar,Verde Hoja
+Raticate,Ruta 16,5,Caminar,Rojo Fuego
+Raticate,Ruta 17,25,Caminar,Rojo Fuego
+Raticate,Ruta 18,15,Caminar,Rojo Fuego
+Raticate,Mansión Pokémon,30,Caminar,Rojo Fuego
+Raticate,Ruta 16,5,Caminar,Verde Hoja
+Raticate,Ruta 17,25,Caminar,Verde Hoja
+Raticate,Ruta 18,15,Caminar,Verde Hoja
+Raticate,Mansión Pokémon,30,Caminar,Verde Hoja
+Spearow,Ruta 3,35,Caminar,Rojo Fuego
+Spearow,Ruta 4,35,Caminar,Rojo Fuego
+Spearow,Ruta 9,35,Caminar,Rojo Fuego
+Spearow,Ruta 10,35,Caminar,Rojo Fuego
+Spearow,Ruta 11,35,Caminar,Rojo Fuego
+Spearow,Playa Tesoro,35,Caminar,Rojo Fuego
+Spearow,Ruta 16,30,Caminar,Rojo Fuego
+Spearow,Ruta 17,30,Caminar,Rojo Fuego
+Spearow,Ruta 18,30,Caminar,Rojo Fuego
+Spearow,Ruta 22,10,Caminar,Rojo Fuego
+Spearow,Ruta 23,15,Caminar,Rojo Fuego
+Spearow,Cabo Extremo,20,Caminar,Rojo Fuego
+Spearow,Entrada al Cañón,20,Caminar,Rojo Fuego
+Spearow,Valle Ruinas,20,Caminar,Rojo Fuego
+Spearow,Vía Acuática,20,Caminar,Rojo Fuego
+Spearow,Camino Candente,25,Caminar,Rojo Fuego
+Spearow,Monte Ascuas (Ladera),15,Caminar,Rojo Fuego
+Spearow,Ruta 3,35,Caminar,Verde Hoja
+Spearow,Ruta 4,35,Caminar,Verde Hoja
+Spearow,Ruta 9,35,Caminar,Verde Hoja
+Spearow,Ruta 10,35,Caminar,Verde Hoja
+Spearow,Ruta 11,35,Caminar,Verde Hoja
+Spearow,Playa Tesoro,35,Caminar,Verde Hoja
+Spearow,Ruta 16,30,Caminar,Verde Hoja
+Spearow,Ruta 17,30,Caminar,Verde Hoja
+Spearow,Ruta 18,30,Caminar,Verde Hoja
+Spearow,Ruta 22,10,Caminar,Verde Hoja
+Spearow,Ruta 23,15,Caminar,Verde Hoja
+Spearow,Cabo Extremo,20,Caminar,Verde Hoja
+Spearow,Entrada al Cañón,20,Caminar,Verde Hoja
+Spearow,Valle Ruinas,20,Caminar,Verde Hoja
+Spearow,Vía Acuática,20,Caminar,Verde Hoja
+Spearow,Camino Candente,25,Caminar,Verde Hoja
+Spearow,Monte Ascuas (Ladera),10,Caminar,Verde Hoja
+Fearow,Ruta 17,5,Caminar,Rojo Fuego
+Fearow,Ruta 18,15,Caminar,Rojo Fuego
+Fearow,Entrada al Cañón,15,Caminar,Rojo Fuego
+Fearow,Vía Acuática,15,Caminar,Rojo Fuego
+Fearow,Ruta 23,25,Caminar,Rojo Fuego
+Fearow,Cabo Extremo,10,Caminar,Rojo Fuego
+Fearow,Camino Candente,10,Caminar,Rojo Fuego
+Fearow,Cañón Sétano,10,Caminar,Rojo Fuego
+Fearow,Valle Ruinas,10,Caminar,Rojo Fuego
+Fearow,Monte Ascuas (Ladera),25,Caminar,Rojo Fuego
+Fearow,Playa Tesoro,20,Caminar,Rojo Fuego
+Fearow,Ruta 17,5,Caminar,Verde Hoja
+Fearow,Ruta 18,15,Caminar,Verde Hoja
+Fearow,Cañón Sétano,15,Caminar,Verde Hoja
+Fearow,Entrada al Cañón,15,Caminar,Verde Hoja
+Fearow,Vía Acuática,15,Caminar,Verde Hoja
+Fearow,Ruta 23,25,Caminar,Verde Hoja
+Fearow,Cabo Extremo,10,Caminar,Verde Hoja
+Fearow,Camino Candente,10,Caminar,Verde Hoja
+Fearow,Valle Ruinas,10,Caminar,Verde Hoja
+Fearow,Monte Ascuas (Ladera),25,Caminar,Verde Hoja
+Fearow,Playa Tesoro,20,Caminar,Verde Hoja
+Ekans,Ruta 4,25,Caminar,Rojo Fuego
+Ekans,Ruta 9,25,Caminar,Rojo Fuego
+Ekans,Ruta 10,25,Caminar,Rojo Fuego
+Ekans,Ruta 8,20,Caminar,Rojo Fuego
+Ekans,Ruta 23,20,Caminar,Rojo Fuego
+Ekans,Ruta 11,40,Caminar,Rojo Fuego
+Arbok,Ruta 23,5,Caminar,Rojo Fuego
+Arbok,Calle Victoria,5,Caminar,Rojo Fuego
+Pikachu,Bosque Verde,5,Caminar,Rojo Fuego
+Pikachu,Central de Energía,25,Caminar,Rojo Fuego
+Pikachu,Bosque Verde,5,Caminar,Verde Hoja
+Pikachu,Central de Energía,25,Caminar,Verde Hoja
+Sandshrew,Ruta 4,25,Caminar,Verde Hoja
+Sandshrew,Ruta 9,25,Caminar,Verde Hoja
+Sandshrew,Ruta 10,25,Caminar,Verde Hoja
+Sandshrew,Ruta 8,20,Caminar,Verde Hoja
+Sandshrew,Ruta 23,20,Caminar,Verde Hoja
+Sandshrew,Ruta 11,40,Caminar,Verde Hoja
+Sandslash,Ruta 23,5,Caminar,Verde Hoja
+Sandslash,Calle Victoria,5,Caminar,Verde Hoja
+Nidoran♀,Entrada al Paso Subterráneo de la Ruta 5,100%,Intercambio Interno,Rojo Fuego
+Nidoran♀,Ruta 3,1,Caminar,Rojo Fuego
+Nidoran♀,Zona Safari (Zona 1),5,Caminar,Rojo Fuego
+Nidoran♀,Zona Safari (Zona 3),5,Caminar,Rojo Fuego
+Nidoran♀,Ruta 3,14,Caminar,Verde Hoja
+Nidoran♀,Zona Safari,20,Caminar,Verde Hoja
+Nidorina,Primer Piso de la Casa que Comunica la Ruta 11 con la Ruta 12 Evolucionar: Nidoran♀ (Al Llegar al Nivel 16),100%,Intercambio Interno,Rojo Fuego
+Nidorina,Zona Safari (Zona Central),5,Caminar,Rojo Fuego
+Nidorina,Zona Safari (Zona 2),5,Caminar,Rojo Fuego
+Nidorina,Zona Safari,10,Caminar,Verde Hoja
+Nidoran♂,Ruta 3,14,Caminar,Rojo Fuego
+Nidoran♂,Zona Safari,20,Caminar,Rojo Fuego
+Nidoran♂,Entrada al Paso Subterráneo de la Ruta 5,100%,Intercambio Interno,Verde Hoja
+Nidoran♂,Ruta 3,1,Caminar,Verde Hoja
+Nidoran♂,Zona Safari (Zona 1),5,Caminar,Verde Hoja
+Nidoran♂,Zona Safari (Zona 3),5,Caminar,Verde Hoja
+Nidorino,Zona Safari,10,Caminar,Rojo Fuego
+Nidorino,Primer Piso de la Casa que Comunica la Ruta 11 con la Ruta 12 Evolucionar: Nidoran♂ (Al Llegar al Nivel 16),100%,Intercambio Interno,Verde Hoja
+Nidorino,Zona Safari (Zona Central),5,Caminar,Verde Hoja
+Nidorino,Zona Safari (Zona 2),5,Caminar,Verde Hoja
+Clefairy,Monte Moon (Planta Baja),1,Caminar,Rojo Fuego
+Clefairy,Monte Moon (Sótano 2),6,Caminar,Rojo Fuego
+Clefairy,Casino (Ciudad Azulona),500 Fichas,Canje,Rojo Fuego
+Clefairy,Monte Moon (Planta Baja),1,Caminar,Verde Hoja
+Clefairy,Monte Moon (Sótano 2),6,Caminar,Verde Hoja
+Clefairy,Casino (Ciudad Azulona),750 Fichas,Canje,Verde Hoja
+Vulpix,Ruta 7,10,Caminar,Verde Hoja
+Vulpix,Ruta 8,20,Caminar,Verde Hoja
+Vulpix,Mansión Pokémon,15,Caminar,Verde Hoja
+Jigglypuff,Ruta 3,10,Caminar,Rojo Fuego
+Jigglypuff,Ruta 3,10,Caminar,Verde Hoja
+Zubat,Calle Victoria,10,Caminar,Rojo Fuego
+Zubat,Cueva Glaciada,10,Caminar,Rojo Fuego
+Zubat,Cueva Cambiante,100,Caminar,Rojo Fuego
+Zubat,Cueva Perdida,20,Caminar,Rojo Fuego
+Zubat,Islas Espuma (Planta Baja),34,Caminar,Rojo Fuego
+Zubat,Islas Espuma (Sótano 1),34,Caminar,Rojo Fuego
+Zubat,Islas Espuma (Sótano 2),20,Caminar,Rojo Fuego
+Zubat,Islas Espuma (Sótano 3),10,Caminar,Rojo Fuego
+Zubat,Monte Moon (Planta Baja),69,Caminar,Rojo Fuego
+Zubat,Monte Moon (Sótano 2),49,Caminar,Rojo Fuego
+Zubat,Túnel Roca,30,Caminar,Rojo Fuego
+Zubat,Calle Victoria,10,Caminar,Verde Hoja
+Zubat,Cueva Glaciada,10,Caminar,Verde Hoja
+Zubat,Cueva Cambiante,100,Caminar,Verde Hoja
+Zubat,Cueva Perdida,20,Caminar,Verde Hoja
+Zubat,Islas Espuma (Planta Baja),34,Caminar,Verde Hoja
+Zubat,Islas Espuma (Sótano 1),34,Caminar,Verde Hoja
+Zubat,Islas Espuma (Sótano 2),20,Caminar,Verde Hoja
+Zubat,Islas Espuma (Sótano 3),10,Caminar,Verde Hoja
+Zubat,Monte Moon (Planta Baja),69,Caminar,Verde Hoja
+Zubat,Monte Moon (Sótano 2),49,Caminar,Verde Hoja
+Zubat,Túnel Roca,30,Caminar,Verde Hoja
+Golbat,Calle Victoria,5,Caminar,Rojo Fuego
+Golbat,Cueva Celeste (Planta Baja),14,Caminar,Rojo Fuego
+Golbat,Cueva Celeste (Primer Piso),25,Caminar,Rojo Fuego
+Golbat,Cueva Celeste (Sótano),11,Caminar,Rojo Fuego
+Golbat,Cueva Glaciada,25,Caminar,Rojo Fuego
+Golbat,Cueva Perdida (Entrada),20,Caminar,Rojo Fuego
+Golbat,Cueva Perdida (Sala 1),20,Caminar,Rojo Fuego
+Golbat,Cueva Perdida (Sala 2),20,Caminar,Rojo Fuego
+Golbat,Cueva Perdida (Sala 3),20,Caminar,Rojo Fuego
+Golbat,Cueva Perdida (Sala 4),20,Caminar,Rojo Fuego
+Golbat,Cueva Perdida (Sala 5),20,Caminar,Rojo Fuego
+Golbat,Cueva Perdida (Sala 6),20,Caminar,Rojo Fuego
+Golbat,Cueva Perdida (Sala 7),20,Caminar,Rojo Fuego
+Golbat,Cueva Perdida (Sala 8),20,Caminar,Rojo Fuego
+Golbat,Cueva Perdida (Sala 9),20,Caminar,Rojo Fuego
+Golbat,Cueva Perdida (Sala 10),20,Caminar,Rojo Fuego
+Golbat,Cueva Perdida (Sala 11),10,Caminar,Rojo Fuego
+Golbat,Cueva Perdida (Sala 12),10,Caminar,Rojo Fuego
+Golbat,Cueva Perdida (Sala 13),10,Caminar,Rojo Fuego
+Golbat,Cueva Perdida (Sala 14),10,Caminar,Rojo Fuego
+Golbat,Islas Espuma (Planta Baja),11,Caminar,Rojo Fuego
+Golbat,Islas Espuma (Sótano 1),11,Caminar,Rojo Fuego
+Golbat,Islas Espuma (Sótano 2),10,Caminar,Rojo Fuego
+Golbat,Islas Espuma (Sótano 3),10,Caminar,Rojo Fuego
+Golbat,Islas Espuma (Sótano 4),15,Caminar,Rojo Fuego
+Golbat,Calle Victoria,5,Caminar,Verde Hoja
+Golbat,Cueva Celeste (Planta Baja),14,Caminar,Verde Hoja
+Golbat,Cueva Celeste (Primer Piso),25,Caminar,Verde Hoja
+Golbat,Cueva Celeste (Sótano),11,Caminar,Verde Hoja
+Golbat,Cueva Glaciada,25,Caminar,Verde Hoja
+Golbat,Cueva Perdida (Entrada),20,Caminar,Verde Hoja
+Golbat,Cueva Perdida (Sala 1),20,Caminar,Verde Hoja
+Golbat,Cueva Perdida (Sala 2),20,Caminar,Verde Hoja
+Golbat,Cueva Perdida (Sala 3),20,Caminar,Verde Hoja
+Golbat,Cueva Perdida (Sala 4),20,Caminar,Verde Hoja
+Golbat,Cueva Perdida (Sala 5),20,Caminar,Verde Hoja
+Golbat,Cueva Perdida (Sala 6),20,Caminar,Verde Hoja
+Golbat,Cueva Perdida (Sala 7),20,Caminar,Verde Hoja
+Golbat,Cueva Perdida (Sala 8),20,Caminar,Verde Hoja
+Golbat,Cueva Perdida (Sala 9),20,Caminar,Verde Hoja
+Golbat,Cueva Perdida (Sala 10),20,Caminar,Verde Hoja
+Golbat,Cueva Perdida (Sala 11),10,Caminar,Verde Hoja
+Golbat,Cueva Perdida (Sala 12),10,Caminar,Verde Hoja
+Golbat,Cueva Perdida (Sala 13),10,Caminar,Verde Hoja
+Golbat,Cueva Perdida (Sala 14),10,Caminar,Verde Hoja
+Golbat,Islas Espuma (Planta Baja),11,Caminar,Verde Hoja
+Golbat,Islas Espuma (Sótano 1),11,Caminar,Verde Hoja
+Golbat,Islas Espuma (Sótano 2),10,Caminar,Verde Hoja
+Golbat,Islas Espuma (Sótano 3),10,Caminar,Verde Hoja
+Golbat,Islas Espuma (Sótano 4),15,Caminar,Verde Hoja
+Gloom,Ruta 12,5,Caminar,Rojo Fuego
+Gloom,Ruta 13,5,Caminar,Rojo Fuego
+Gloom,Ruta 14,5,Caminar,Rojo Fuego
+Gloom,Ruta 15,5,Caminar,Rojo Fuego
+Gloom,Vía Acuática,5,Caminar,Rojo Fuego
+Gloom,Bosque Baya,20,Caminar,Rojo Fuego
+Gloom,Cabo Extremo,15,Caminar,Rojo Fuego
+Gloom,Puente Unión,10,Caminar,Rojo Fuego
+Paras,Monte Moon (Planta Baja),5,Caminar,Rojo Fuego
+Paras,Monte Moon (Sótano 1),100,Caminar,Rojo Fuego
+Paras,Monte Moon (Sótano 2),15,Caminar,Rojo Fuego
+Paras,Zona Safari (Zona 1),15,Caminar,Rojo Fuego
+Paras,Zona Safari (Zona 2),15,Caminar,Rojo Fuego
+Paras,Monte Moon (Planta Baja),5,Caminar,Verde Hoja
+Paras,Monte Moon (Sótano 1),100,Caminar,Verde Hoja
+Paras,Monte Moon (Sótano 2),15,Caminar,Verde Hoja
+Paras,Zona Safari (Zona 1),15,Caminar,Verde Hoja
+Paras,Zona Safari (Zona 2),15,Caminar,Verde Hoja
+Parasect,Zona Safari (Zona Central),5,Caminar,Rojo Fuego
+Parasect,Zona Safari (Zona 1),5,Caminar,Rojo Fuego
+Parasect,Cueva Celeste (Planta Baja),25,Caminar,Rojo Fuego
+Parasect,Cueva Celeste (Primer Piso),14,Caminar,Rojo Fuego
+Parasect,Cueva Celeste (Sótano),14,Caminar,Rojo Fuego
+Parasect,Zona Safari (Zona Central),5,Caminar,Verde Hoja
+Parasect,Zona Safari (Zona 1),5,Caminar,Verde Hoja
+Parasect,Cueva Celeste (Planta Baja),25,Caminar,Verde Hoja
+Parasect,Cueva Celeste (Primer Piso),14,Caminar,Verde Hoja
+Parasect,Cueva Celeste (Sótano),14,Caminar,Verde Hoja
+Venonat,Ruta 12,30,Caminar,Rojo Fuego
+Venonat,Ruta 13,30,Caminar,Rojo Fuego
+Venonat,Ruta 14,30,Caminar,Rojo Fuego
+Venonat,Ruta 15,30,Caminar,Rojo Fuego
+Venonat,Bosque Baya,10,Caminar,Rojo Fuego
+Venonat,Puente Unión,5,Caminar,Rojo Fuego
+Venonat,Zona Safari (Zona Central),15,Caminar,Rojo Fuego
+Venonat,Zona Safari (Zona 3),15,Caminar,Rojo Fuego
+Venonat,Ruta 12,30,Caminar,Verde Hoja
+Venonat,Ruta 13,30,Caminar,Verde Hoja
+Venonat,Ruta 14,30,Caminar,Verde Hoja
+Venonat,Ruta 15,30,Caminar,Verde Hoja
+Venonat,Bosque Baya,10,Caminar,Verde Hoja
+Venonat,Puente Unión,5,Caminar,Verde Hoja
+Venonat,Zona Safari (Zona Central),15,Caminar,Verde Hoja
+Venonat,Zona Safari (Zona 3),15,Caminar,Verde Hoja
+Venomoth,Bosque Baya,5,Caminar,Rojo Fuego
+Venomoth,Zona Safari (Zona 2),5,Caminar,Rojo Fuego
+Venomoth,Zona Safari (Zona 3),5,Caminar,Rojo Fuego
+Venomoth,Bosque Baya,5,Caminar,Verde Hoja
+Venomoth,Zona Safari (Zona 2),5,Caminar,Verde Hoja
+Venomoth,Zona Safari (Zona 3),5,Caminar,Verde Hoja
+Diglett,Cueva Diglett,95,Caminar,Rojo Fuego
+Diglett,Cueva Diglett,95,Caminar,Verde Hoja
+Dugtrio,Cueva Diglett,5,Caminar,Rojo Fuego
+Dugtrio,Cueva Diglett,5,Caminar,Verde Hoja
+Meowth,Ruta 5,35,Caminar,Rojo Fuego
+Meowth,Ruta 6,35,Caminar,Rojo Fuego
+Meowth,Ruta 7,40,Caminar,Rojo Fuego
+Meowth,Ruta 8,30,Caminar,Rojo Fuego
+Meowth,Cabo Extremo,10,Caminar,Rojo Fuego
+Meowth,Camino Candente,10,Caminar,Rojo Fuego
+Meowth,Cañón Sétano,10,Caminar,Rojo Fuego
+Meowth,Entrada al Cañón,10,Caminar,Rojo Fuego
+Meowth,Playa Tesoro,10,Caminar,Rojo Fuego
+Meowth,Prado Isla Inta,10,Caminar,Rojo Fuego
+Meowth,Puente Unión,10,Caminar,Rojo Fuego
+Meowth,Valle Ruinas,10,Caminar,Rojo Fuego
+Meowth,Vía Acuática,10,Caminar,Rojo Fuego
+Meowth,Ruta 5,35,Caminar,Verde Hoja
+Meowth,Ruta 6,35,Caminar,Verde Hoja
+Meowth,Ruta 7,40,Caminar,Verde Hoja
+Meowth,Ruta 8,30,Caminar,Verde Hoja
+Meowth,Cabo Extremo,10,Caminar,Verde Hoja
+Meowth,Camino Candente,10,Caminar,Verde Hoja
+Meowth,Cañón Sétano,10,Caminar,Verde Hoja
+Meowth,Entrada al Cañón,10,Caminar,Verde Hoja
+Meowth,Playa Tesoro,10,Caminar,Verde Hoja
+Meowth,Prado Isla Inta,10,Caminar,Verde Hoja
+Meowth,Puente Unión,10,Caminar,Verde Hoja
+Meowth,Valle Ruinas,10,Caminar,Verde Hoja
+Meowth,Vía Acuática,10,Caminar,Verde Hoja
+Persian,Cabo Extremo,5,Caminar,Rojo Fuego
+Persian,Camino Candente,5,Caminar,Rojo Fuego
+Persian,Cañón Sétano,5,Caminar,Rojo Fuego
+Persian,Entrada al Cañón,5,Caminar,Rojo Fuego
+Persian,Playa Tesoro,5,Caminar,Rojo Fuego
+Persian,Prado Isla Inta,5,Caminar,Rojo Fuego
+Persian,Puente Unión,5,Caminar,Rojo Fuego
+Persian,Valle Ruinas,5,Caminar,Rojo Fuego
+Persian,Vía Acuática,5,Caminar,Rojo Fuego
+Persian,Cabo Extremo,5,Caminar,Verde Hoja
+Persian,Camino Candente,5,Caminar,Verde Hoja
+Persian,Cañón Sétano,5,Caminar,Verde Hoja
+Persian,Entrada al Cañón,5,Caminar,Verde Hoja
+Persian,Playa Tesoro,5,Caminar,Verde Hoja
+Persian,Prado Isla Inta,5,Caminar,Verde Hoja
+Persian,Puente Unión,5,Caminar,Verde Hoja
+Persian,Valle Ruinas,5,Caminar,Verde Hoja
+Persian,Vía Acuática,5,Caminar,Verde Hoja
+Psyduck,Bosque Baya,5,Caminar,Rojo Fuego
+Psyduck,Cabo Extremo,5,Caminar,Rojo Fuego
+Psyduck,Camino Candente,5,Caminar,Rojo Fuego
+Psyduck,Playa Tesoro,5,Caminar,Rojo Fuego
+Psyduck,Prado Isla Inta,5,Caminar,Rojo Fuego
+Psyduck,Puente Unión,5,Caminar,Rojo Fuego
+Psyduck,Vía Acuática,5,Caminar,Rojo Fuego
+Psyduck,Cueva Glaciada (Planta Baja (Sala 1)),5,Caminar,Rojo Fuego
+Psyduck,Cueva Glaciada (Planta Baja (Sala 3)),5,Caminar,Rojo Fuego
+Psyduck,Islas Espuma (Planta Baja),55,Caminar,Rojo Fuego
+Psyduck,Islas Espuma (Sótano 1),40,Caminar,Rojo Fuego
+Psyduck,Islas Espuma (Sótano 2),40,Caminar,Rojo Fuego
+Psyduck,Islas Espuma (Sótano 3),20,Caminar,Rojo Fuego
+Psyduck,Islas Espuma (Sótano 4),10,Caminar,Rojo Fuego
+Psyduck,Ruta 6,100,Surf,Rojo Fuego
+Psyduck,Ruta 22,100,Surf,Rojo Fuego
+Psyduck,Ruta 23,100,Surf,Rojo Fuego
+Psyduck,Ruta 25,100,Surf,Rojo Fuego
+Psyduck,Ciudad Fucsia,100,Surf,Rojo Fuego
+Psyduck,Ciudad Verde,100,Surf,Rojo Fuego
+Psyduck,Zona Safari,100,Surf,Rojo Fuego
+Psyduck,Bosque Baya,95,Surf,Rojo Fuego
+Psyduck,Cabo Extremo,95,Surf,Rojo Fuego
+Psyduck,Ciudad Azulona,99,Surf,Rojo Fuego
+Psyduck,Cueva Celeste,65,Surf,Rojo Fuego
+Psyduck,Cueva Glaciada (Planta Baja (Sala 1)),30,Surf,Rojo Fuego
+Psyduck,Isla Quarta,30,Surf,Rojo Fuego
+Psyduck,Islas Espuma,4,Surf,Rojo Fuego
+Psyduck,Ruta 6,5,Pesca (Supercaña),Rojo Fuego
+Psyduck,Ruta 25,5,Pesca (Supercaña),Rojo Fuego
+Psyduck,Bosque Baya,5,Pesca (Supercaña),Rojo Fuego
+Psyduck,Cabo Extremo,5,Pesca (Supercaña),Rojo Fuego
+Psyduck,Ciudad Fucsia,5,Pesca (Supercaña),Rojo Fuego
+Psyduck,Cueva Celeste,5,Pesca (Supercaña),Rojo Fuego
+Psyduck,Isla Quarta,5,Pesca (Supercaña),Rojo Fuego
+Psyduck,Valle Ruinas,5,Pesca (Supercaña),Rojo Fuego
+Psyduck,Ruta 10,1,Pesca (Supercaña),Rojo Fuego
+Psyduck,Ruta 11,1,Pesca (Supercaña),Rojo Fuego
+Psyduck,Ruta 12,1,Pesca (Supercaña),Rojo Fuego
+Psyduck,Ruta 13,1,Pesca (Supercaña),Rojo Fuego
+Psyduck,Ruta 19,1,Pesca (Supercaña),Rojo Fuego
+Psyduck,Ruta 20,1,Pesca (Supercaña),Rojo Fuego
+Psyduck,Ruta 21,1,Pesca (Supercaña),Rojo Fuego
+Psyduck,Ruta 24,1,Pesca (Supercaña),Rojo Fuego
+Psyduck,Aquarinto,1,Pesca (Supercaña),Rojo Fuego
+Psyduck,Camino Candente,1,Pesca (Supercaña),Rojo Fuego
+Psyduck,Ciudad Carmín,1,Pesca (Supercaña),Rojo Fuego
+Psyduck,Ciudad Celeste,1,Pesca (Supercaña),Rojo Fuego
+Psyduck,Isla Aislada,1,Pesca (Supercaña),Rojo Fuego
+Psyduck,Isla Canela,1,Pesca (Supercaña),Rojo Fuego
+Psyduck,Isla Inta,1,Pesca (Supercaña),Rojo Fuego
+Psyduck,Isla Prima,1,Pesca (Supercaña),Rojo Fuego
+Psyduck,Lugar de Recreo,1,Pesca (Supercaña),Rojo Fuego
+Psyduck,Pilar Recuerdo,1,Pesca (Supercaña),Rojo Fuego
+Psyduck,Playa Tesoro,1,Pesca (Supercaña),Rojo Fuego
+Psyduck,Prado Isla Inta,1,Pesca (Supercaña),Rojo Fuego
+Psyduck,Pueblo Paleta,1,Pesca (Supercaña),Rojo Fuego
+Psyduck,Puente Unión,1,Pesca (Supercaña),Rojo Fuego
+Psyduck,Ruinas Sete,1,Pesca (Supercaña),Rojo Fuego
+Psyduck,Torre Desafío,1,Pesca (Supercaña),Rojo Fuego
+Psyduck,Vía Acuática,1,Pesca (Supercaña),Rojo Fuego
+Psyduck,Vía Verde,1,Pesca (Supercaña),Rojo Fuego
+Psyduck,Cueva Glaciada (Planta Baja (Sala 1)),5,Pesca (Supercaña),Rojo Fuego
+Psyduck,Cueva Glaciada (Planta Baja (Sala 3)),1,Pesca (Supercaña),Rojo Fuego
+Psyduck,Islas Espuma,4,Pesca (Supercaña),Rojo Fuego
+Psyduck,Zona Safari,4,Pesca (Supercaña),Rojo Fuego
+Golduck,Cabo Extremo,5,Caminar,Rojo Fuego
+Golduck,Islas Espuma (Sótano 1),5,Caminar,Rojo Fuego
+Golduck,Islas Espuma (Sótano 2),10,Caminar,Rojo Fuego
+Golduck,Islas Espuma (Sótano 3),15,Caminar,Rojo Fuego
+Golduck,Islas Espuma (Sótano 4),15,Caminar,Rojo Fuego
+Golduck,Bosque Baya,5,Surf,Rojo Fuego
+Golduck,Cueva Celeste,35,Surf,Rojo Fuego
+Golduck,Islas Espuma,1,Surf,Rojo Fuego
+Mankey,Ruta 3,10,Caminar,Rojo Fuego
+Mankey,Ruta 4,5,Caminar,Rojo Fuego
+Mankey,Ruta 22,45,Caminar,Rojo Fuego
+Mankey,Ruta 23,30,Caminar,Rojo Fuego
+Mankey,Túnel Roca,15,Caminar,Rojo Fuego
+Mankey,Ruta 3,10,Caminar,Verde Hoja
+Mankey,Ruta 4,5,Caminar,Verde Hoja
+Mankey,Ruta 22,45,Caminar,Verde Hoja
+Mankey,Ruta 23,30,Caminar,Verde Hoja
+Mankey,Túnel Roca,15,Caminar,Verde Hoja
+Primeape,Ruta 23,5,Caminar,Rojo Fuego
+Primeape,Calle Victoria (Primera Planta),10,Caminar,Rojo Fuego
+Primeape,Cueva Celeste (Planta Baja),11,Caminar,Rojo Fuego
+Primeape,Ruta 23,5,Caminar,Verde Hoja
+Primeape,Calle Victoria (Primera Planta),10,Caminar,Verde Hoja
+Primeape,Cueva Celeste (Planta Baja),11,Caminar,Verde Hoja
+Growlithe,Ruta 7,10,Caminar,Rojo Fuego
+Growlithe,Ruta 8,20,Caminar,Rojo Fuego
+Growlithe,Mansión Pokémon,15,Caminar,Rojo Fuego
+Poliwag,Ruta 6,60,Pesca (Caña Buena),Rojo Fuego
+Poliwag,Ruta 22,60,Pesca (Caña Buena),Rojo Fuego
+Poliwag,Ruta 23,60,Pesca (Caña Buena),Rojo Fuego
+Poliwag,Ciudad Fucsia,60,Pesca (Caña Buena),Rojo Fuego
+Poliwag,Ciudad Verde,60,Pesca (Caña Buena),Rojo Fuego
+Poliwag,Cueva Celeste,60,Pesca (Caña Buena),Rojo Fuego
+Poliwag,Valle Ruinas,60,Pesca (Caña Buena),Rojo Fuego
+Poliwag,Bosque Baya,20,Pesca (Caña Buena),Rojo Fuego
+Poliwag,Zona Safari,20,Pesca (Caña Buena),Rojo Fuego
+Poliwag,Cueva Glaciada (Planta Baja (Sala 1)),60,Pesca (Caña Buena),Rojo Fuego
+Poliwag,Ruta 6,40,Pesca (Supercaña),Rojo Fuego
+Poliwag,Ruta 22,40,Pesca (Supercaña),Rojo Fuego
+Poliwag,Ruta 23,40,Pesca (Supercaña),Rojo Fuego
+Poliwag,Ciudad Verde,40,Pesca (Supercaña),Rojo Fuego
+Poliwag,Cueva Celeste,40,Pesca (Supercaña),Rojo Fuego
+Poliwag,Valle Ruinas,40,Pesca (Supercaña),Rojo Fuego
+Poliwag,Cueva Glaciada (Planta Baja (Sala 1)),40,Pesca (Supercaña),Rojo Fuego
+Poliwag,Ruta 6,60,Pesca (Caña Buena),Verde Hoja
+Poliwag,Ruta 22,60,Pesca (Caña Buena),Verde Hoja
+Poliwag,Ruta 23,60,Pesca (Caña Buena),Verde Hoja
+Poliwag,Ciudad Fucsia,60,Pesca (Caña Buena),Verde Hoja
+Poliwag,Ciudad Verde,60,Pesca (Caña Buena),Verde Hoja
+Poliwag,Cueva Celeste,60,Pesca (Caña Buena),Verde Hoja
+Poliwag,Valle Ruinas,60,Pesca (Caña Buena),Verde Hoja
+Poliwag,Bosque Baya,20,Pesca (Caña Buena),Verde Hoja
+Poliwag,Zona Safari,20,Pesca (Caña Buena),Verde Hoja
+Poliwag,Cueva Glaciada (Planta Baja (Sala 1)),60,Pesca (Caña Buena),Verde Hoja
+Poliwag,Ruta 6,40,Pesca (Supercaña),Verde Hoja
+Poliwag,Ruta 22,40,Pesca (Supercaña),Verde Hoja
+Poliwag,Ruta 23,40,Pesca (Supercaña),Verde Hoja
+Poliwag,Ciudad Verde,40,Pesca (Supercaña),Verde Hoja
+Poliwag,Cueva Celeste,40,Pesca (Supercaña),Verde Hoja
+Poliwag,Valle Ruinas,40,Pesca (Supercaña),Verde Hoja
+Poliwag,Cueva Glaciada (Planta Baja (Sala 1)),40,Pesca (Supercaña),Verde Hoja
+Poliwhirl,Cueva Glaciada (Planta Baja (Sala 1)),40,Pesca (Supercaña),Rojo Fuego
+Poliwhirl,Cueva Glaciada (Planta Baja (Sala 1)),40,Pesca (Supercaña),Verde Hoja
+Abra,Ruta 24,15,Caminar,Rojo Fuego
+Abra,Ruta 25,15,Caminar,Rojo Fuego
+Abra,Casino (Ciudad Azulona),180 Fichas,Canje,Rojo Fuego
+Abra,Ruta 24,15,Caminar,Verde Hoja
+Abra,Ruta 25,15,Caminar,Verde Hoja
+Abra,Casino (Ciudad Azulona),120 Fichas,Canje,Verde Hoja
+Kadabra,Cueva Celeste (Primer Piso),11,Caminar,Rojo Fuego
+Kadabra,Cueva Celeste (Sótano),25,Caminar,Rojo Fuego
+Kadabra,Cueva Celeste (Primer Piso),11,Caminar,Verde Hoja
+Kadabra,Cueva Celeste (Sótano),25,Caminar,Verde Hoja
+Machop,Calle Victoria,20,Caminar,Rojo Fuego
+Machop,Monte Ascuas (Ladera),10,Caminar,Rojo Fuego
+Machop,Monte Ascuas (Entrada y Salida al Desfiladero),50,Caminar,Rojo Fuego
+Machop,Monte Ascuas (Desfiladero),40,Caminar,Rojo Fuego
+Machop,Túnel Roca (Planta Baja),15,Caminar,Rojo Fuego
+Machop,Túnel Roca (Sótano),10,Caminar,Rojo Fuego
+Machop,Calle Victoria,20,Caminar,Verde Hoja
+Machop,Monte Ascuas (Ladera),10,Caminar,Verde Hoja
+Machop,Monte Ascuas (Entrada y Salida al Desfiladero),50,Caminar,Verde Hoja
+Machop,Monte Ascuas (Desfiladero),40,Caminar,Verde Hoja
+Machop,Túnel Roca (Planta Baja),15,Caminar,Verde Hoja
+Machop,Túnel Roca (Sótano),10,Caminar,Verde Hoja
+Machoke,Calle Victoria,5,Caminar,Rojo Fuego
+Machoke,Cueva Celeste (Planta Baja),10,Caminar,Rojo Fuego
+Machoke,Cueva Celeste (Sótano),10,Caminar,Rojo Fuego
+Machoke,Cueva Celeste (Primer Piso),20,Caminar,Rojo Fuego
+Machoke,Monte Ascuas (Desfiladero),20,Caminar,Rojo Fuego
+Machoke,Calle Victoria,5,Caminar,Verde Hoja
+Machoke,Cueva Celeste (Planta Baja),10,Caminar,Verde Hoja
+Machoke,Cueva Celeste (Sótano),10,Caminar,Verde Hoja
+Machoke,Cueva Celeste (Primer Piso),20,Caminar,Verde Hoja
+Machoke,Monte Ascuas (Desfiladero),20,Caminar,Verde Hoja
+Weepinbell,Ruta 12,5,Caminar,Verde Hoja
+Weepinbell,Ruta 13,5,Caminar,Verde Hoja
+Weepinbell,Ruta 14,5,Caminar,Verde Hoja
+Weepinbell,Ruta 15,5,Caminar,Verde Hoja
+Weepinbell,Vía Acuática,5,Caminar,Verde Hoja
+Weepinbell,Bosque Baya,20,Caminar,Verde Hoja
+Weepinbell,Cabo Extremo,15,Caminar,Verde Hoja
+Weepinbell,Puente Unión,10,Caminar,Verde Hoja
+Tentacool,Ruta 4,100,Surf,Rojo Fuego
+Tentacool,Ruta 10,100,Surf,Rojo Fuego
+Tentacool,Ruta 11,100,Surf,Rojo Fuego
+Tentacool,Ruta 12,100,Surf,Rojo Fuego
+Tentacool,Ruta 13,100,Surf,Rojo Fuego
+Tentacool,Ruta 19,100,Surf,Rojo Fuego
+Tentacool,Ruta 20,100,Surf,Rojo Fuego
+Tentacool,Ruta 21,100,Surf,Rojo Fuego
+Tentacool,Ruta 24,100,Surf,Rojo Fuego
+Tentacool,Ciudad Carmín,100,Surf,Rojo Fuego
+Tentacool,Ciudad Celeste,100,Surf,Rojo Fuego
+Tentacool,Isla Canela,100,Surf,Rojo Fuego
+Tentacool,Pueblo Paleta,100,Surf,Rojo Fuego
+Tentacool,Aquarinto,65,Surf,Rojo Fuego
+Tentacool,Isla Inta,65,Surf,Rojo Fuego
+Tentacool,Lugar de Recreo,65,Surf,Rojo Fuego
+Tentacool,Pilar Recuerdo,65,Surf,Rojo Fuego
+Tentacool,Prado Isla Inta,65,Surf,Rojo Fuego
+Tentacool,Camino Candente,95,Surf,Rojo Fuego
+Tentacool,Isla Aislada,95,Surf,Rojo Fuego
+Tentacool,Isla Prima,95,Surf,Rojo Fuego
+Tentacool,Playa Tesoro,95,Surf,Rojo Fuego
+Tentacool,Puente Unión,95,Surf,Rojo Fuego
+Tentacool,Ruinas Sete,95,Surf,Rojo Fuego
+Tentacool,Vía Acuática,95,Surf,Rojo Fuego
+Tentacool,Vía Verde,95,Surf,Rojo Fuego
+Tentacool,Cueva Glaciada (Planta Baja (Sala 3)),95,Surf,Rojo Fuego
+Tentacool,Torre Desafío,90,Surf,Rojo Fuego
+Tentacool,,100,Surf,Verde Hoja
+Tentacool,Aquarinto,65,Surf,Verde Hoja
+Tentacool,Isla Inta,65,Surf,Verde Hoja
+Tentacool,Lugar de Recreo,65,Surf,Verde Hoja
+Tentacool,Pilar Recuerdo,65,Surf,Verde Hoja
+Tentacool,Prado Isla Inta,65,Surf,Verde Hoja
+Tentacool,Camino Candente,95,Surf,Verde Hoja
+Tentacool,Isla Aislada,95,Surf,Verde Hoja
+Tentacool,Isla Prima,95,Surf,Verde Hoja
+Tentacool,Playa Tesoro,95,Surf,Verde Hoja
+Tentacool,Puente Unión,95,Surf,Verde Hoja
+Tentacool,Ruinas Sete,95,Surf,Verde Hoja
+Tentacool,Vía Acuática,95,Surf,Verde Hoja
+Tentacool,Vía Verde,95,Surf,Verde Hoja
+Tentacool,Cueva Glaciada (Planta Baja (Sala 3)),95,Surf,Verde Hoja
+Tentacool,Ruinas Sete,90,Surf,Verde Hoja
+Tentacool,Torre Desafío,90,Surf,Verde Hoja
+Tentacruel,Aquarinto,5,Surf,Rojo Fuego
+Tentacruel,Camino Candente,5,Surf,Rojo Fuego
+Tentacruel,Isla Aislada,5,Surf,Rojo Fuego
+Tentacruel,Isla Inta,5,Surf,Rojo Fuego
+Tentacruel,Isla Prima,5,Surf,Rojo Fuego
+Tentacruel,Lugar de Recreo,5,Surf,Rojo Fuego
+Tentacruel,Pilar Recuerdo,5,Surf,Rojo Fuego
+Tentacruel,Playa Tesoro,5,Surf,Rojo Fuego
+Tentacruel,Prado Isla Inta,5,Surf,Rojo Fuego
+Tentacruel,Puente Unión,5,Surf,Rojo Fuego
+Tentacruel,Ruinas Sete,5,Surf,Rojo Fuego
+Tentacruel,Vía Acuática,5,Surf,Rojo Fuego
+Tentacruel,Vía Verde,5,Surf,Rojo Fuego
+Tentacruel,Cueva Glaciada (Planta Baja (Sala 3)),4,Surf,Rojo Fuego
+Tentacruel,Torre Desafío,10,Surf,Rojo Fuego
+Tentacruel,Aquarinto,5,Surf,Verde Hoja
+Tentacruel,Camino Candente,5,Surf,Verde Hoja
+Tentacruel,Isla Aislada,5,Surf,Verde Hoja
+Tentacruel,Isla Inta,5,Surf,Verde Hoja
+Tentacruel,Isla Prima,5,Surf,Verde Hoja
+Tentacruel,Lugar de Recreo,5,Surf,Verde Hoja
+Tentacruel,Pilar Recuerdo,5,Surf,Verde Hoja
+Tentacruel,Playa Tesoro,5,Surf,Verde Hoja
+Tentacruel,Prado Isla Inta,5,Surf,Verde Hoja
+Tentacruel,Puente Unión,5,Surf,Verde Hoja
+Tentacruel,Ruinas Sete,5,Surf,Verde Hoja
+Tentacruel,Torre Desafío,5,Surf,Verde Hoja
+Tentacruel,Vía Acuática,5,Surf,Verde Hoja
+Tentacruel,Vía Verde,5,Surf,Verde Hoja
+Tentacruel,Cueva Glaciada (Planta Baja (Sala 3)),4,Surf,Verde Hoja
+Geodude,Calle Victoria,20,Caminar,Rojo Fuego
+Geodude,Cañón Sétano,20,Caminar,Rojo Fuego
+Geodude,Camino Candente,10,Caminar,Rojo Fuego
+Geodude,Monte Ascuas (Ladera),10,Caminar,Rojo Fuego
+Geodude,Monte Ascuas (Entrada y Salida al Desfiladero),50,Caminar,Rojo Fuego
+Geodude,Monte Ascuas (Desfiladero),40,Caminar,Rojo Fuego
+Geodude,Monte Ascuas (Sótano 1),40,Caminar,Rojo Fuego
+Geodude,Monte Ascuas (Sótano 2),40,Caminar,Rojo Fuego
+Geodude,Monte Ascuas (Planta Baja),70,Caminar,Rojo Fuego
+Geodude,Monte Ascuas (Sótano 4),70,Caminar,Rojo Fuego
+Geodude,Monte Ascuas (Sótano 5),70,Caminar,Rojo Fuego
+Geodude,Monte Moon (Planta Baja),25,Caminar,Rojo Fuego
+Geodude,Monte Moon (Sótano 2),30,Caminar,Rojo Fuego
+Geodude,Túnel Roca,35,Caminar,Rojo Fuego
+Geodude,Camino Candente,95,Golpe Roca,Rojo Fuego
+Geodude,Túnel Roca,95,Golpe Roca,Rojo Fuego
+Geodude,Cañón Sétano,65,Golpe Roca,Rojo Fuego
+Geodude,Cueva Celeste,65,Golpe Roca,Rojo Fuego
+Geodude,Monte Ascuas (Entrada y Salida al Desfiladero),95,Golpe Roca,Rojo Fuego
+Geodude,Monte Ascuas (Desfiladero),65,Golpe Roca,Rojo Fuego
+Geodude,Monte Ascuas (Planta Baja),65,Golpe Roca,Rojo Fuego
+Geodude,Monte Ascuas (Sótano 4),65,Golpe Roca,Rojo Fuego
+Geodude,Monte Ascuas (Sótano 5),65,Golpe Roca,Rojo Fuego
+Geodude,Monte Ascuas (Sótano 1),65,Golpe Roca,Rojo Fuego
+Geodude,Monte Ascuas (Sótano 2),65,Golpe Roca,Rojo Fuego
+Geodude,Calle Victoria,20,Caminar,Verde Hoja
+Geodude,Cañón Sétano,20,Caminar,Verde Hoja
+Geodude,Camino Candente,10,Caminar,Verde Hoja
+Geodude,Monte Ascuas (Ladera),10,Caminar,Verde Hoja
+Geodude,Monte Ascuas (Entrada y Salida al Desfiladero),50,Caminar,Verde Hoja
+Geodude,Monte Ascuas (Desfiladero),40,Caminar,Verde Hoja
+Geodude,Monte Ascuas (Sótano 1),40,Caminar,Verde Hoja
+Geodude,Monte Ascuas (Sótano 2),40,Caminar,Verde Hoja
+Geodude,Monte Ascuas (Planta Baja),70,Caminar,Verde Hoja
+Geodude,Monte Ascuas (Sótano 4),70,Caminar,Verde Hoja
+Geodude,Monte Ascuas (Sótano 5),70,Caminar,Verde Hoja
+Geodude,Monte Moon (Planta Baja),25,Caminar,Verde Hoja
+Geodude,Monte Moon (Sótano 2),30,Caminar,Verde Hoja
+Geodude,Túnel Roca,35,Caminar,Verde Hoja
+Geodude,Camino Candente,95,Golpe Roca,Verde Hoja
+Geodude,Túnel Roca,95,Golpe Roca,Verde Hoja
+Geodude,Cañón Sétano,65,Golpe Roca,Verde Hoja
+Geodude,Cueva Celeste,65,Golpe Roca,Verde Hoja
+Geodude,Monte Ascuas (Entrada y Salida al Desfiladero),95,Golpe Roca,Verde Hoja
+Geodude,Monte Ascuas (Desfiladero),65,Golpe Roca,Verde Hoja
+Geodude,Monte Ascuas (Planta Baja),65,Golpe Roca,Verde Hoja
+Geodude,Monte Ascuas (Sótano 4),65,Golpe Roca,Verde Hoja
+Geodude,Monte Ascuas (Sótano 5),65,Golpe Roca,Verde Hoja
+Geodude,Monte Ascuas (Sótano 1),65,Golpe Roca,Verde Hoja
+Geodude,Monte Ascuas (Sótano 2),65,Golpe Roca,Verde Hoja
+Graveler,Camino Candente,5,Golpe Roca,Rojo Fuego
+Graveler,Túnel Roca,5,Golpe Roca,Rojo Fuego
+Graveler,Cañón Sétano,35,Golpe Roca,Rojo Fuego
+Graveler,Cueva Celeste,35,Golpe Roca,Rojo Fuego
+Graveler,Monte Ascuas (Entrada y Salida al Desfiladero),5,Golpe Roca,Rojo Fuego
+Graveler,Monte Ascuas (Desfiladero),35,Golpe Roca,Rojo Fuego
+Graveler,Monte Ascuas (Planta Baja),35,Golpe Roca,Rojo Fuego
+Graveler,Monte Ascuas (Sótano 4),35,Golpe Roca,Rojo Fuego
+Graveler,Monte Ascuas (Sótano 5),35,Golpe Roca,Rojo Fuego
+Graveler,Monte Ascuas (Sótano 1),35,Golpe Roca,Rojo Fuego
+Graveler,Monte Ascuas (Sótano 2),35,Golpe Roca,Rojo Fuego
+Graveler,Camino Candente,5,Golpe Roca,Verde Hoja
+Graveler,Túnel Roca,5,Golpe Roca,Verde Hoja
+Graveler,Cañón Sétano,35,Golpe Roca,Verde Hoja
+Graveler,Cueva Celeste,35,Golpe Roca,Verde Hoja
+Graveler,Monte Ascuas (Entrada y Salida al Desfiladero),5,Golpe Roca,Verde Hoja
+Graveler,Monte Ascuas (Desfiladero),35,Golpe Roca,Verde Hoja
+Graveler,Monte Ascuas (Planta Baja),35,Golpe Roca,Verde Hoja
+Graveler,Monte Ascuas (Sótano 4),35,Golpe Roca,Verde Hoja
+Graveler,Monte Ascuas (Sótano 5),35,Golpe Roca,Verde Hoja
+Graveler,Monte Ascuas (Sótano 1),35,Golpe Roca,Verde Hoja
+Graveler,Monte Ascuas (Sótano 2),35,Golpe Roca,Verde Hoja
+Ponyta,Camino Candente,30,Caminar,Rojo Fuego
+Ponyta,Monte Ascuas (Ladera),35,Caminar,Rojo Fuego
+Ponyta,Camino Candente,30,Caminar,Verde Hoja
+Ponyta,Monte Ascuas (Ladera),35,Caminar,Verde Hoja
+Rapidash,Camino Candente,5,Caminar,Rojo Fuego
+Rapidash,Monte Ascuas (Ladera),5,Caminar,Rojo Fuego
+Rapidash,Camino Candente,5,Caminar,Verde Hoja
+Rapidash,Monte Ascuas (Ladera),5,Caminar,Verde Hoja
+Slowpoke,Bosque Baya,5,Caminar,Verde Hoja
+Slowpoke,Cabo Extremo,5,Caminar,Verde Hoja
+Slowpoke,Camino Candente,5,Caminar,Verde Hoja
+Slowpoke,Playa Tesoro,5,Caminar,Verde Hoja
+Slowpoke,Prado Isla Inta,5,Caminar,Verde Hoja
+Slowpoke,Puente Unión,5,Caminar,Verde Hoja
+Slowpoke,Vía Acuática,5,Caminar,Verde Hoja
+Slowpoke,Cueva Glaciada (Planta Baja (Sala 1)),5,Caminar,Verde Hoja
+Slowpoke,Cueva Glaciada (Planta Baja (Sala 3)),5,Caminar,Verde Hoja
+Slowpoke,Islas Espuma (Planta Baja),55,Caminar,Verde Hoja
+Slowpoke,Islas Espuma (Sótano 1),40,Caminar,Verde Hoja
+Slowpoke,Islas Espuma (Sótano 2),40,Caminar,Verde Hoja
+Slowpoke,Islas Espuma (Sótano 3),20,Caminar,Verde Hoja
+Slowpoke,Islas Espuma (Sótano 4),10,Caminar,Verde Hoja
+Slowpoke,Ruta 6,100,Surf,Verde Hoja
+Slowpoke,Ruta 22,100,Surf,Verde Hoja
+Slowpoke,Ruta 23,100,Surf,Verde Hoja
+Slowpoke,Ruta 25,100,Surf,Verde Hoja
+Slowpoke,Ciudad Fucsia,100,Surf,Verde Hoja
+Slowpoke,Ciudad Verde,100,Surf,Verde Hoja
+Slowpoke,Zona Safari,100,Surf,Verde Hoja
+Slowpoke,Bosque Baya,95,Surf,Verde Hoja
+Slowpoke,Cabo Extremo,95,Surf,Verde Hoja
+Slowpoke,Ciudad Azulona,99,Surf,Verde Hoja
+Slowpoke,Cueva Celeste,65,Surf,Verde Hoja
+Slowpoke,Cueva Glaciada (Planta Baja (Sala 1)),30,Surf,Verde Hoja
+Slowpoke,Isla Quarta,30,Surf,Verde Hoja
+Slowpoke,Islas Espuma,4,Surf,Verde Hoja
+Slowpoke,Ruta 6,5,Pesca (Supercaña),Verde Hoja
+Slowpoke,Ruta 25,5,Pesca (Supercaña),Verde Hoja
+Slowpoke,Bosque Baya,5,Pesca (Supercaña),Verde Hoja
+Slowpoke,Cabo Extremo,5,Pesca (Supercaña),Verde Hoja
+Slowpoke,Ciudad Fucsia,5,Pesca (Supercaña),Verde Hoja
+Slowpoke,Cueva Celeste,5,Pesca (Supercaña),Verde Hoja
+Slowpoke,Isla Quarta,5,Pesca (Supercaña),Verde Hoja
+Slowpoke,Valle Ruinas,5,Pesca (Supercaña),Verde Hoja
+Slowpoke,Ruta 10,1,Pesca (Supercaña),Verde Hoja
+Slowpoke,Ruta 11,1,Pesca (Supercaña),Verde Hoja
+Slowpoke,Ruta 12,1,Pesca (Supercaña),Verde Hoja
+Slowpoke,Ruta 13,1,Pesca (Supercaña),Verde Hoja
+Slowpoke,Ruta 19,1,Pesca (Supercaña),Verde Hoja
+Slowpoke,Ruta 20,1,Pesca (Supercaña),Verde Hoja
+Slowpoke,Ruta 21,1,Pesca (Supercaña),Verde Hoja
+Slowpoke,Ruta 24,1,Pesca (Supercaña),Verde Hoja
+Slowpoke,Aquarinto,1,Pesca (Supercaña),Verde Hoja
+Slowpoke,Camino Candente,1,Pesca (Supercaña),Verde Hoja
+Slowpoke,Ciudad Carmín,1,Pesca (Supercaña),Verde Hoja
+Slowpoke,Ciudad Celeste,1,Pesca (Supercaña),Verde Hoja
+Slowpoke,Isla Aislada,1,Pesca (Supercaña),Verde Hoja
+Slowpoke,Isla Canela,1,Pesca (Supercaña),Verde Hoja
+Slowpoke,Isla Inta,1,Pesca (Supercaña),Verde Hoja
+Slowpoke,Isla Prima,1,Pesca (Supercaña),Verde Hoja
+Slowpoke,Lugar de Recreo,1,Pesca (Supercaña),Verde Hoja
+Slowpoke,Pilar Recuerdo,1,Pesca (Supercaña),Verde Hoja
+Slowpoke,Playa Tesoro,1,Pesca (Supercaña),Verde Hoja
+Slowpoke,Prado Isla Inta,1,Pesca (Supercaña),Verde Hoja
+Slowpoke,Pueblo Paleta,1,Pesca (Supercaña),Verde Hoja
+Slowpoke,Puente Unión,1,Pesca (Supercaña),Verde Hoja
+Slowpoke,Ruinas Sete,1,Pesca (Supercaña),Verde Hoja
+Slowpoke,Torre Desafío,1,Pesca (Supercaña),Verde Hoja
+Slowpoke,Vía Acuática,1,Pesca (Supercaña),Verde Hoja
+Slowpoke,Vía Verde,1,Pesca (Supercaña),Verde Hoja
+Slowpoke,Cueva Glaciada (Planta Baja (Sala 1)),5,Pesca (Supercaña),Verde Hoja
+Slowpoke,Cueva Glaciada (Planta Baja (Sala 3)),1,Pesca (Supercaña),Verde Hoja
+Slowpoke,Islas Espuma,4,Pesca (Supercaña),Verde Hoja
+Slowpoke,Zona Safari,4,Pesca (Supercaña),Verde Hoja
+Slowbro,Cabo Extremo,5,Caminar,Verde Hoja
+Slowbro,Islas Espuma (Sótano 1),5,Caminar,Verde Hoja
+Slowbro,Islas Espuma (Sótano 2),10,Caminar,Verde Hoja
+Slowbro,Islas Espuma (Sótano 3),15,Caminar,Verde Hoja
+Slowbro,Islas Espuma (Sótano 4),15,Caminar,Verde Hoja
+Slowbro,Isla Canela,4,Pesca (Supercaña),Verde Hoja
+Magnemite,Central de Energía,30,Caminar,Rojo Fuego
+Magnemite,Central de Energía,30,Caminar,Verde Hoja
+Magneton,Central de Energía,10,Caminar,Rojo Fuego
+Magneton,Cueva Celeste (Planta Baja),20,Caminar,Rojo Fuego
+Magneton,Cueva Celeste (Primer Piso),10,Caminar,Rojo Fuego
+Magneton,Cueva Celeste (Sótano),10,Caminar,Rojo Fuego
+Magneton,Central de Energía,15,Caminar,Verde Hoja
+Magneton,Cueva Celeste (Planta Baja),20,Caminar,Verde Hoja
+Magneton,Cueva Celeste (Primer Piso),10,Caminar,Verde Hoja
+Magneton,Cueva Celeste (Sótano),10,Caminar,Verde Hoja
+Farfetch’d,Ciudad Carmín,100%,Intercambio Interno,Rojo Fuego
+Farfetch’d,Ciudad Carmín,100%,Intercambio Interno,Verde Hoja
+Doduo,Ruta 16,35,Caminar,Rojo Fuego
+Doduo,Ruta 17,35,Caminar,Rojo Fuego
+Doduo,Ruta 18,35,Caminar,Rojo Fuego
+Doduo,Zona Safari (Zona 1),20,Caminar,Rojo Fuego
+Doduo,Zona Safari (Zona 3),20,Caminar,Rojo Fuego
+Doduo,Ruta 16,35,Caminar,Verde Hoja
+Doduo,Ruta 17,35,Caminar,Verde Hoja
+Doduo,Ruta 18,35,Caminar,Verde Hoja
+Doduo,Zona Safari (Zona 1),20,Caminar,Verde Hoja
+Doduo,Zona Safari (Zona 3),20,Caminar,Verde Hoja
+Seel,Laboratorio de Isla Canela,100%,Intercambio Interno,Rojo Fuego
+Seel,Cueva Glaciada (Planta Baja (Sala 1)),40,Caminar,Rojo Fuego
+Seel,Cueva Glaciada (Planta Baja (Sala 3)),40,Caminar,Rojo Fuego
+Seel,Cueva Glaciada (Sótano y Planta Baja (Sala 2)),10,Caminar,Rojo Fuego
+Seel,Islas Espuma (Sótano 1),10,Caminar,Rojo Fuego
+Seel,Islas Espuma (Sótano 2),20,Caminar,Rojo Fuego
+Seel,Islas Espuma (Sótano 3),40,Caminar,Rojo Fuego
+Seel,Islas Espuma (Sótano 4),50,Caminar,Rojo Fuego
+Seel,Cueva Glaciada (Planta Baja (Sala 1)),60,Surf,Rojo Fuego
+Seel,Islas Espuma,60,Surf,Rojo Fuego
+Seel,Laboratorio de Isla Canela,100%,Intercambio Interno,Verde Hoja
+Seel,Cueva Glaciada (Planta Baja (Sala 1)),40,Caminar,Verde Hoja
+Seel,Cueva Glaciada (Planta Baja (Sala 3)),40,Caminar,Verde Hoja
+Seel,Cueva Glaciada (Sótano y Planta Baja (Sala 2)),10,Caminar,Verde Hoja
+Seel,Islas Espuma (Sótano 1),10,Caminar,Verde Hoja
+Seel,Islas Espuma (Sótano 2),20,Caminar,Verde Hoja
+Seel,Islas Espuma (Sótano 3),40,Caminar,Verde Hoja
+Seel,Islas Espuma (Sótano 4),50,Caminar,Verde Hoja
+Seel,Cueva Glaciada (Planta Baja (Sala 1)),60,Surf,Verde Hoja
+Seel,Islas Espuma,60,Surf,Verde Hoja
+Dewgong,Cueva Glaciada (Planta Baja (Sala 1)),5,Surf,Rojo Fuego
+Dewgong,Islas Espuma,5,Surf,Rojo Fuego
+Dewgong,Cueva Glaciada (Planta Baja (Sala 1)),5,Surf,Verde Hoja
+Dewgong,Islas Espuma,5,Surf,Verde Hoja
+Grimer,Mansión Pokémon,5,Caminar,Rojo Fuego
+Grimer,Ciudad Azulona,1,Pesca (Supercaña),Rojo Fuego
+Grimer,Mansión Pokémon,30,Caminar,Verde Hoja
+Grimer,Ciudad Azulona,1,Pesca (Supercaña),Verde Hoja
+Muk,Mansión Pokémon,5,Caminar,Verde Hoja
+Shellder,Ciudad Carmín,40,Pesca (Supercaña),Rojo Fuego
+Shellder,Isla Canela,40,Pesca (Supercaña),Rojo Fuego
+Shellder,Isla Inta,40,Pesca (Supercaña),Rojo Fuego
+Shellder,Isla Prima,40,Pesca (Supercaña),Rojo Fuego
+Shellder,Pueblo Paleta,40,Pesca (Supercaña),Rojo Fuego
+Shellder,Cueva Glaciada (Planta Baja (Sala 3)),40,Pesca (Supercaña),Rojo Fuego
+Gastly,Cueva Perdida (Entrada),25,Caminar,Rojo Fuego
+Gastly,Cueva Perdida (Sala 1),25,Caminar,Rojo Fuego
+Gastly,Cueva Perdida (Sala 2),25,Caminar,Rojo Fuego
+Gastly,Cueva Perdida (Sala 3),25,Caminar,Rojo Fuego
+Gastly,Cueva Perdida (Sala 4),25,Caminar,Rojo Fuego
+Gastly,Cueva Perdida (Sala 5),25,Caminar,Rojo Fuego
+Gastly,Cueva Perdida (Sala 6),25,Caminar,Rojo Fuego
+Gastly,Cueva Perdida (Sala 7),25,Caminar,Rojo Fuego
+Gastly,Cueva Perdida (Sala 8),25,Caminar,Rojo Fuego
+Gastly,Cueva Perdida (Sala 9),25,Caminar,Rojo Fuego
+Gastly,Cueva Perdida (Sala 10),25,Caminar,Rojo Fuego
+Gastly,Cueva Perdida (Sala 11),20,Caminar,Rojo Fuego
+Gastly,Cueva Perdida (Sala 12),20,Caminar,Rojo Fuego
+Gastly,Cueva Perdida (Sala 13),20,Caminar,Rojo Fuego
+Gastly,Cueva Perdida (Sala 14),20,Caminar,Rojo Fuego
+Gastly,Torre Pokémon (Piso 2),90,Caminar,Rojo Fuego
+Gastly,Torre Pokémon (Piso 3),86,Caminar,Rojo Fuego
+Gastly,Torre Pokémon (Piso 4),86,Caminar,Rojo Fuego
+Gastly,Torre Pokémon (Piso 5),85,Caminar,Rojo Fuego
+Gastly,Torre Pokémon (Piso 6),75,Caminar,Rojo Fuego
+Gastly,Cueva Perdida (Entrada),25,Caminar,Verde Hoja
+Gastly,Cueva Perdida (Sala 1),25,Caminar,Verde Hoja
+Gastly,Cueva Perdida (Sala 2),25,Caminar,Verde Hoja
+Gastly,Cueva Perdida (Sala 3),25,Caminar,Verde Hoja
+Gastly,Cueva Perdida (Sala 4),25,Caminar,Verde Hoja
+Gastly,Cueva Perdida (Sala 5),25,Caminar,Verde Hoja
+Gastly,Cueva Perdida (Sala 6),25,Caminar,Verde Hoja
+Gastly,Cueva Perdida (Sala 7),25,Caminar,Verde Hoja
+Gastly,Cueva Perdida (Sala 8),25,Caminar,Verde Hoja
+Gastly,Cueva Perdida (Sala 9),25,Caminar,Verde Hoja
+Gastly,Cueva Perdida (Sala 10),25,Caminar,Verde Hoja
+Gastly,Cueva Perdida (Sala 11),20,Caminar,Verde Hoja
+Gastly,Cueva Perdida (Sala 12),20,Caminar,Verde Hoja
+Gastly,Cueva Perdida (Sala 13),20,Caminar,Verde Hoja
+Gastly,Cueva Perdida (Sala 14),20,Caminar,Verde Hoja
+Gastly,Torre Pokémon (Piso 2),90,Caminar,Verde Hoja
+Gastly,Torre Pokémon (Piso 3),86,Caminar,Verde Hoja
+Gastly,Torre Pokémon (Piso 4),86,Caminar,Verde Hoja
+Gastly,Torre Pokémon (Piso 5),85,Caminar,Verde Hoja
+Gastly,Torre Pokémon (Piso 6),75,Caminar,Verde Hoja
+Haunter,Torre Pokémon (Piso 2),1,Caminar,Rojo Fuego
+Haunter,Torre Pokémon (Piso 3),5,Caminar,Rojo Fuego
+Haunter,Torre Pokémon (Piso 4),5,Caminar,Rojo Fuego
+Haunter,Torre Pokémon (Piso 5),6,Caminar,Rojo Fuego
+Haunter,Torre Pokémon (Piso 6),15,Caminar,Rojo Fuego
+Haunter,Cueva Perdida,30,Caminar,Rojo Fuego
+Haunter,Torre Pokémon (Piso 2),1,Caminar,Verde Hoja
+Haunter,Torre Pokémon (Piso 3),5,Caminar,Verde Hoja
+Haunter,Torre Pokémon (Piso 4),5,Caminar,Verde Hoja
+Haunter,Torre Pokémon (Piso 5),6,Caminar,Verde Hoja
+Haunter,Torre Pokémon (Piso 6),15,Caminar,Verde Hoja
+Haunter,Cueva Perdida,30,Caminar,Verde Hoja
+Onix,Calle Victoria (Planta Baja y Segunda Planta),30,Caminar,Rojo Fuego
+Onix,Calle Victoria (Primera Planta),20,Caminar,Rojo Fuego
+Onix,Cañón Sétano,5,Caminar,Rojo Fuego
+Onix,Túnel Roca (Planta Baja),5,Caminar,Rojo Fuego
+Onix,Túnel Roca (Sótano),10,Caminar,Rojo Fuego
+Onix,Calle Victoria (Planta Baja y Segunda Planta),30,Caminar,Verde Hoja
+Onix,Calle Victoria (Primera Planta),20,Caminar,Verde Hoja
+Onix,Cañón Sétano,5,Caminar,Verde Hoja
+Onix,Túnel Roca (Planta Baja),5,Caminar,Verde Hoja
+Onix,Túnel Roca (Sótano),10,Caminar,Verde Hoja
+Drowzee,Ruta 11,25,Caminar,Rojo Fuego
+Drowzee,Bosque Baya,10,Caminar,Rojo Fuego
+Drowzee,Ruta 11,25,Caminar,Verde Hoja
+Drowzee,Bosque Baya,10,Caminar,Verde Hoja
+Hypno,Bosque Baya,5,Caminar,Rojo Fuego
+Hypno,Bosque Baya,5,Caminar,Verde Hoja
+Krabby,Ruta 4,20,Pesca (Caña Buena),Rojo Fuego
+Krabby,Ruta 10,20,Pesca (Caña Buena),Rojo Fuego
+Krabby,Ruta 11,20,Pesca (Caña Buena),Rojo Fuego
+Krabby,Ruta 12,20,Pesca (Caña Buena),Rojo Fuego
+Krabby,Ruta 13,20,Pesca (Caña Buena),Rojo Fuego
+Krabby,Ruta 21,20,Pesca (Caña Buena),Rojo Fuego
+Krabby,Ruta 24,20,Pesca (Caña Buena),Rojo Fuego
+Krabby,Ciudad Carmín,20,Pesca (Caña Buena),Rojo Fuego
+Krabby,Ciudad Celeste,20,Pesca (Caña Buena),Rojo Fuego
+Krabby,Isla Canela,20,Pesca (Caña Buena),Rojo Fuego
+Krabby,Islas Espuma,20,Pesca (Caña Buena),Rojo Fuego
+Krabby,Pueblo Paleta,20,Pesca (Caña Buena),Rojo Fuego
+Krabby,Islas Espuma,30,Surf,Verde Hoja
+Krabby,Ruta 4,60,Pesca (Caña Buena),Verde Hoja
+Krabby,Ruta 10,60,Pesca (Caña Buena),Verde Hoja
+Krabby,Ruta 11,60,Pesca (Caña Buena),Verde Hoja
+Krabby,Ruta 12,60,Pesca (Caña Buena),Verde Hoja
+Krabby,Ruta 13,60,Pesca (Caña Buena),Verde Hoja
+Krabby,Ruta 19,60,Pesca (Caña Buena),Verde Hoja
+Krabby,Ruta 20,60,Pesca (Caña Buena),Verde Hoja
+Krabby,Ruta 21,60,Pesca (Caña Buena),Verde Hoja
+Krabby,Ruta 24,60,Pesca (Caña Buena),Verde Hoja
+Krabby,Ciudad Carmín,60,Pesca (Caña Buena),Verde Hoja
+Krabby,Ciudad Celeste,60,Pesca (Caña Buena),Verde Hoja
+Krabby,Isla Canela,60,Pesca (Caña Buena),Verde Hoja
+Krabby,Pueblo Paleta,60,Pesca (Caña Buena),Verde Hoja
+Krabby,Aquarinto,80,Pesca (Caña Buena),Verde Hoja
+Krabby,Camino Candente,80,Pesca (Caña Buena),Verde Hoja
+Krabby,Isla Aislada,80,Pesca (Caña Buena),Verde Hoja
+Krabby,Isla Inta,80,Pesca (Caña Buena),Verde Hoja
+Krabby,Isla Prima,80,Pesca (Caña Buena),Verde Hoja
+Krabby,Lugar de Recreo,80,Pesca (Caña Buena),Verde Hoja
+Krabby,Pilar Recuerdo,80,Pesca (Caña Buena),Verde Hoja
+Krabby,Playa Tesoro,80,Pesca (Caña Buena),Verde Hoja
+Krabby,Prado Isla Inta,80,Pesca (Caña Buena),Verde Hoja
+Krabby,Puente Unión,80,Pesca (Caña Buena),Verde Hoja
+Krabby,Ruinas Sete,80,Pesca (Caña Buena),Verde Hoja
+Krabby,Torre Desafío,80,Pesca (Caña Buena),Verde Hoja
+Krabby,Vía Acuática,80,Pesca (Caña Buena),Verde Hoja
+Krabby,Vía Verde,80,Pesca (Caña Buena),Verde Hoja
+Krabby,Cueva Glaciada (Planta Paja (Sala 3)),80,Pesca (Caña Buena),Verde Hoja
+Krabby,Islas Espuma,30,Pesca (Caña Buena),Verde Hoja
+Krabby,Ruta 4,84,Pesca (Supercaña),Verde Hoja
+Krabby,Ruta 10,84,Pesca (Supercaña),Verde Hoja
+Krabby,Ruta 11,84,Pesca (Supercaña),Verde Hoja
+Krabby,Ruta 12,84,Pesca (Supercaña),Verde Hoja
+Krabby,Ruta 13,84,Pesca (Supercaña),Verde Hoja
+Krabby,Ruta 19,84,Pesca (Supercaña),Verde Hoja
+Krabby,Ruta 20,84,Pesca (Supercaña),Verde Hoja
+Krabby,Ruta 21,84,Pesca (Supercaña),Verde Hoja
+Krabby,Ruta 24,84,Pesca (Supercaña),Verde Hoja
+Krabby,Ciudad Celeste,84,Pesca (Supercaña),Verde Hoja
+Krabby,,84,Pesca (Supercaña),Verde Hoja
+Krabby,Aquarinto,40,Pesca (Supercaña),Verde Hoja
+Krabby,Ciudad Carmín,40,Pesca (Supercaña),Verde Hoja
+Krabby,Isla Aislada,40,Pesca (Supercaña),Verde Hoja
+Krabby,Isla Canela,40,Pesca (Supercaña),Verde Hoja
+Krabby,Isla Inta,40,Pesca (Supercaña),Verde Hoja
+Krabby,Isla Prima,40,Pesca (Supercaña),Verde Hoja
+Krabby,Lugar de Recreo,40,Pesca (Supercaña),Verde Hoja
+Krabby,Pilar Recuerdo,40,Pesca (Supercaña),Verde Hoja
+Krabby,Prado Isla Inta,40,Pesca (Supercaña),Verde Hoja
+Krabby,Pueblo Paleta,40,Pesca (Supercaña),Verde Hoja
+Krabby,Ruinas Sete,40,Pesca (Supercaña),Verde Hoja
+Krabby,Torre Desafío,40,Pesca (Supercaña),Verde Hoja
+Krabby,Vía Acuática,40,Pesca (Supercaña),Verde Hoja
+Krabby,Vía Verde,40,Pesca (Supercaña),Verde Hoja
+Krabby,Camino Candente,80,Pesca (Supercaña),Verde Hoja
+Krabby,Playa Tesoro,80,Pesca (Supercaña),Verde Hoja
+Krabby,Puente Unión,80,Pesca (Supercaña),Verde Hoja
+Krabby,Cueva Glaciada (Planta Paja (Sala 3)),40,Pesca (Supercaña),Verde Hoja
+Kingler,Ruta 19,4,Pesca (Supercaña),Verde Hoja
+Kingler,Ruta 20,4,Pesca (Supercaña),Verde Hoja
+Kingler,Ruta 21,4,Pesca (Supercaña),Verde Hoja
+Kingler,Aquarinto,4,Pesca (Supercaña),Verde Hoja
+Kingler,Camino Candente,4,Pesca (Supercaña),Verde Hoja
+Kingler,Isla Aislada,4,Pesca (Supercaña),Verde Hoja
+Kingler,Isla Inta,4,Pesca (Supercaña),Verde Hoja
+Kingler,Isla Prima,4,Pesca (Supercaña),Verde Hoja
+Kingler,Lugar de Recreo,4,Pesca (Supercaña),Verde Hoja
+Kingler,Pilar Recuerdo,4,Pesca (Supercaña),Verde Hoja
+Kingler,Playa Tesoro,4,Pesca (Supercaña),Verde Hoja
+Kingler,Prado Isla Inta,4,Pesca (Supercaña),Verde Hoja
+Kingler,Pueblo Paleta,4,Pesca (Supercaña),Verde Hoja
+Kingler,Puente Unión,4,Pesca (Supercaña),Verde Hoja
+Kingler,Ruinas Sete,4,Pesca (Supercaña),Verde Hoja
+Kingler,Torre Desafío,4,Pesca (Supercaña),Verde Hoja
+Kingler,Vía Acuática,4,Pesca (Supercaña),Verde Hoja
+Kingler,Vía Verde,4,Pesca (Supercaña),Verde Hoja
+Kingler,Cueva Glaciada (Planta Baja (Sala 3)),4,Pesca (Supercaña),Verde Hoja
+Voltorb,Ruta 10,40,Caminar,Rojo Fuego
+Voltorb,Central de Energía,30,Caminar,Rojo Fuego
+Voltorb,Ruta 10,40,Caminar,Verde Hoja
+Voltorb,Central de Energía,30,Caminar,Verde Hoja
+Electrode,Laboratorio de Isla Canela Evolucionar: Voltorb (Al Llegar al Nivel 30),100%,Intercambio Interno,Rojo Fuego
+Electrode,Cueva Celeste (Planta Baja),5,Caminar,Rojo Fuego
+Electrode,Cueva Celeste (Primer Piso),4,Caminar,Rojo Fuego
+Electrode,Cueva Celeste (Sótano),4,Caminar,Rojo Fuego
+Electrode,Laboratorio de Isla Canela Evolucionar: Voltorb (Al Llegar al Nivel 30),100%,Intercambio Interno,Verde Hoja
+Electrode,Cueva Celeste (Planta Baja),5,Caminar,Verde Hoja
+Electrode,Cueva Celeste (Primer Piso),4,Caminar,Verde Hoja
+Electrode,Cueva Celeste (Sótano),4,Caminar,Verde Hoja
+Exeggcute,Zona Safari,20,Caminar,Rojo Fuego
+Exeggcute,Zona Safari,20,Caminar,Verde Hoja
+Cubone,Cañón Sétano,10,Caminar,Rojo Fuego
+Cubone,Torre Pokémon (Piso 2),9,Caminar,Rojo Fuego
+Cubone,Torre Pokémon (Piso 3),9,Caminar,Rojo Fuego
+Cubone,Torre Pokémon (Piso 4),9,Caminar,Rojo Fuego
+Cubone,Torre Pokémon (Piso 5),9,Caminar,Rojo Fuego
+Cubone,Torre Pokémon (Piso 6),10,Caminar,Rojo Fuego
+Cubone,Cañón Sétano,10,Caminar,Verde Hoja
+Cubone,Torre Pokémon (Piso 2),9,Caminar,Verde Hoja
+Cubone,Torre Pokémon (Piso 3),9,Caminar,Verde Hoja
+Cubone,Torre Pokémon (Piso 4),9,Caminar,Verde Hoja
+Cubone,Torre Pokémon (Piso 5),9,Caminar,Verde Hoja
+Cubone,Torre Pokémon (Piso 6),10,Caminar,Verde Hoja
+Marowak,Calle Victoria,5,Caminar,Rojo Fuego
+Marowak,Cañón Sétano,10,Caminar,Rojo Fuego
+Marowak,Calle Victoria,5,Caminar,Verde Hoja
+Marowak,Cañón Sétano,10,Caminar,Verde Hoja
+Lickitung,Desconocido,100%,Intercambio Interno,Rojo Fuego
+Lickitung,Desconocido,100%,Intercambio Interno,Verde Hoja
+Koffing,Mansión Pokémon,30,Caminar,Rojo Fuego
+Koffing,Ciudad Azulona,1,Surf,Rojo Fuego
+Koffing,Mansión Pokémon,5,Caminar,Verde Hoja
+Koffing,Ciudad Azulona,1,Surf,Verde Hoja
+Weezing,Mansión Pokémon,5,Caminar,Rojo Fuego
+Rhyhorn,Zona Safari (Zona Central),20,Caminar,Rojo Fuego
+Rhyhorn,Zona Safari (Zona 2),20,Caminar,Rojo Fuego
+Rhyhorn,Zona Safari (Zona Central),20,Caminar,Verde Hoja
+Rhyhorn,Zona Safari (Zona 2),20,Caminar,Verde Hoja
+Chansey,Zona Safari (Zona Central),1,Caminar,Rojo Fuego
+Chansey,Zona Safari (Zona 2),4,Caminar,Rojo Fuego
+Chansey,Zona Safari (Zona Central),1,Caminar,Verde Hoja
+Chansey,Zona Safari (Zona 2),4,Caminar,Verde Hoja
+Tangela,Laboratorio de Isla Canela,100%,Intercambio Interno,Rojo Fuego
+Tangela,Ruta 21,100,Caminar,Rojo Fuego
+Tangela,Playa Tesoro,30,Caminar,Rojo Fuego
+Tangela,Laboratorio de Isla Canela,100%,Intercambio Interno,Verde Hoja
+Tangela,Ruta 21,100,Caminar,Verde Hoja
+Tangela,Playa Tesoro,30,Caminar,Verde Hoja
+Kangaskhan,Zona Safari (Zona 1),4,Caminar,Rojo Fuego
+Kangaskhan,Zona Safari (Zona 3),1,Caminar,Rojo Fuego
+Kangaskhan,Zona Safari (Zona 1),4,Caminar,Verde Hoja
+Kangaskhan,Zona Safari (Zona 3),1,Caminar,Verde Hoja
+Horsea,Islas Espuma,30,Surf,Rojo Fuego
+Horsea,Ruta 4,60,Pesca (Caña Buena),Rojo Fuego
+Horsea,Ruta 10,60,Pesca (Caña Buena),Rojo Fuego
+Horsea,Ruta 11,60,Pesca (Caña Buena),Rojo Fuego
+Horsea,Ruta 12,60,Pesca (Caña Buena),Rojo Fuego
+Horsea,Ruta 13,60,Pesca (Caña Buena),Rojo Fuego
+Horsea,Ruta 19,60,Pesca (Caña Buena),Rojo Fuego
+Horsea,Ruta 20,60,Pesca (Caña Buena),Rojo Fuego
+Horsea,Ruta 21,60,Pesca (Caña Buena),Rojo Fuego
+Horsea,Ruta 24,60,Pesca (Caña Buena),Rojo Fuego
+Horsea,Ciudad Carmín,60,Pesca (Caña Buena),Rojo Fuego
+Horsea,Ciudad Celeste,60,Pesca (Caña Buena),Rojo Fuego
+Horsea,Isla Canela,60,Pesca (Caña Buena),Rojo Fuego
+Horsea,Pueblo Paleta,60,Pesca (Caña Buena),Rojo Fuego
+Horsea,Aquarinto,80,Pesca (Caña Buena),Rojo Fuego
+Horsea,Camino Candente,80,Pesca (Caña Buena),Rojo Fuego
+Horsea,Isla Aislada,80,Pesca (Caña Buena),Rojo Fuego
+Horsea,Isla Inta,80,Pesca (Caña Buena),Rojo Fuego
+Horsea,Isla Prima,80,Pesca (Caña Buena),Rojo Fuego
+Horsea,Lugar de Recreo,80,Pesca (Caña Buena),Rojo Fuego
+Horsea,Pilar Recuerdo,80,Pesca (Caña Buena),Rojo Fuego
+Horsea,Playa Tesoro,80,Pesca (Caña Buena),Rojo Fuego
+Horsea,Prado Isla Inta,80,Pesca (Caña Buena),Rojo Fuego
+Horsea,Puente Unión,80,Pesca (Caña Buena),Rojo Fuego
+Horsea,Ruinas Sete,80,Pesca (Caña Buena),Rojo Fuego
+Horsea,Torre Desafío,80,Pesca (Caña Buena),Rojo Fuego
+Horsea,Vía Acuática,80,Pesca (Caña Buena),Rojo Fuego
+Horsea,Vía Verde,80,Pesca (Caña Buena),Rojo Fuego
+Horsea,Cueva Glaciada (Planta Paja (Sala 3)),80,Pesca (Caña Buena),Rojo Fuego
+Horsea,Islas Espuma,30,Pesca (Caña Buena),Rojo Fuego
+Horsea,Ruta 4,84,Pesca (Supercaña),Rojo Fuego
+Horsea,Ruta 10,84,Pesca (Supercaña),Rojo Fuego
+Horsea,Ruta 11,84,Pesca (Supercaña),Rojo Fuego
+Horsea,Ruta 12,84,Pesca (Supercaña),Rojo Fuego
+Horsea,Ruta 13,84,Pesca (Supercaña),Rojo Fuego
+Horsea,Ruta 19,84,Pesca (Supercaña),Rojo Fuego
+Horsea,Ruta 20,84,Pesca (Supercaña),Rojo Fuego
+Horsea,Ruta 21,84,Pesca (Supercaña),Rojo Fuego
+Horsea,Ruta 24,84,Pesca (Supercaña),Rojo Fuego
+Horsea,Ciudad Celeste,84,Pesca (Supercaña),Rojo Fuego
+Horsea,,84,Pesca (Supercaña),Rojo Fuego
+Horsea,Aquarinto,40,Pesca (Supercaña),Rojo Fuego
+Horsea,Ciudad Carmín,40,Pesca (Supercaña),Rojo Fuego
+Horsea,Isla Aislada,40,Pesca (Supercaña),Rojo Fuego
+Horsea,Isla Canela,40,Pesca (Supercaña),Rojo Fuego
+Horsea,Isla Inta,40,Pesca (Supercaña),Rojo Fuego
+Horsea,Isla Prima,40,Pesca (Supercaña),Rojo Fuego
+Horsea,Lugar de Recreo,40,Pesca (Supercaña),Rojo Fuego
+Horsea,Pilar Recuerdo,40,Pesca (Supercaña),Rojo Fuego
+Horsea,Prado Isla Inta,40,Pesca (Supercaña),Rojo Fuego
+Horsea,Pueblo Paleta,40,Pesca (Supercaña),Rojo Fuego
+Horsea,Ruinas Sete,40,Pesca (Supercaña),Rojo Fuego
+Horsea,Torre Desafío,40,Pesca (Supercaña),Rojo Fuego
+Horsea,Vía Acuática,40,Pesca (Supercaña),Rojo Fuego
+Horsea,Vía Verde,40,Pesca (Supercaña),Rojo Fuego
+Horsea,Camino Candente,80,Pesca (Supercaña),Rojo Fuego
+Horsea,Playa Tesoro,80,Pesca (Supercaña),Rojo Fuego
+Horsea,Puente Unión,80,Pesca (Supercaña),Rojo Fuego
+Horsea,Cueva Glaciada (Planta Paja (Sala 3)),40,Pesca (Supercaña),Rojo Fuego
+Horsea,Ruta 4,20,Pesca (Caña Buena),Verde Hoja
+Horsea,Ruta 10,20,Pesca (Caña Buena),Verde Hoja
+Horsea,Ruta 11,20,Pesca (Caña Buena),Verde Hoja
+Horsea,Ruta 12,20,Pesca (Caña Buena),Verde Hoja
+Horsea,Ruta 13,20,Pesca (Caña Buena),Verde Hoja
+Horsea,Ruta 21,20,Pesca (Caña Buena),Verde Hoja
+Horsea,Ruta 24,20,Pesca (Caña Buena),Verde Hoja
+Horsea,Ciudad Carmín,20,Pesca (Caña Buena),Verde Hoja
+Horsea,Ciudad Celeste,20,Pesca (Caña Buena),Verde Hoja
+Horsea,Isla Canela,20,Pesca (Caña Buena),Verde Hoja
+Horsea,Islas Espuma,20,Pesca (Caña Buena),Verde Hoja
+Horsea,Pueblo Paleta,20,Pesca (Caña Buena),Verde Hoja
+Horsea,Ciudad Carmín,4,Pesca (Supercaña),Verde Hoja
+Seadra,Ruta 19,4,Pesca (Supercaña),Rojo Fuego
+Seadra,Ruta 20,4,Pesca (Supercaña),Rojo Fuego
+Seadra,Ruta 21,4,Pesca (Supercaña),Rojo Fuego
+Seadra,Aquarinto,4,Pesca (Supercaña),Rojo Fuego
+Seadra,Camino Candente,4,Pesca (Supercaña),Rojo Fuego
+Seadra,Isla Aislada,4,Pesca (Supercaña),Rojo Fuego
+Seadra,Isla Canela,4,Pesca (Supercaña),Rojo Fuego
+Seadra,Isla Inta,4,Pesca (Supercaña),Rojo Fuego
+Seadra,Isla Prima,4,Pesca (Supercaña),Rojo Fuego
+Seadra,Lugar de Recreo,4,Pesca (Supercaña),Rojo Fuego
+Seadra,Pilar Recuerdo,4,Pesca (Supercaña),Rojo Fuego
+Seadra,Playa Tesoro,4,Pesca (Supercaña),Rojo Fuego
+Seadra,Prado Isla Inta,4,Pesca (Supercaña),Rojo Fuego
+Seadra,Pueblo Paleta,4,Pesca (Supercaña),Rojo Fuego
+Seadra,Puente Unión,4,Pesca (Supercaña),Rojo Fuego
+Seadra,Ruinas Sete,4,Pesca (Supercaña),Rojo Fuego
+Seadra,Torre Desafío,4,Pesca (Supercaña),Rojo Fuego
+Seadra,Vía Acuática,4,Pesca (Supercaña),Rojo Fuego
+Seadra,Vía Verde,4,Pesca (Supercaña),Rojo Fuego
+Seadra,Cueva Glaciada (Planta Baja (Sala 3)),4,Pesca (Supercaña),Rojo Fuego
+Goldeen,Ruta 6,20,Pesca (Caña Buena),Rojo Fuego
+Goldeen,Ruta 22,20,Pesca (Caña Buena),Rojo Fuego
+Goldeen,Ruta 23,20,Pesca (Caña Buena),Rojo Fuego
+Goldeen,Ruta 25,20,Pesca (Caña Buena),Rojo Fuego
+Goldeen,Ciudad Fucsia,20,Pesca (Caña Buena),Rojo Fuego
+Goldeen,Ciudad Verde,20,Pesca (Caña Buena),Rojo Fuego
+Goldeen,Cueva Celeste,20,Pesca (Caña Buena),Rojo Fuego
+Goldeen,Isla Quarta,20,Pesca (Caña Buena),Rojo Fuego
+Goldeen,Valle Ruinas,20,Pesca (Caña Buena),Rojo Fuego
+Goldeen,Bosque Baya,60,Pesca (Caña Buena),Rojo Fuego
+Goldeen,Zona Safari,60,Pesca (Caña Buena),Rojo Fuego
+Goldeen,Cueva Glaciada (Planta Baja (Sala 1)),20,Pesca (Caña Buena),Rojo Fuego
+Goldeen,Bosque Baya,40,Pesca (Supercaña),Rojo Fuego
+Goldeen,Ciudad Fucsia,40,Pesca (Supercaña),Rojo Fuego
+Goldeen,Zona Safari,40,Pesca (Supercaña),Rojo Fuego
+Goldeen,Ruta 6,20,Pesca (Caña Buena),Verde Hoja
+Goldeen,Ruta 22,20,Pesca (Caña Buena),Verde Hoja
+Goldeen,Ruta 23,20,Pesca (Caña Buena),Verde Hoja
+Goldeen,Ruta 25,20,Pesca (Caña Buena),Verde Hoja
+Goldeen,Ciudad Fucsia,20,Pesca (Caña Buena),Verde Hoja
+Goldeen,Ciudad Verde,20,Pesca (Caña Buena),Verde Hoja
+Goldeen,Cueva Celeste,20,Pesca (Caña Buena),Verde Hoja
+Goldeen,Isla Quarta,20,Pesca (Caña Buena),Verde Hoja
+Goldeen,Valle Ruinas,20,Pesca (Caña Buena),Verde Hoja
+Goldeen,Bosque Baya,60,Pesca (Caña Buena),Verde Hoja
+Goldeen,Zona Safari,60,Pesca (Caña Buena),Verde Hoja
+Goldeen,Cueva Glaciada (Planta Baja (Sala 1)),20,Pesca (Caña Buena),Verde Hoja
+Goldeen,Bosque Baya,40,Pesca (Supercaña),Verde Hoja
+Goldeen,Ciudad Fucsia,40,Pesca (Supercaña),Verde Hoja
+Goldeen,Zona Safari,40,Pesca (Supercaña),Verde Hoja
+Seaking,Bosque Baya,40,Pesca (Supercaña),Rojo Fuego
+Seaking,Ciudad Fucsia,40,Pesca (Supercaña),Rojo Fuego
+Seaking,Zona Safari,40,Pesca (Supercaña),Rojo Fuego
+Seaking,Bosque Baya,40,Pesca (Supercaña),Verde Hoja
+Seaking,Ciudad Fucsia,40,Pesca (Supercaña),Verde Hoja
+Seaking,Zona Safari,40,Pesca (Supercaña),Verde Hoja
+Staryu,Ciudad Carmín,40,Pesca (Supercaña),Verde Hoja
+Staryu,Isla Canela,40,Pesca (Supercaña),Verde Hoja
+Staryu,Isla Inta,40,Pesca (Supercaña),Verde Hoja
+Staryu,Isla Prima,40,Pesca (Supercaña),Verde Hoja
+Staryu,Pueblo Paleta,40,Pesca (Supercaña),Verde Hoja
+Staryu,Cueva Glaciada (Planta Baja (Sala 3)),40,Pesca (Supercaña),Verde Hoja
+Mr. Mime,Casa al Sur de la Cueva Diglett en la Ruta 2,100%,Intercambio Interno,Rojo Fuego
+Mr. Mime,Casa al Sur de la Cueva Diglett en la Ruta 2,100%,Intercambio Interno,Verde Hoja
+Scyther,Zona Safari (Zona Central),4,Caminar,Rojo Fuego
+Scyther,Zona Safari (Zona 1),1,Caminar,Rojo Fuego
+Scyther,Casino (Ciudad Azulona),5500 Fichas,Canje,Rojo Fuego
+Jynx,una Casa a la Izquierda del Centro Pokémon de Ciudad Celeste Evolucionar: Smoochum (Al Llegar al Nivel 30),100%,Intercambio Interno,Rojo Fuego
+Jynx,una Casa a la Izquierda del Centro Pokémon de Ciudad Celeste Evolucionar: Smoochum (Al Llegar al Nivel 30),100%,Intercambio Interno,Verde Hoja
+Electabuzz,Central de Energía,5,Caminar,Rojo Fuego
+Magmar,Mt. Ascuas (Ladera),5,Caminar,Verde Hoja
+Pinsir,Zona Safari (Zona Central),4,Caminar,Verde Hoja
+Pinsir,Zona Safari (Zona 1),1,Caminar,Verde Hoja
+Pinsir,Casino (Ciudad Azulona),2500 Fichas,Canje,Verde Hoja
+Tauros,Zona Safari (Zona 2),1,Caminar,Rojo Fuego
+Tauros,Zona Safari (Zona 3),4,Caminar,Rojo Fuego
+Tauros,Zona Safari (Zona 2),1,Caminar,Verde Hoja
+Tauros,Zona Safari (Zona 3),4,Caminar,Verde Hoja
+Magikarp,Ruta 4,100,Pesca (Caña Vieja),Rojo Fuego
+Magikarp,Ruta 10,100,Pesca (Caña Vieja),Rojo Fuego
+Magikarp,Ruta 11,100,Pesca (Caña Vieja),Rojo Fuego
+Magikarp,Ruta 12,100,Pesca (Caña Vieja),Rojo Fuego
+Magikarp,Ruta 13,100,Pesca (Caña Vieja),Rojo Fuego
+Magikarp,Ruta 19,100,Pesca (Caña Vieja),Rojo Fuego
+Magikarp,Ruta 20,100,Pesca (Caña Vieja),Rojo Fuego
+Magikarp,Ruta 21,100,Pesca (Caña Vieja),Rojo Fuego
+Magikarp,Ruta 24,100,Pesca (Caña Vieja),Rojo Fuego
+Magikarp,Ciudad Carmín,100,Pesca (Caña Vieja),Rojo Fuego
+Magikarp,Ciudad Celeste,100,Pesca (Caña Vieja),Rojo Fuego
+Magikarp,Isla Canela,100,Pesca (Caña Vieja),Rojo Fuego
+Magikarp,Pueblo Paleta,100,Pesca (Caña Vieja),Rojo Fuego
+Magikarp,Aquarinto,100,Pesca (Caña Vieja),Rojo Fuego
+Magikarp,Isla Inta,100,Pesca (Caña Vieja),Rojo Fuego
+Magikarp,Lugar de Recreo,100,Pesca (Caña Vieja),Rojo Fuego
+Magikarp,Pilar Recuerdo,100,Pesca (Caña Vieja),Rojo Fuego
+Magikarp,Prado Isla Inta,100,Pesca (Caña Vieja),Rojo Fuego
+Magikarp,Camino Candente,100,Pesca (Caña Vieja),Rojo Fuego
+Magikarp,Isla Aislada,100,Pesca (Caña Vieja),Rojo Fuego
+Magikarp,Isla Prima,100,Pesca (Caña Vieja),Rojo Fuego
+Magikarp,Playa Tesoro,100,Pesca (Caña Vieja),Rojo Fuego
+Magikarp,Puente Unión,100,Pesca (Caña Vieja),Rojo Fuego
+Magikarp,Ruinas Sete,100,Pesca (Caña Vieja),Rojo Fuego
+Magikarp,Vía Acuática,100,Pesca (Caña Vieja),Rojo Fuego
+Magikarp,Vía Verde,100,Pesca (Caña Vieja),Rojo Fuego
+Magikarp,Cueva Glaciada,100,Pesca (Caña Vieja),Rojo Fuego
+Magikarp,Torre Desafío,100,Pesca (Caña Vieja),Rojo Fuego
+Magikarp,Ruta 4,20,Pesca (Caña Buena),Rojo Fuego
+Magikarp,Ruta 10,20,Pesca (Caña Buena),Rojo Fuego
+Magikarp,Ruta 11,20,Pesca (Caña Buena),Rojo Fuego
+Magikarp,Ruta 12,20,Pesca (Caña Buena),Rojo Fuego
+Magikarp,Ruta 13,20,Pesca (Caña Buena),Rojo Fuego
+Magikarp,Ruta 19,20,Pesca (Caña Buena),Rojo Fuego
+Magikarp,Ruta 20,20,Pesca (Caña Buena),Rojo Fuego
+Magikarp,Ruta 21,20,Pesca (Caña Buena),Rojo Fuego
+Magikarp,Ruta 24,20,Pesca (Caña Buena),Rojo Fuego
+Magikarp,Ciudad Carmín,20,Pesca (Caña Buena),Rojo Fuego
+Magikarp,Ciudad Celeste,20,Pesca (Caña Buena),Rojo Fuego
+Magikarp,Isla Canela,20,Pesca (Caña Buena),Rojo Fuego
+Magikarp,Pueblo Paleta,20,Pesca (Caña Buena),Rojo Fuego
+Magikarp,Aquarinto,20,Pesca (Caña Buena),Rojo Fuego
+Magikarp,Isla Inta,20,Pesca (Caña Buena),Rojo Fuego
+Magikarp,Lugar de Recreo,20,Pesca (Caña Buena),Rojo Fuego
+Magikarp,Pilar Recuerdo,20,Pesca (Caña Buena),Rojo Fuego
+Magikarp,Prado Isla Inta,20,Pesca (Caña Buena),Rojo Fuego
+Magikarp,Camino Candente,20,Pesca (Caña Buena),Rojo Fuego
+Magikarp,Isla Aislada,20,Pesca (Caña Buena),Rojo Fuego
+Magikarp,Isla Prima,20,Pesca (Caña Buena),Rojo Fuego
+Magikarp,Playa Tesoro,20,Pesca (Caña Buena),Rojo Fuego
+Magikarp,Puente Unión,20,Pesca (Caña Buena),Rojo Fuego
+Magikarp,Ruinas Sete,20,Pesca (Caña Buena),Rojo Fuego
+Magikarp,Vía Acuática,20,Pesca (Caña Buena),Rojo Fuego
+Magikarp,Vía Verde,20,Pesca (Caña Buena),Rojo Fuego
+Magikarp,Cueva Glaciada,20,Pesca (Caña Buena),Rojo Fuego
+Magikarp,Torre Desafío,20,Pesca (Caña Buena),Rojo Fuego
+Magikarp,Ruta 4,100,Pesca (Caña Vieja),Verde Hoja
+Magikarp,Ruta 10,100,Pesca (Caña Vieja),Verde Hoja
+Magikarp,Ruta 11,100,Pesca (Caña Vieja),Verde Hoja
+Magikarp,Ruta 12,100,Pesca (Caña Vieja),Verde Hoja
+Magikarp,Ruta 13,100,Pesca (Caña Vieja),Verde Hoja
+Magikarp,Ruta 19,100,Pesca (Caña Vieja),Verde Hoja
+Magikarp,Ruta 20,100,Pesca (Caña Vieja),Verde Hoja
+Magikarp,Ruta 21,100,Pesca (Caña Vieja),Verde Hoja
+Magikarp,Ruta 24,100,Pesca (Caña Vieja),Verde Hoja
+Magikarp,Ciudad Carmín,100,Pesca (Caña Vieja),Verde Hoja
+Magikarp,Ciudad Celeste,100,Pesca (Caña Vieja),Verde Hoja
+Magikarp,Isla Canela,100,Pesca (Caña Vieja),Verde Hoja
+Magikarp,Pueblo Paleta,100,Pesca (Caña Vieja),Verde Hoja
+Magikarp,Aquarinto,100,Pesca (Caña Vieja),Verde Hoja
+Magikarp,Isla Inta,100,Pesca (Caña Vieja),Verde Hoja
+Magikarp,Lugar de Recreo,100,Pesca (Caña Vieja),Verde Hoja
+Magikarp,Pilar Recuerdo,100,Pesca (Caña Vieja),Verde Hoja
+Magikarp,Prado Isla Inta,100,Pesca (Caña Vieja),Verde Hoja
+Magikarp,Camino Candente,100,Pesca (Caña Vieja),Verde Hoja
+Magikarp,Isla Aislada,100,Pesca (Caña Vieja),Verde Hoja
+Magikarp,Isla Prima,100,Pesca (Caña Vieja),Verde Hoja
+Magikarp,Playa Tesoro,100,Pesca (Caña Vieja),Verde Hoja
+Magikarp,Puente Unión,100,Pesca (Caña Vieja),Verde Hoja
+Magikarp,Ruinas Sete,100,Pesca (Caña Vieja),Verde Hoja
+Magikarp,Vía Acuática,100,Pesca (Caña Vieja),Verde Hoja
+Magikarp,Vía Verde,100,Pesca (Caña Vieja),Verde Hoja
+Magikarp,Cueva Glaciada,100,Pesca (Caña Vieja),Verde Hoja
+Magikarp,Torre Desafío,100,Pesca (Caña Vieja),Verde Hoja
+Magikarp,Ruta 4,20,Pesca (Caña Buena),Verde Hoja
+Magikarp,Ruta 10,20,Pesca (Caña Buena),Verde Hoja
+Magikarp,Ruta 11,20,Pesca (Caña Buena),Verde Hoja
+Magikarp,Ruta 12,20,Pesca (Caña Buena),Verde Hoja
+Magikarp,Ruta 13,20,Pesca (Caña Buena),Verde Hoja
+Magikarp,Ruta 19,20,Pesca (Caña Buena),Verde Hoja
+Magikarp,Ruta 20,20,Pesca (Caña Buena),Verde Hoja
+Magikarp,Ruta 21,20,Pesca (Caña Buena),Verde Hoja
+Magikarp,Ruta 24,20,Pesca (Caña Buena),Verde Hoja
+Magikarp,Ciudad Carmín,20,Pesca (Caña Buena),Verde Hoja
+Magikarp,Ciudad Celeste,20,Pesca (Caña Buena),Verde Hoja
+Magikarp,Isla Canela,20,Pesca (Caña Buena),Verde Hoja
+Magikarp,Pueblo Paleta,20,Pesca (Caña Buena),Verde Hoja
+Magikarp,Aquarinto,20,Pesca (Caña Buena),Verde Hoja
+Magikarp,Isla Inta,20,Pesca (Caña Buena),Verde Hoja
+Magikarp,Lugar de Recreo,20,Pesca (Caña Buena),Verde Hoja
+Magikarp,Pilar Recuerdo,20,Pesca (Caña Buena),Verde Hoja
+Magikarp,Prado Isla Inta,20,Pesca (Caña Buena),Verde Hoja
+Magikarp,Camino Candente,20,Pesca (Caña Buena),Verde Hoja
+Magikarp,Isla Aislada,20,Pesca (Caña Buena),Verde Hoja
+Magikarp,Isla Prima,20,Pesca (Caña Buena),Verde Hoja
+Magikarp,Playa Tesoro,20,Pesca (Caña Buena),Verde Hoja
+Magikarp,Puente Unión,20,Pesca (Caña Buena),Verde Hoja
+Magikarp,Ruinas Sete,20,Pesca (Caña Buena),Verde Hoja
+Magikarp,Vía Acuática,20,Pesca (Caña Buena),Verde Hoja
+Magikarp,Vía Verde,20,Pesca (Caña Buena),Verde Hoja
+Magikarp,Cueva Glaciada,20,Pesca (Caña Buena),Verde Hoja
+Magikarp,Torre Desafío,20,Pesca (Caña Buena),Verde Hoja
+Gyarados,Ruta 4,15,Pesca (Supercaña),Rojo Fuego
+Gyarados,Ruta 6,15,Pesca (Supercaña),Rojo Fuego
+Gyarados,Ruta 10,15,Pesca (Supercaña),Rojo Fuego
+Gyarados,Ruta 11,15,Pesca (Supercaña),Rojo Fuego
+Gyarados,Ruta 12,15,Pesca (Supercaña),Rojo Fuego
+Gyarados,Ruta 13,15,Pesca (Supercaña),Rojo Fuego
+Gyarados,Ruta 19,15,Pesca (Supercaña),Rojo Fuego
+Gyarados,Ruta 20,15,Pesca (Supercaña),Rojo Fuego
+Gyarados,Ruta 21,15,Pesca (Supercaña),Rojo Fuego
+Gyarados,Ruta 22,15,Pesca (Supercaña),Rojo Fuego
+Gyarados,Ruta 23,15,Pesca (Supercaña),Rojo Fuego
+Gyarados,Ruta 24,15,Pesca (Supercaña),Rojo Fuego
+Gyarados,Ruta 25,15,Pesca (Supercaña),Rojo Fuego
+Gyarados,Aquarinto,15,Pesca (Supercaña),Rojo Fuego
+Gyarados,Bosque Baya,15,Pesca (Supercaña),Rojo Fuego
+Gyarados,Cabo Extremo,15,Pesca (Supercaña),Rojo Fuego
+Gyarados,Camino Candente,15,Pesca (Supercaña),Rojo Fuego
+Gyarados,Ciudad Carmín,15,Pesca (Supercaña),Rojo Fuego
+Gyarados,Ciudad Celeste,15,Pesca (Supercaña),Rojo Fuego
+Gyarados,Ciudad Fucsia,15,Pesca (Supercaña),Rojo Fuego
+Gyarados,Ciudad Verde,15,Pesca (Supercaña),Rojo Fuego
+Gyarados,Cueva Celeste,15,Pesca (Supercaña),Rojo Fuego
+Gyarados,Cueva Glaciada,15,Pesca (Supercaña),Rojo Fuego
+Gyarados,Isla Aislada,15,Pesca (Supercaña),Rojo Fuego
+Gyarados,Isla Canela,15,Pesca (Supercaña),Rojo Fuego
+Gyarados,Isla Inta,15,Pesca (Supercaña),Rojo Fuego
+Gyarados,Isla Prima,15,Pesca (Supercaña),Rojo Fuego
+Gyarados,Isla Quarta,15,Pesca (Supercaña),Rojo Fuego
+Gyarados,Lugar de Recreo,15,Pesca (Supercaña),Rojo Fuego
+Gyarados,Pilar Recuerdo,15,Pesca (Supercaña),Rojo Fuego
+Gyarados,Playa Tesoro,15,Pesca (Supercaña),Rojo Fuego
+Gyarados,Prado Isla Inta,15,Pesca (Supercaña),Rojo Fuego
+Gyarados,Pueblo Paleta,15,Pesca (Supercaña),Rojo Fuego
+Gyarados,Puente Unión,15,Pesca (Supercaña),Rojo Fuego
+Gyarados,Ruinas Sete,15,Pesca (Supercaña),Rojo Fuego
+Gyarados,Torre Desafío,15,Pesca (Supercaña),Rojo Fuego
+Gyarados,Valle Ruinas,15,Pesca (Supercaña),Rojo Fuego
+Gyarados,Vía Acuática,15,Pesca (Supercaña),Rojo Fuego
+Gyarados,Vía Verde,15,Pesca (Supercaña),Rojo Fuego
+Gyarados,Islas Espuma,16,Pesca (Supercaña),Rojo Fuego
+Gyarados,Ruta 4,15,Pesca (Supercaña),Verde Hoja
+Gyarados,Ruta 6,15,Pesca (Supercaña),Verde Hoja
+Gyarados,Ruta 10,15,Pesca (Supercaña),Verde Hoja
+Gyarados,Ruta 11,15,Pesca (Supercaña),Verde Hoja
+Gyarados,Ruta 12,15,Pesca (Supercaña),Verde Hoja
+Gyarados,Ruta 13,15,Pesca (Supercaña),Verde Hoja
+Gyarados,Ruta 19,15,Pesca (Supercaña),Verde Hoja
+Gyarados,Ruta 20,15,Pesca (Supercaña),Verde Hoja
+Gyarados,Ruta 21,15,Pesca (Supercaña),Verde Hoja
+Gyarados,Ruta 22,15,Pesca (Supercaña),Verde Hoja
+Gyarados,Ruta 23,15,Pesca (Supercaña),Verde Hoja
+Gyarados,Ruta 24,15,Pesca (Supercaña),Verde Hoja
+Gyarados,Ruta 25,15,Pesca (Supercaña),Verde Hoja
+Gyarados,Aquarinto,15,Pesca (Supercaña),Verde Hoja
+Gyarados,Bosque Baya,15,Pesca (Supercaña),Verde Hoja
+Gyarados,Cabo Extremo,15,Pesca (Supercaña),Verde Hoja
+Gyarados,Camino Candente,15,Pesca (Supercaña),Verde Hoja
+Gyarados,Ciudad Carmín,15,Pesca (Supercaña),Verde Hoja
+Gyarados,Ciudad Celeste,15,Pesca (Supercaña),Verde Hoja
+Gyarados,Ciudad Fucsia,15,Pesca (Supercaña),Verde Hoja
+Gyarados,Ciudad Verde,15,Pesca (Supercaña),Verde Hoja
+Gyarados,Cueva Celeste,15,Pesca (Supercaña),Verde Hoja
+Gyarados,Cueva Glaciada,15,Pesca (Supercaña),Verde Hoja
+Gyarados,Isla Aislada,15,Pesca (Supercaña),Verde Hoja
+Gyarados,Isla Canela,15,Pesca (Supercaña),Verde Hoja
+Gyarados,Isla Inta,15,Pesca (Supercaña),Verde Hoja
+Gyarados,Isla Prima,15,Pesca (Supercaña),Verde Hoja
+Gyarados,Isla Quarta,15,Pesca (Supercaña),Verde Hoja
+Gyarados,Lugar de Recreo,15,Pesca (Supercaña),Verde Hoja
+Gyarados,Pilar Recuerdo,15,Pesca (Supercaña),Verde Hoja
+Gyarados,Playa Tesoro,15,Pesca (Supercaña),Verde Hoja
+Gyarados,Prado Isla Inta,15,Pesca (Supercaña),Verde Hoja
+Gyarados,Pueblo Paleta,15,Pesca (Supercaña),Verde Hoja
+Gyarados,Puente Unión,15,Pesca (Supercaña),Verde Hoja
+Gyarados,Ruinas Sete,15,Pesca (Supercaña),Verde Hoja
+Gyarados,Torre Desafío,15,Pesca (Supercaña),Verde Hoja
+Gyarados,Valle Ruinas,15,Pesca (Supercaña),Verde Hoja
+Gyarados,Vía Acuática,15,Pesca (Supercaña),Verde Hoja
+Gyarados,Vía Verde,15,Pesca (Supercaña),Verde Hoja
+Gyarados,Islas Espuma,16,Pesca (Supercaña),Verde Hoja
+Lapras,Cueva Glaciada (Planta Baja (Sala 3)),1,Surf,Rojo Fuego
+Lapras,Cueva Glaciada (Planta Baja (Sala 3)),1,Surf,Verde Hoja
+Ditto,Ruta 13,5,Caminar,Rojo Fuego
+Ditto,Ruta 14,15,Caminar,Rojo Fuego
+Ditto,Cueva Celeste (Planta Baja),11,Caminar,Rojo Fuego
+Ditto,Cueva Celeste (Primer Piso),11,Caminar,Rojo Fuego
+Ditto,Cueva Celeste (Sótano),25,Caminar,Rojo Fuego
+Ditto,Mansión Pokémon (Sótano),10,Caminar,Rojo Fuego
+Ditto,Ruta 13,5,Caminar,Verde Hoja
+Ditto,Ruta 14,15,Caminar,Verde Hoja
+Ditto,Cueva Celeste (Planta Baja),11,Caminar,Verde Hoja
+Ditto,Cueva Celeste (Primer Piso),11,Caminar,Verde Hoja
+Ditto,Cueva Celeste (Sótano),25,Caminar,Verde Hoja
+Ditto,Mansión Pokémon (Sótano),10,Caminar,Verde Hoja
+Porygon,Casino (Ciudad Azulona),9999 Fichas,Canje,Rojo Fuego
+Porygon,Casino (Ciudad Azulona),6500 Fichas,Canje,Verde Hoja
+Dratini,Zona Safari,15,Pesca (Supercaña),Rojo Fuego
+Dratini,Casino (Ciudad Azulona),2800 Fichas,Canje,Rojo Fuego
+Dratini,Zona Safari,15,Pesca (Supercaña),Verde Hoja
+Dratini,Casino (Ciudad Azulona),4600 Fichas,Canje,Verde Hoja
+Dragonair,Zona Safari,1,Pesca (Supercaña),Rojo Fuego
+Dragonair,Zona Safari,1,Pesca (Supercaña),Verde Hoja
+Sentret,Entrada al Cañón,30,Caminar,Rojo Fuego
+Sentret,Prado Isla Inta,30,Caminar,Rojo Fuego
+Sentret,Vía Acuática,30,Caminar,Rojo Fuego
+Sentret,Entrada al Cañón,30,Caminar,Verde Hoja
+Sentret,Prado Isla Inta,30,Caminar,Verde Hoja
+Sentret,Vía Acuática,30,Caminar,Verde Hoja
+Ledyba,Bosquejo,5,Caminar,Rojo Fuego
+Ledyba,Bosquejo,30,Caminar,Verde Hoja
+Spinarak,Bosquejo,30,Caminar,Rojo Fuego
+Spinarak,Bosquejo,5,Caminar,Verde Hoja
+Natu,Valle Ruinas,25,Caminar,Rojo Fuego
+Natu,Valle Ruinas,25,Caminar,Verde Hoja
+Marill,Valle Ruinas,10,Caminar,Verde Hoja
+Marill,Cueva Glaciada (Planta Baja (Sala 1)),5,Surf,Verde Hoja
+Marill,Isla Quarta,70,Surf,Verde Hoja
+Marill,Valle Ruinas,100,Surf,Verde Hoja
+Hoppip,Pilar Recuerdo,100,Caminar,Rojo Fuego
+Hoppip,Prado Isla Inta,15,Caminar,Rojo Fuego
+Hoppip,Pilar Recuerdo,15,Surf,Rojo Fuego
+Hoppip,Prado Isla Inta,30,Surf,Rojo Fuego
+Hoppip,Pilar Recuerdo,100,Caminar,Verde Hoja
+Hoppip,Prado Isla Inta,15,Caminar,Verde Hoja
+Hoppip,Pilar Recuerdo,15,Surf,Verde Hoja
+Hoppip,Prado Isla Inta,30,Surf,Verde Hoja
+Yanma,Valle Ruinas,10,Caminar,Rojo Fuego
+Yanma,Valle Ruinas,10,Caminar,Verde Hoja
+Wooper,Valle Ruinas,10,Caminar,Rojo Fuego
+Wooper,Cueva Glaciada (Planta Baja (Sala 1)),5,Surf,Rojo Fuego
+Wooper,Isla Quarta,70,Surf,Rojo Fuego
+Wooper,Valle Ruinas,100,Surf,Rojo Fuego
+Murkrow,Cueva Perdida (Entrada),5,Caminar,Rojo Fuego
+Murkrow,Cueva Perdida (Sala 1),5,Caminar,Rojo Fuego
+Murkrow,Cueva Perdida (Sala 2),5,Caminar,Rojo Fuego
+Murkrow,Cueva Perdida (Sala 3),5,Caminar,Rojo Fuego
+Murkrow,Cueva Perdida (Sala 4),5,Caminar,Rojo Fuego
+Murkrow,Cueva Perdida (Sala 5),5,Caminar,Rojo Fuego
+Murkrow,Cueva Perdida (Sala 6),5,Caminar,Rojo Fuego
+Murkrow,Cueva Perdida (Sala 7),5,Caminar,Rojo Fuego
+Murkrow,Cueva Perdida (Sala 8),5,Caminar,Rojo Fuego
+Murkrow,Cueva Perdida (Sala 9),5,Caminar,Rojo Fuego
+Murkrow,Cueva Perdida (Sala 10),5,Caminar,Rojo Fuego
+Murkrow,Cueva Perdida (Sala 11),20,Caminar,Rojo Fuego
+Murkrow,Cueva Perdida (Sala 12),20,Caminar,Rojo Fuego
+Murkrow,Cueva Perdida (Sala 13),20,Caminar,Rojo Fuego
+Murkrow,Cueva Perdida (Sala 14),20,Caminar,Rojo Fuego
+Misdreavus,Cueva Perdida (Entrada),5,Caminar,Verde Hoja
+Misdreavus,Cueva Perdida (Sala 1),5,Caminar,Verde Hoja
+Misdreavus,Cueva Perdida (Sala 2),5,Caminar,Verde Hoja
+Misdreavus,Cueva Perdida (Sala 3),5,Caminar,Verde Hoja
+Misdreavus,Cueva Perdida (Sala 4),5,Caminar,Verde Hoja
+Misdreavus,Cueva Perdida (Sala 5),5,Caminar,Verde Hoja
+Misdreavus,Cueva Perdida (Sala 6),5,Caminar,Verde Hoja
+Misdreavus,Cueva Perdida (Sala 7),5,Caminar,Verde Hoja
+Misdreavus,Cueva Perdida (Sala 8),5,Caminar,Verde Hoja
+Misdreavus,Cueva Perdida (Sala 9),5,Caminar,Verde Hoja
+Misdreavus,Cueva Perdida (Sala 10),5,Caminar,Verde Hoja
+Misdreavus,Cueva Perdida (Sala 11),20,Caminar,Verde Hoja
+Misdreavus,Cueva Perdida (Sala 12),20,Caminar,Verde Hoja
+Misdreavus,Cueva Perdida (Sala 13),20,Caminar,Verde Hoja
+Misdreavus,Cueva Perdida (Sala 14),20,Caminar,Verde Hoja
+Wobbuffet,Cueva Celeste (Planta Baja),4,Caminar,Rojo Fuego
+Wobbuffet,Cueva Celeste (Primer Piso),5,Caminar,Rojo Fuego
+Wobbuffet,Cueva Celeste (Sótano),1,Caminar,Rojo Fuego
+Wobbuffet,Cueva Celeste (Planta Baja),4,Caminar,Verde Hoja
+Wobbuffet,Cueva Celeste (Primer Piso),5,Caminar,Verde Hoja
+Wobbuffet,Cueva Celeste (Sótano),1,Caminar,Verde Hoja
+Dunsparce,Puerto Isla Tera,100,Caminar,Rojo Fuego
+Dunsparce,Puerto Isla Tera,100,Caminar,Verde Hoja
+Qwilfish,Aquarinto,40,Pesca (Supercaña),Rojo Fuego
+Qwilfish,Isla Aislada,40,Pesca (Supercaña),Rojo Fuego
+Qwilfish,Lugar de Recreo,40,Pesca (Supercaña),Rojo Fuego
+Qwilfish,Ruinas Sete,40,Pesca (Supercaña),Rojo Fuego
+Qwilfish,Vía Acuática,40,Pesca (Supercaña),Rojo Fuego
+Qwilfish,Vía Verde,40,Pesca (Supercaña),Rojo Fuego
+Heracross,Bosquejo,20,Caminar,Rojo Fuego
+Heracross,Bosquejo,20,Caminar,Verde Hoja
+Sneasel,Cueva Glaciada (Sótano y Planta Baja (Sala 2)),5,Caminar,Verde Hoja
+Slugma,Monte Ascuas (Planta Baja),30,Caminar,Rojo Fuego
+Slugma,Monte Ascuas (Sótano 4),30,Caminar,Rojo Fuego
+Slugma,Monte Ascuas (Sótano 5),30,Caminar,Rojo Fuego
+Slugma,Monte Ascuas (Sótano 1),60,Caminar,Rojo Fuego
+Slugma,Monte Ascuas (Sótano 2),60,Caminar,Rojo Fuego
+Slugma,Monte Ascuas (Sótano 3),100,Caminar,Rojo Fuego
+Slugma,Monte Ascuas (Planta Baja),30,Caminar,Verde Hoja
+Slugma,Monte Ascuas (Sótano 4),30,Caminar,Verde Hoja
+Slugma,Monte Ascuas (Sótano 5),30,Caminar,Verde Hoja
+Slugma,Monte Ascuas (Sótano 1),60,Caminar,Verde Hoja
+Slugma,Monte Ascuas (Sótano 2),60,Caminar,Verde Hoja
+Slugma,Monte Ascuas (Sótano 3),100,Caminar,Verde Hoja
+Magcargo,Monte Ascuas (Sótano 3),10,Golpe Roca,Rojo Fuego
+Magcargo,Monte Ascuas (Sótano 3),10,Golpe Roca,Verde Hoja
+Swinub,Cueva Glaciada (Sótano y Planta Baja (Sala 2)),50,Caminar,Rojo Fuego
+Swinub,Cueva Glaciada (Sótano y Planta Baja (Sala 2)),50,Caminar,Verde Hoja
+Remoraid,Aquarinto,40,Pesca (Supercaña),Verde Hoja
+Remoraid,Isla Aislada,40,Pesca (Supercaña),Verde Hoja
+Remoraid,Lugar de Recreo,40,Pesca (Supercaña),Verde Hoja
+Remoraid,Ruinas Sete,40,Pesca (Supercaña),Verde Hoja
+Remoraid,Vía Acuática,40,Pesca (Supercaña),Verde Hoja
+Remoraid,Vía Verde,40,Pesca (Supercaña),Verde Hoja
+Delibird,Cueva Glaciada (Sótano y Planta Baja (Sala 2)),5,Caminar,Rojo Fuego
+Mantine,Ruinas Sete,5,Surf,Verde Hoja
+Mantine,Torre Desafío,5,Surf,Verde Hoja
+Skarmory,Cañón Sétano,5,Caminar,Rojo Fuego
+Phanpy,Cañón Sétano,20,Caminar,Rojo Fuego
+Phanpy,Entrada al Cañón,15,Caminar,Rojo Fuego
+Phanpy,Cañón Sétano,20,Caminar,Verde Hoja
+Phanpy,Entrada al Cañón,15,Caminar,Verde Hoja
+Larvitar,Cañón Sétano,5,Caminar,Rojo Fuego
+Larvitar,Cañón Sétano,5,Caminar,Verde Hoja

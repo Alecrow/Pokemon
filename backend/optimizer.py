@@ -108,7 +108,7 @@ class EVOptimizer:
         # If not found, return original (might be already correct)
         return zone_name
 
-    async def find_optimal_path(self, start_zone: str, current_evs: Dict[str, int], target_evs: Dict[str, int], accessible_zones: List[str], has_macho_brace: bool, has_pokerus: bool, lambda_penalty: float, pokemon_level: int = 50) -> Dict[str, Any]:
+    async def find_optimal_path(self, start_zone: str, current_evs: Dict[str, int], target_evs: Dict[str, int], accessible_zones: List[str], held_item: str, has_pokerus: bool, lambda_penalty: float, pokemon_level: int = 50) -> Dict[str, Any]:
         """
         Finds a sequence of zones to visit to reach target EVs.
         Uses a greedy heuristic:
@@ -118,7 +118,11 @@ class EVOptimizer:
         4. Repeat.
         """
         # Normalize start_zone
+        original_start_zone = start_zone
         start_zone = self._normalize_zone_name(start_zone)
+        
+        if start_zone not in self.graph.adjacency_data:
+            raise ValueError(f"Start zone '{original_start_zone}' (normalized: '{start_zone}') not found in graph.")
         
         # Normalize accessible_zones
         if accessible_zones:
@@ -131,18 +135,23 @@ class EVOptimizer:
         current_location = start_zone
         current_stats = current_evs.copy()
         
-        # Multipliers
-        multiplier = 1
-        if has_pokerus: multiplier *= 2
-        # Macho brace adds yield but we need to know base yield. 
-        # For simplicity, let's assume it doubles yield (it actually doubles EV gain).
-        if has_macho_brace: multiplier *= 2 
+        # Power Items Map
+        power_items = {
+            "Power Weight": "HP",
+            "Power Bracer": "Attack",
+            "Power Belt": "Defense",
+            "Power Lens": "Special Attack",
+            "Power Band": "Special Defense",
+            "Power Anklet": "Speed"
+        }
         
         # Load yields once
         all_yields = get_all_zone_yields(pokemon_level)
         print(f"DEBUG: Loaded yields for {len(all_yields)} zones.")
         
         # Safety loop limit
+        decision_log = []
+        
         for i in range(10):
             # 1. Calculate Needs
             needs = {}
@@ -153,19 +162,18 @@ class EVOptimizer:
                     needs[stat] = target - current
                     has_needs = True
             
-            print(f"DEBUG: Iteration {i}, Needs: {needs}")
-            
             if not has_needs:
+                decision_log.append("All targets reached.")
                 break
                 
             # 2. Calculate Distances from current location
             distances = self._calculate_distances(current_location)
-            print(f"DEBUG: Calculated distances from {current_location}. Reachable: {len(distances)}")
             
             # 3. Score Zones
             best_zone = None
             best_score = float('inf')
             best_stat_to_farm = None
+            best_details = {}
             
             for zone_name in self.graph.adjacency_data.keys():
                 # Filter accessible zones if provided
@@ -182,29 +190,43 @@ class EVOptimizer:
                 
                 # Check if this zone provides any needed stat
                 for stat, amount_needed in needs.items():
-                    avg_yield = zone_yield_data.get(stat, 0) * multiplier
+                    avg_yield = zone_yield_data.get(stat, 0)
+                    
+                    # Apply Item Bonus
+                    if held_item == "Macho Brace":
+                        avg_yield *= 2
+                    elif power_items.get(held_item) == stat:
+                        avg_yield += 8
+                        
+                    # Apply Pokerus
+                    if has_pokerus:
+                        avg_yield *= 2
+                        
                     if avg_yield > 0.1: # Threshold to consider useful
                         # Estimate encounters needed
                         encounters_needed = amount_needed / avg_yield
                         
                         # Score
-                        # Normalize distance (e.g. 100 tiles ~ 1 encounter?)
-                        # Let's say 1 tile = 1 unit, 1 encounter = 20 units?
-                        # Or just use raw values and let lambda handle it.
-                        # Problem: Distance is usually 0-500, Encounters 0-252.
-                        # Let's assume user lambda is balanced for raw values.
-                        
-                        score = (lambda_penalty * dist) + ((1 - lambda_penalty) * encounters_needed * 10) # *10 to weight encounters more?
+                        score = (lambda_penalty * dist) + ((1 - lambda_penalty) * encounters_needed * 10)
                         
                         if score < best_score:
                             best_score = score
                             best_zone = zone_name
                             best_stat_to_farm = stat
+                            best_details = {
+                                "dist": dist,
+                                "encounters": encounters_needed,
+                                "yield": avg_yield
+                            }
             
             if not best_zone:
-                # Cannot fulfill needs
+                decision_log.append(f"Could not find any zone to farm remaining needs: {needs}")
                 break
-                
+            
+            decision_log.append(f"Step {i+1}: Chose {best_zone} to farm {best_stat_to_farm}. "
+                                f"Dist: {best_details['dist']}, Est. Encounters: {int(best_details['encounters'])}. "
+                                f"Score: {best_score:.2f}")
+            
             # 4. Add Travel Step
             dist_to_zone = distances[best_zone]
             if dist_to_zone > 0:
@@ -217,35 +239,47 @@ class EVOptimizer:
                 current_location = best_zone
             
             # 5. Add Farm Step
-            # Calculate exact encounters needed for the chosen stat
-            # We need to know WHICH pokemon to kill.
-            # Simple approach: Kill everything that gives the stat? Or just the best one?
-            # For now, let's simulate "farming the zone" generally.
-            
             db_code = self._get_db_code(best_zone)
             encounters = get_zone_encounters(db_code, pokemon_level)
             
+            # Map stat name to DB key
+            stat_map = {
+                "HP": "ev_hp",
+                "Attack": "ev_attack",
+                "Defense": "ev_defense",
+                "Special Attack": "ev_sp_attack",
+                "Special Defense": "ev_sp_defense",
+                "Speed": "ev_speed"
+            }
+            stat_key = stat_map.get(best_stat_to_farm)
+            
             # Filter for pokemon that give the target stat
-            useful_encounters = [e for e in encounters if e[f'ev_{best_stat_to_farm.lower().replace(" ", "_")}'] > 0]
+            useful_encounters = [e for e in encounters if e[stat_key] > 0]
             
             if not useful_encounters:
-                # Should not happen given logic above
                 break
                 
-            # Sort by yield/prob?
             # Let's pick the most common one that gives the stat
             target_pokemon = sorted(useful_encounters, key=lambda x: x['probability_percent'], reverse=True)[0]
             
-            stat_key = f'ev_{best_stat_to_farm.lower().replace(" ", "_")}'
-            yield_per_kill = target_pokemon[stat_key] * multiplier
+            # Calculate effective yield for the target stat
+            base_yield = target_pokemon[stat_key]
+            effective_yield = base_yield
+            
+            if held_item == "Macho Brace":
+                effective_yield *= 2
+            elif power_items.get(held_item) == best_stat_to_farm:
+                effective_yield += 8
+                
+            if has_pokerus:
+                effective_yield *= 2
+            
+            yield_per_kill = effective_yield
             needed = needs[best_stat_to_farm]
             
             kills = math.ceil(needed / yield_per_kill)
             
             # Update stats
-            # Note: This is a simplification. We might get other EVs too.
-            # For a robust solution, we should simulate the side effects.
-            
             gained_evs = {}
             for k in ['ev_hp', 'ev_attack', 'ev_defense', 'ev_sp_attack', 'ev_sp_defense', 'ev_speed']:
                 stat_name = k.replace('ev_', '').replace('_', ' ').title()
@@ -253,7 +287,18 @@ class EVOptimizer:
                 if stat_name == 'Sp Attack': stat_name = 'Special Attack'
                 if stat_name == 'Sp Defense': stat_name = 'Special Defense'
                 
-                gain = kills * target_pokemon[k] * multiplier
+                base_val = target_pokemon[k]
+                val = base_val
+                
+                if held_item == "Macho Brace":
+                    val *= 2
+                elif power_items.get(held_item) == stat_name:
+                    val += 8
+                    
+                if has_pokerus:
+                    val *= 2
+                
+                gain = kills * val
                 current_stats[stat_name] = current_stats.get(stat_name, 0) + gain
                 gained_evs[stat_name] = gain
 
@@ -277,5 +322,6 @@ class EVOptimizer:
             "path": path,
             "total_distance": total_distance,
             "total_encounters": total_encounters,
-            "final_stats": current_stats
+            "final_stats": current_stats,
+            "decision_log": decision_log
         }
